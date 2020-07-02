@@ -10,10 +10,10 @@ export class Tab5Page {
 
   constructor(private http: HttpClient) {}
 
-  private URL_oms = 'https://covid-web-scrapping.herokuapp.com/noticias-oms';
-  private URL_colombia = 'https://covid-web-scrapping.herokuapp.com/noticias-colombia';
+  private URL_oms = 'https://covid-noticias-oms.herokuapp.com/';
+  private URL_colombia = 'https://covid-noticias-colombia.herokuapp.com/';
   private noticiasOmsActivadas = false;
-  private noticiasColombiaActivadas = true;
+  private noticiasColombiaActivadas = false;
   noticias_oms = [];
   noticias_colombia = [];
 
