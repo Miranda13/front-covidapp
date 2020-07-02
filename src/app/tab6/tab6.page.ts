@@ -1,4 +1,6 @@
 import { Component } from '@angular/core';
+import { AngularFirestore } from '@angular/fire/firestore';
+import { Observable } from 'rxjs';
 
 @Component({
   selector: 'app-tab6',
@@ -7,6 +9,11 @@ import { Component } from '@angular/core';
 })
 export class Tab6Page {
 
-  constructor() {}
+  reports: Observable<any[]>;
+
+  constructor(private firestore: AngularFirestore) { 
+    this.reports = firestore.collection('reports').valueChanges();
+  }
+
 
 }
