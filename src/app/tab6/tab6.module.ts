@@ -5,6 +5,10 @@ import { IonicModule } from '@ionic/angular';
 import { Tab6PageRoutingModule } from './tab6-routing.module';
 import { Tab6Page } from './tab6.page';
 import { ExploreContainerComponentModule } from '../explore-container/explore-container.module';
+import { AngularFireModule } from '@angular/fire';
+import { AngularFireAnalyticsModule } from '@angular/fire/analytics';
+import { AngularFirestoreModule } from '@angular/fire/firestore';
+import { environment } from '../../environments/environment';
 
 @NgModule({
   imports: [
@@ -12,7 +16,10 @@ import { ExploreContainerComponentModule } from '../explore-container/explore-co
     FormsModule,
     IonicModule,
     Tab6PageRoutingModule,
-    ExploreContainerComponentModule
+    ExploreContainerComponentModule,
+    AngularFireModule.initializeApp(environment.firebase),
+    AngularFireAnalyticsModule,
+    AngularFirestoreModule
   ],
   declarations: [Tab6Page]
 })
