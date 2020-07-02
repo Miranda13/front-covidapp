@@ -29,7 +29,16 @@ const routes: Routes = [
       },
       {
         path: 'tab6',
-        loadChildren: () => import('../tab6/tab6.module').then(m => m.Tab6PageModule)
+        children:[{
+          path: '',
+          loadChildren: () => import('../tab6/tab6.module').then(m => m.Tab6PageModule)
+        }
+        ]
+        
+      },
+      {
+        path: 'register',
+        loadChildren: () => import('../tab6/register/register.module').then(m => m.RegisterPageModule)
       },
       {
         path: '',
