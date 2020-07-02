@@ -9,11 +9,16 @@ import { Observable } from 'rxjs';
 })
 export class Tab6Page {
 
-  reports: Observable<any[]>;
+  reports: any []= [];
 
   constructor(private firestore: AngularFirestore) { 
-    this.reports = firestore.collection('reports').valueChanges();
   }
 
+  ngOnInit(){
+    this.firestore.collection('reports').valueChanges()
+    .subscribe((reports)=>{
+      this.reports = <any[]>reports;
+    });
+  }
 
 }
