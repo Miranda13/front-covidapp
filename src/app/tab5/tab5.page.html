@@ -1,7 +1,7 @@
-<ion-header>
+<ion-header [translucent]="true">
   <ion-toolbar>
     <ion-title>
-    tab5
+      Noticias sobre el COVID
     </ion-title>
   </ion-toolbar>
 </ion-header>
@@ -9,10 +9,51 @@
 <ion-content [fullscreen]="true">
   <ion-header collapse="condense">
     <ion-toolbar>
-      <ion-title size="large">Tab 5</ion-title>
+      <ion-title size="large">Noticias sobre el COVID</ion-title>
     </ion-toolbar>
   </ion-header>
 
-  <app-explore-container name="Tab 5 page"></app-explore-container>
+  <div class="botones-noticias">
+    <ion-button [ngClass]="{'boton-desactivado': !noticiasOmsActivadas}" class="boton-noticia" (click)="activarNoticiasOms()">De la OMS</ion-button>
+    <ion-button [ngClass]="{'boton-desactivado': !noticiasColombiaActivadas}"  class="boton-noticia" (click)="activarNoticiasColombia()">De Colombia</ion-button>
+  </div>
+
+  <ion-list *ngIf="noticiasOmsActivadas">
+    <ion-item *ngFor="let noticia of noticias_oms" (click)="irA(noticia.link)">
+      <ion-avatar slot="start">
+        <img src="{{noticia.imagen}}" alt="">
+      </ion-avatar>
+      <ion-label>
+        <h2>
+          {{noticia.titulo}}
+        </h2>
+        <h3>
+          {{noticia.parrafo}}...
+        </h3>
+        <h4>
+          Fecha: {{noticia.fecha}}
+        </h4>
+      </ion-label>
+    </ion-item>
+  </ion-list>
+
+  <ion-list *ngIf="noticiasColombiaActivadas">
+    <ion-item *ngFor="let noticia of noticias_colombia" (click)="irA(noticia.link)">
+      <ion-avatar slot="start">
+        <img src="{{noticia.imagen}}" alt="">
+      </ion-avatar>
+      <ion-label>
+        <h2>
+          {{noticia.titulo}}
+        </h2>
+        <h3>
+          {{noticia.parrafo}}...
+        </h3>
+        <h4>
+          Fecha: {{noticia.fecha}}
+        </h4>
+      </ion-label>
+    </ion-item>
+  </ion-list>
 
 </ion-content>
