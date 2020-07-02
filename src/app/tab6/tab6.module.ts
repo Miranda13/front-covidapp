@@ -9,6 +9,8 @@ import { AngularFireModule } from '@angular/fire';
 import { AngularFireAnalyticsModule } from '@angular/fire/analytics';
 import { AngularFirestoreModule } from '@angular/fire/firestore';
 import { environment } from '../../environments/environment';
+import { AngularFireAuthModule } from '@angular/fire/auth';
+import { from } from 'rxjs';
 
 @NgModule({
   imports: [
@@ -19,7 +21,8 @@ import { environment } from '../../environments/environment';
     ExploreContainerComponentModule,
     AngularFireModule.initializeApp(environment.firebase),
     AngularFireAnalyticsModule,
-    AngularFirestoreModule
+    AngularFirestoreModule,
+    AngularFireAuthModule
   ],
   declarations: [Tab6Page]
 })
