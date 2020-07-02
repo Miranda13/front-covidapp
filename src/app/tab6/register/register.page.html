@@ -1,9 +1,24 @@
 <ion-header>
   <ion-toolbar>
-    <ion-title>register</ion-title>
+    <ion-buttons slot="start">
+      <ion-back-button text="Registrarse" icon="close"></ion-back-button>
+    </ion-buttons>
   </ion-toolbar>
-</ion-header>
+</ion-header> 
+
 
 <ion-content>
-  <h1> Registro </h1>
+  <form (ngSubmit)="logForm()">
+    <ion-item>
+      <ion-label>Todo</ion-label>
+      <ion-input type="text" [(ngModel)]="todo.title" name="title"></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-label>Description</ion-label>
+      <ion-textarea [(ngModel)]="todo.description" name="description"></ion-textarea>
+    </ion-item>
+    <button ion-button type="submit" block>Add Todo</button>
+  </form>
+
+  Nombre, edad, dirección, barrio, ciudad, país, correo, telefono
 </ion-content>

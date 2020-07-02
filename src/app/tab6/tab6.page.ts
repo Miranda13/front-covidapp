@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { AngularFirestore } from '@angular/fire/firestore';
-import { Observable } from 'rxjs';
+import { AngularFireAuth } from '@angular/fire/auth';
+import { auth } from 'firebase/app';
 
 @Component({
   selector: 'app-tab6',
@@ -11,7 +12,8 @@ export class Tab6Page {
 
   reports: any []= [];
 
-  constructor(private firestore: AngularFirestore) { 
+  constructor(private firestore: AngularFirestore,
+    public auth: AngularFireAuth) { 
   }
 
   ngOnInit(){
@@ -19,6 +21,13 @@ export class Tab6Page {
     .subscribe((reports)=>{
       this.reports = <any[]>reports;
     });
+  }
+
+  login() {
+    this.auth.signInWithPopup(new auth.GoogleAuthProvider());
+  }
+  logout() {
+    this.auth.signOut();
   }
 
 }
