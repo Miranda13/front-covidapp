@@ -1,24 +1,39 @@
 
 <ion-content [fullscreen]="true">
-  
-  <ion-list>
-    <ion-item *ngFor="let report of reports"> 
-      <ion-label>
-        <h2>{{report.categoria}} </h2>
-        <h2>{{report.descripcion}} </h2>
-      </ion-label>
+
+  <!-- <form (ngSubmit)="logForm()">
+    <ion-item>
+      <ion-label>Todo</ion-label>
+      <ion-input type="text" [(ngModel)]="todo.title" name="user"></ion-input>
     </ion-item>
-  </ion-list>
+    <ion-item>
+      <ion-label>Description</ion-label>
+      <ion-textarea [(ngModel)]="todo.description" name="pass"></ion-textarea>
+    </ion-item>
+    <button ion-button type="submit" block>Add Todo</button>
+  </form> -->
 
   <div *ngIf="auth.user | async as user; else showLogin">
     <h1>Hello {{ user.displayName }}!</h1>
-    <button (click)="logout()">Logout</button>
+    <ion-button (click)="logout()">Cerrar sesión</ion-button>
   </div>
   
   <ng-template #showLogin>
     <p>Please login.</p>
-    <ion-button color="primary" (click)="login()">Login with Google</ion-button>
-  </ng-template>
 
+    <form> 
+      <input type="email" name="email" required="required" [(ngModel)]="loginEmail">
+      <input type="password" name="password" required="required" [(ngModel)]="loginPassword">
+      <button type="submit" (click)="loginEmailPassword()"> Entrar </button> 
+    </form>
+
+
+    <ion-button color="primary" (click)="login()">Iniciar sesión con Google</ion-button>
+    <!-- <ion-button color="primary" (click)="loginEmailPassword(email,password)" >Iniciar sesión</ion-button> -->
+    
+  </ng-template>
+  
   <ion-button color="primary" routerLink="/tabs/tab6/register" routerDirection="forward">Registrarse</ion-button>
+  <ion-button color="primary" routerLink="/tabs/tab6/principal" routerDirection="forward">Principal</ion-button>
+
 </ion-content>
