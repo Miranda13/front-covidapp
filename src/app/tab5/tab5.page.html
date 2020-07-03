@@ -38,7 +38,7 @@
   </ion-list>
 
   <ion-list *ngIf="noticiasColombiaActivadas">
-    <ion-item *ngFor="let noticia of noticias_colombia" (click)="irA(noticia.link)">
+    <ion-item *ngFor="let noticia of noticias_colombia | slice:0:10" (click)="irA(noticia.link)">
       <ion-avatar slot="start">
         <img src="{{noticia.imagen}}" alt="">
       </ion-avatar>
@@ -55,5 +55,6 @@
       </ion-label>
     </ion-item>
   </ion-list>
+
 
 </ion-content>
