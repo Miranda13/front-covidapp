@@ -6,21 +6,30 @@
   </ion-toolbar>
 </ion-header> 
 
-
 <ion-content>
- <!--  <form (ngSubmit)="logForm()">
+  <form> 
     <ion-item>
-      <ion-label>Todo</ion-label>
-      <ion-input type="text" [(ngModel)]="todo.title" name="title"></ion-input>
+      <label> Nombre <ion-text color="danger"> * </ion-text></label>
+      <input type="text" name="name" required type="text">
     </ion-item>
     <ion-item>
-      <ion-label>Description</ion-label>
-      <ion-textarea [(ngModel)]="todo.description" name="description"></ion-textarea>
+      <label> Correo <ion-text color="danger"> * </ion-text></label>
+      <input type="email" name="email" required type="text" [(ngModel)]="loginEmail">
     </ion-item>
-    <button ion-button type="submit" block>Add Todo</button>
-  </form> -->
+    <ion-item>
+      <label> Telefono <ion-text color="danger"> * </ion-text></label>
+      <input type="tel" name="phone" required type="text" >
+    </ion-item>
+    <ion-item>
+      <label > Edad <ion-text color="danger"> * </ion-text> </label>
+      <input type="number" name="age" required="required" >
+    </ion-item>
+
+      <ion-button type="submit" (click)="signUp()"> Registro </ion-button> 
+
+    </form>
 
   <input type="file" (change)="uploadFile($event)">
 
-  Nombre, edad, dirección, barrio, ciudad, país, correo, telefono
+  Nombre, edad, dirección, barrio, ciudad,  correo, telefono
 </ion-content>

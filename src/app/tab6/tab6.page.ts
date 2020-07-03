@@ -21,11 +21,24 @@ export class Tab6Page {
     public alertController: AlertController) { 
   }
 
+  
   ngOnInit(){
     this.firestore.collection('users').valueChanges()
     .subscribe((users)=>{
       this.users = <any[]>users;
     });
+  }
+
+  async presentAlert(error,mensaje) {
+    const alert = await this.alertController.create({
+      //cssClass: 'my-custom-class',
+      header: 'Alerta',
+      subHeader: error,
+      message: mensaje,
+      buttons: ['OK']
+    });
+
+    await alert.present();
   }
 
   
@@ -48,10 +61,13 @@ export class Tab6Page {
         this.ngOnInit();
         } */
       ).catch((error)=>{
+        this.presentAlert(error.code,error.message);
         console.error(error);
       });
     } else{
-
+      let err = 'Campos vacíos';
+      let mensa = 'Por favor digite correo y contraseña';
+      this.presentAlert(err,mensa);
     }
   }
 
