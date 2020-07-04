@@ -7,7 +7,7 @@
 </ion-header> 
 
 <ion-content>
-  <form> 
+  <form > 
     <ion-item>
       <ion-label> Nombre <ion-text color="danger"> * </ion-text></ion-label>
       <ion-input type="text" name="name" required [(ngModel)]="name"> </ion-input>
@@ -50,7 +50,7 @@
       <ion-input type="reset"> </ion-input>
     </ion-item>
     
-    <ion-button type="submit" (click)="signUp()"> Registro </ion-button> 
+    <ion-button type="submit" (click)="signUp()" href="" routerDirection="forward"> Registro </ion-button> 
 
     </form>
 
