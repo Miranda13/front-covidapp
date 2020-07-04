@@ -55,6 +55,7 @@ export class Tab6Page {
       this.auth.signInWithEmailAndPassword(this.loginEmail,this.loginPassword).then(
         (user)=>{
           console.log(user);
+          console.log(user.user.uid);
         }
         /* (user)=>{
         this.firestore.collection('users').doc(user.user.uid).set({email: user.user.email, displayname:user.user.displayName, method: user.user.providerId })

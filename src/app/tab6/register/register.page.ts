@@ -4,6 +4,7 @@ import { AngularFirestore } from '@angular/fire/firestore';
 import { AngularFireAuth } from '@angular/fire/auth';
 import { auth } from 'firebase/app';
 import { AlertController } from '@ionic/angular';
+//import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 
 @Component({
   selector: 'app-register',
@@ -13,6 +14,15 @@ import { AlertController } from '@ionic/angular';
 export class RegisterPage implements OnInit {
 
   reports: any []= [];
+  phone: string;
+  age: string;
+  name: string;
+  email: string;
+  city: string;
+  state: string;
+  address: string;
+  password: string;
+  password2: string;
 
   constructor(private storage: AngularFireStorage,
     private firestore: AngularFirestore,
@@ -26,7 +36,56 @@ export class RegisterPage implements OnInit {
     });
   }
 
+  async presentAlert(error,mensaje) {
+    const alert = await this.alertController.create({
+      //cssClass: 'my-custom-class',
+      header: 'Alerta',
+      subHeader: error,
+      message: mensaje,
+      buttons: ['OK']
+    });
+    await alert.present();
+  }
+
   signUp(){
+    if(this.age !== undefined && this.age!== ''
+    && this.phone !== undefined && this.phone!== ''
+    && this.email !== undefined && this.email!== ''
+    && this.city !== undefined && this.city!== ''
+    && this.password !== undefined && this.password!== ''
+    && this.password2 !== undefined && this.password2!== ''
+    && this.state !== undefined && this.state!== ''
+    && this.name !== undefined && this.name!== ''
+    && this.address !== undefined && this.address!== ''){
+      if(this.password==this.password2){
+        this.auth.createUserWithEmailAndPassword(this.email,this.password).then(
+          /* (user)=>{
+            console.log(user);
+            console.log(user.user.uid);
+          } */
+          (user)=>{
+          this.firestore.collection('users').doc(user.user.uid)
+          .set({email: user.user.email, 
+            displayname: this.name, 
+            method: user.user.providerId,
+            address: this.address
+             })
+          this.ngOnInit();
+          }
+        ).catch((error)=>{
+          this.presentAlert(error.code,error.message);
+          console.error(error);
+        });
+      }else{
+        let err = 'Contraseña no coincide';
+      let mensa = 'Por favor repita la contraseña';
+      this.presentAlert(err,mensa);
+      }
+    } else{
+      let err = 'Campos vacíos';
+      let mensa = 'Por favor diligencie todos los campos';
+      this.presentAlert(err,mensa);
+    }
     
   }
   uploadFile(event) {

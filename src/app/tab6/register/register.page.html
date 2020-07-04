@@ -9,50 +9,52 @@
 <ion-content>
   <form> 
     <ion-item>
-      <label> Nombre <ion-text color="danger"> * </ion-text></label>
-      <input type="text" name="name" required type="text">
+      <ion-label> Nombre <ion-text color="danger"> * </ion-text></ion-label>
+      <ion-input type="text" name="name" required [(ngModel)]="name"> </ion-input>
+    </ion-item>
+
+    <ion-item>
+      <ion-label> Correo <ion-text color="danger"> * </ion-text></ion-label>
+      <ion-input type="email" name="email" required [(ngModel)]="email"> </ion-input>
+    </ion-item>
+
+    <ion-item>
+      <ion-label> Telefono <ion-text color="danger"> * </ion-text></ion-label>
+      <ion-input type="tel" name="phone" required [(ngModel)]="phone" > </ion-input>
     </ion-item>
     <ion-item>
-      <label> Correo <ion-text color="danger"> * </ion-text></label>
-      <input type="email" name="email" required type="text" [(ngModel)]="loginEmail">
+      <ion-label > Edad <ion-text color="danger"> * </ion-text> </ion-label>
+      <ion-input type="number" name="age" required [(ngModel)]="age"> </ion-input>
     </ion-item>
     <ion-item>
-      <label> Telefono <ion-text color="danger"> * </ion-text></label>
-      <input type="tel" maxlength="10" name="phone" required type="text" >
+      <ion-label > Ciudad <ion-text color="danger"> * </ion-text> </ion-label>
+      <ion-input type="text" name="city" required [(ngModel)]="city"> </ion-input>
     </ion-item>
     <ion-item>
-      <label > Edad <ion-text color="danger"> * </ion-text> </label>
-      <input type="number" maxlength="2" name="age" required="required" >
+      <ion-label > Barrio <ion-text color="danger"> * </ion-text> </ion-label>
+      <ion-input type="text" name="state" required [(ngModel)]="state"> </ion-input>
     </ion-item>
     <ion-item>
-      <label > Ciudad <ion-text color="danger"> * </ion-text> </label>
-      <input type="text" name="city" required="required" >
+      <ion-label > Dirección <ion-text color="danger"> * </ion-text> </ion-label>
+      <ion-input type="text" name="address" required [(ngModel)]="address"> </ion-input>
     </ion-item>
     <ion-item>
-      <label > Barrio <ion-text color="danger"> * </ion-text> </label>
-      <input type="text" name="state" required="required" >
+      <ion-label > Crear contraseña <ion-text color="danger"> * </ion-text> </ion-label>
+      <ion-input type="password" name="password" required [(ngModel)]="password"> </ion-input>
     </ion-item>
     <ion-item>
-      <label > Dirección <ion-text color="danger"> * </ion-text> </label>
-      <input type="text" name="adress" required="required" >
+      <ion-label > Repetir contraseña <ion-text color="danger"> * </ion-text> </ion-label>
+      <ion-input type="password" name="password2" required [(ngModel)]="password2"> </ion-input>
     </ion-item>
     <ion-item>
-      <label > Crear contraseña <ion-text color="danger"> * </ion-text> </label>
-      <input type="password" name="password" required="required" >
-    </ion-item>
-    <ion-item>
-      <label > Repetir contraseña <ion-text color="danger"> * </ion-text> </label>
-      <input type="password" name="password2" required="required" >
-    </ion-item>
-    <ion-item>
-      <input type="reset">  
+      <ion-input type="reset"> </ion-input>
     </ion-item>
     
     <ion-button type="submit" (click)="signUp()"> Registro </ion-button> 
 
     </form>
 
-  <input type="file" (change)="uploadFile($event)">
+  <ion-input type="file" (change)="uploadFile($event)">  </ion-input>
 
   
 </ion-content>
