@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import * as xml2js from "xml2js";
 import { NewsRss } from '../news-rss';
 import * as $ from "jquery";
@@ -11,7 +11,9 @@ import * as $ from "jquery";
 })
 export class Tab5Page {
 
-  constructor(private http: HttpClient) {}
+  constructor(
+    private http: HttpClient
+    ) {}
 
   private URL_oms = 'https://covid-noticias-oms.herokuapp.com/';
   private URL_colombia = 'https://www.minsalud.gov.co/_layouts/15/listfeed.aspx?List=%7BCC536310-0C15-4295-82EA-2FD45206219D%7D';
@@ -19,8 +21,9 @@ export class Tab5Page {
   private noticiasColombiaActivadas = true;
   private _descripcion;
   private _date;
-  noticias_oms = [];
-  noticias_colombia = [];
+  
+  private noticias_colombia = [];
+  private noticias_oms = [];
 
   private meses = {
     0: 'Enero',
@@ -40,7 +43,8 @@ export class Tab5Page {
   getNoticias(){
 
     this.http.get<any>(this.URL_oms, 
-      { observe: "body"}).subscribe((data: any[]) => {this.noticias_oms = data});
+      { observe: "body"}).subscribe((data: any[]) => {this.noticias_oms = data;
+      });
 
     const requestOptions: Object = {
       observe: "body",
@@ -60,7 +64,7 @@ export class Tab5Page {
                 if (noticia.title.toString().indexOf('-') != -1) {
                   this.noticias_colombia.push(
                     {
-                      titulo: noticia.title.toString().replace(/-/g, ' '),
+                      titulo: noticia.title.toString().replace(/-/g, ' ').replace(/(ano)/g, 'año'),
                       fecha: `${this._date.getDate()} de ${this.meses[this._date.getMonth()]} de ${this._date.getFullYear()}`,
                       imagen: "https://www.minsalud.gov.co" + this._descripcion.find('img').attr('src'),
                       link: "https://www.minsalud.gov.co/Paginas/" + noticia.title + ".aspx",

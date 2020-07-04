@@ -18,7 +18,11 @@
     <ion-button [ngClass]="{'boton-desactivado': !noticiasColombiaActivadas}"  class="boton-noticia" (click)="activarNoticiasColombia()">De Colombia</ion-button>
   </div>
 
+  
   <ion-list *ngIf="noticiasOmsActivadas">
+    <ion-item *ngIf="noticias_oms == 0" id="spinner">
+      <ion-spinner *ngIf="noticias_oms == 0" color="primary" name="crescent"></ion-spinner>
+    </ion-item>
     <ion-item *ngFor="let noticia of noticias_oms" (click)="irA(noticia.link)">
       <ion-avatar slot="start">
         <img src="{{noticia.imagen}}" alt="">
@@ -38,6 +42,9 @@
   </ion-list>
 
   <ion-list *ngIf="noticiasColombiaActivadas">
+    <ion-item *ngIf="noticias_colombia == 0" id="spinner">
+      <ion-spinner *ngIf="noticias_colombia == 0" color="primary" name="crescent"></ion-spinner>
+    </ion-item>
     <ion-item *ngFor="let noticia of noticias_colombia | slice:0:10" (click)="irA(noticia.link)">
       <ion-avatar slot="start">
         <img src="{{noticia.imagen}}" alt="">
@@ -55,6 +62,7 @@
       </ion-label>
     </ion-item>
   </ion-list>
+
 
 
 </ion-content>

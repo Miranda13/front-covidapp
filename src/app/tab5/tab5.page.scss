@@ -15,6 +15,7 @@ h3{
 h4{
     font-style: italic;
     color: rgb(99, 99, 99);
+    font-weight: 900;
 }
 
 .boton-desactivado{
@@ -23,4 +24,19 @@ h4{
     color: rgb(66,140,255);
     --background: rgba(255, 255, 255, 0);
     border-color: rgb(66,140,255);
+}
+
+#spinner{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center !important;
+    height: 60vh;
+}
+
+ion-spinner{
+    margin: auto;
+    width: 100px;
+    height: 100px;
 }
