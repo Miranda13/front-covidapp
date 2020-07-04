@@ -4,7 +4,12 @@ import { AngularFirestore } from '@angular/fire/firestore';
 import { AngularFireAuth } from '@angular/fire/auth';
 import { auth } from 'firebase/app';
 import { AlertController } from '@ionic/angular';
+//import { NavController } from 'ionic-angular';
+import { NavController } from '@ionic/angular';
+import { PrincipalPage } from '../principal/principal.page';
 //import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { Router } from '@angular/router';
+import { from } from 'rxjs';
 
 @Component({
   selector: 'app-register',
@@ -13,7 +18,6 @@ import { AlertController } from '@ionic/angular';
 })
 export class RegisterPage implements OnInit {
 
-  reports: any []= [];
   phone: string;
   age: string;
   name: string;
@@ -27,13 +31,14 @@ export class RegisterPage implements OnInit {
   constructor(private storage: AngularFireStorage,
     private firestore: AngularFirestore,
     public auth: AngularFireAuth,
-    public alertController: AlertController) { }
+    public alertController: AlertController,
+    private navController: NavController,
+    private router: Router
+    //public navCtrl: NavController
+    ) { }
 
   ngOnInit() {
-    this.firestore.collection('reports').valueChanges()
-    .subscribe((reports)=>{
-      this.reports = <any[]>reports;
-    });
+    
   }
 
   async presentAlert(error,mensaje) {
@@ -71,6 +76,7 @@ export class RegisterPage implements OnInit {
             address: this.address
              })
           this.ngOnInit();
+          this.goToPrincipal();
           }
         ).catch((error)=>{
           this.presentAlert(error.code,error.message);
@@ -78,8 +84,8 @@ export class RegisterPage implements OnInit {
         });
       }else{
         let err = 'Contraseña no coincide';
-      let mensa = 'Por favor repita la contraseña';
-      this.presentAlert(err,mensa);
+        let mensa = 'Por favor repita la contraseña';
+        this.presentAlert(err,mensa);
       }
     } else{
       let err = 'Campos vacíos';
@@ -94,4 +100,7 @@ export class RegisterPage implements OnInit {
     const task = this.storage.upload(filePath, file);
   }
 
+  goToPrincipal(){
+    this.router.navigateByUrl('/tabs/tab6/principal');
+  }  
 }

@@ -3,6 +3,8 @@ import { AngularFirestore } from '@angular/fire/firestore';
 import { AngularFireAuth } from '@angular/fire/auth';
 import { auth } from 'firebase/app';
 import { AlertController } from '@ionic/angular';
+import { Router } from '@angular/router';
+import { NavController } from '@ionic/angular';
 
 @Component({
   selector: 'app-tab6',
@@ -18,7 +20,9 @@ export class Tab6Page {
 
   constructor(private firestore: AngularFirestore,
     public auth: AngularFireAuth,
-    public alertController: AlertController) { 
+    public alertController: AlertController,
+    private navController: NavController,
+    private router: Router) { 
   }
 
   
@@ -28,7 +32,7 @@ export class Tab6Page {
       this.users = <any[]>users;
     });
   }
-
+  
   async presentAlert(error,mensaje) {
     const alert = await this.alertController.create({
       //cssClass: 'my-custom-class',
@@ -46,16 +50,19 @@ export class Tab6Page {
     this.auth.signInWithPopup(new auth.GoogleAuthProvider()).then((user)=>{
       this.firestore.collection('users').doc(user.user.uid).set({email: user.user.email, displayname:user.user.displayName, method: user.user.providerId, })
       this.ngOnInit();
+      this.goToPrincipal();
     });
   }
 
   loginEmailPassword(){
+    
     if(this.loginEmail !== undefined && this.loginEmail!== ''
     && this.loginPassword !== undefined && this.loginPassword !== ''){
       this.auth.signInWithEmailAndPassword(this.loginEmail,this.loginPassword).then(
         (user)=>{
           console.log(user);
           console.log(user.user.uid);
+          this.goToPrincipal();
         }
         /* (user)=>{
         this.firestore.collection('users').doc(user.user.uid).set({email: user.user.email, displayname:user.user.displayName, method: user.user.providerId })
@@ -71,6 +78,10 @@ export class Tab6Page {
       this.presentAlert(err,mensa);
     }
   }
+  goToPrincipal(){
+    this.router.navigateByUrl('/tabs/tab6/principal');
+  }  
+
 
   logout() {
     this.auth.signOut();
