@@ -9,13 +9,15 @@ const routes: Routes = [
     component: MenuPage,
     children: [
       {
+        path: 'principal',
+        loadChildren: () => import('../principal/principal.module').then(m => m.PrincipalPageModule)
+      },
+      {
         path: 'perfil',
-        //loadChildren: '../perfil/perfil.module'
         loadChildren: () => import('../perfil/perfil.module').then(m => m.PerfilPageModule)
       },
       {
-        path: 'verReportes',
-        //loadChildren: '../ver-reportes/ver-reportes.module#verReportesModule'
+        path: 'verReportes',      
         loadChildren: () => import('../ver-reportes/ver-reportes.module').then(m => m.VerReportesPageModule)  
       },
       {

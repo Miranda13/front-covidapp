@@ -79,7 +79,7 @@ export class Tab6Page {
     }
   }
   goToPrincipal(){
-    this.router.navigateByUrl('/tabs/tab6/principal');
+    this.router.navigateByUrl('/tabs/tab6/menu/principal');
   }  
 
 
