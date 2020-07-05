@@ -16,7 +16,7 @@ const routes: Routes = [
     path: 'principal',
     loadChildren: () => import('./principal/principal.module').then( m => m.PrincipalPageModule)
   },
-  /*{
+  /* {
     path: 'ver-reportes',
     loadChildren: () => import('./ver-reportes/ver-reportes.module').then( m => m.VerReportesPageModule)
   },
@@ -27,11 +27,11 @@ const routes: Routes = [
   {
     path: 'perfil',
     loadChildren: () => import('./perfil/perfil.module').then( m => m.PerfilPageModule)
-  },
+  }, */
   {
     path: 'menu',
     loadChildren: () => import('./menu/menu.module').then( m => m.MenuPageModule)
-  } */
+  } 
 
 ];
 
