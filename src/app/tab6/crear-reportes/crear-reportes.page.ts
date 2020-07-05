@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { AngularFirestore } from '@angular/fire/firestore';
 import { AngularFireAuth } from '@angular/fire/auth';
 import { auth } from 'firebase/app';
+import { AlertController } from '@ionic/angular';
 
 @Component({
   selector: 'app-crear-reportes',
@@ -10,29 +11,66 @@ import { auth } from 'firebase/app';
 })
 export class CrearReportesPage implements OnInit {
 
-  user: '';
-  phone: string;
-  age: string;
-  name: string;
-  
+  nombre: string;
+  telefono: string;
+  correo: string;
+  ciudad: string;
+  tipo: string;
+  descripcion: string;
+  categoria: string;
+
+  data: [];
 
   constructor(private firestore: AngularFirestore,
-    public auth: AngularFireAuth
+    public auth: AngularFireAuth,
+    public alertController: AlertController
     ) { }
 
   ngOnInit() {
     
   }
 
-  createReport(){
-    this.auth.currentUser;
-    
+  async presentAlert(error,mensaje) {
+    const alert = await this.alertController.create({
+      //cssClass: 'my-custom-class',
+      header: 'Alerta',
+      subHeader: error,
+      message: mensaje,
+      buttons: ['OK']
+    });
+    await alert.present();
+  }
 
-    /* this.firestore.collection('reports').doc(user.user.uid)
-          .set({email: user.user.email, 
-            displayname: this.name, 
-            method: user.user.providerId,
-            address: this.address */
+  createReport(){
+    
+    if(this.nombre !== undefined && this.nombre!== ''
+    && this.categoria !== undefined && this.categoria!== ''
+    && this.tipo !== undefined && this.tipo!== ''
+    && this.correo !== undefined && this.correo!== ''
+    && this.ciudad !== undefined && this.ciudad!== ''
+    && this.descripcion !== undefined && this.descripcion!== ''
+    && this.telefono !== undefined && this.telefono!== ''){
+      this.auth.currentUser.then((user)=>{
+        this.firestore.collection('reports').add({
+          displayname: this.nombre, 
+          id_user: user.uid,
+          tipo: this.tipo,
+          correo: user.email,
+          categoria: this.categoria,
+          nombre: this.nombre,
+          telefono: this.telefono,
+          ciudad: this.ciudad,
+          descripcion: this.descripcion
+        });     
+      }).catch((error)=>{
+        console.log(error);
+      })
+    }else{
+      let err = 'Campos vacíos';
+      let mensa = 'Por favor diligencie todos los campos';
+      this.presentAlert(err,mensa);
+    }
+    
   }
 
 }
