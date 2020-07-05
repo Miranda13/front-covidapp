@@ -8,47 +8,56 @@
 </ion-header>
 
 <ion-content>
-  <form > 
+  <p class="message"> En esta sección puedes crear reportes para informarle a los demás usuarios que tienes algo para donar y 
+    puedan contactarte, solamente elige en tipo "donación" y la categoría del elementos que quieres donar. </p>
+
+  <p class="message"> En esta sección puedes crear reportes para informarle a los demás usuarios que estas buscando ayuda y 
+    puedan contactarte, solamente elige en tipo "solicitud" y la categoría de los elementos que requieres. </p>
+  <form class="formulario" > 
     <ion-item>
       <ion-label> Nombre <ion-text color="danger"> * </ion-text></ion-label>
-      <ion-input type="text" name="name" required [(ngModel)]="name"> </ion-input>
+      <ion-input type="text" name="nombre" required [(ngModel)]="nombre"> </ion-input>
     </ion-item>
 
     <ion-item>
       <ion-label> Correo <ion-text color="danger"> * </ion-text></ion-label>
-      <ion-input type="email" name="email" required [(ngModel)]="email"> </ion-input>
+      <ion-input type="email" name="correo" required [(ngModel)]="correo"> </ion-input>
     </ion-item>
 
     <ion-item>
       <ion-label> Telefono <ion-text color="danger"> * </ion-text></ion-label>
-      <ion-input type="tel" name="phone" required [(ngModel)]="phone" > </ion-input>
-    </ion-item>
-    <ion-item>
-      <ion-label > Edad <ion-text color="danger"> * </ion-text> </ion-label>
-      <ion-input type="number" name="age" required [(ngModel)]="age"> </ion-input>
+      <ion-input type="tel" maxlength="10" name="telefono" required [(ngModel)]="telefono" > </ion-input>
     </ion-item>
     <ion-item>
       <ion-label > Ciudad <ion-text color="danger"> * </ion-text> </ion-label>
-      <ion-input type="text" name="city" required [(ngModel)]="city"> </ion-input>
+      <ion-input type="text" name="ciudad" required [(ngModel)]="ciudad"> </ion-input>
     </ion-item>
     
     <ion-item required>
       <ion-label > Categoría <ion-text color="danger"> * </ion-text> </ion-label>
-      <ion-select>
-        
-        <ion-select-option value= "tecnologia" > Tecnología </ion-select-option>
-        <ion-select-option value= "alimentos"> Alimentos</ion-select-option>
-        <ion-select-option value= "vestimenta"> Vestimenta </ion-select-option>
-        <ion-select-option value= "dinero"> Dinero </ion-select-option>
-        <ion-select-option value= "enseres"> Enseres </ion-select-option>
+      <ion-select name="categoria" [(ngModel)]="categoria">
+        <ion-select-option value= "Tecnologia" > Tecnología </ion-select-option>
+        <ion-select-option value= "Alimentos"> Alimentos</ion-select-option>
+        <ion-select-option value= "Vestimenta"> Vestimenta </ion-select-option>
+        <ion-select-option value= "Dinero"> Dinero </ion-select-option>
+        <ion-select-option value= "Enseres"> Enseres </ion-select-option>
+      </ion-select>
+    </ion-item>
+
+    <ion-item required>
+      <ion-label > Tipo de reporte <ion-text color="danger"> * </ion-text> </ion-label>
+      <ion-select name= "tipo" [(ngModel)]="tipo" >       
+        <ion-select-option value= "donacion" > Donación </ion-select-option>
+        <ion-select-option value= "solicitud"> Solicitud </ion-select-option>
       </ion-select>
     </ion-item>
 
     <ion-item>
-      
+      <ion-label class="descripcion"> Descripción <ion-text color="danger"> * </ion-text> </ion-label>
+      <ion-textarea name="descripcion" required [(ngModel)]="descripcion"> </ion-textarea>
     </ion-item>
 
-    <ion-button type="submit" (click)="createReport()" href="" routerDirection="forward"> Crear reporte </ion-button> 
+    <ion-button expand="block" class="botonCrear" type="submit" (click)="createReport()" routerDirection="forward"> Crear reporte </ion-button> 
 
     </form>
   

@@ -4,10 +4,8 @@ import { AngularFirestore } from '@angular/fire/firestore';
 import { AngularFireAuth } from '@angular/fire/auth';
 import { auth } from 'firebase/app';
 import { AlertController } from '@ionic/angular';
-//import { NavController } from 'ionic-angular';
 import { NavController } from '@ionic/angular';
 import { PrincipalPage } from '../principal/principal.page';
-//import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { from } from 'rxjs';
 
@@ -27,6 +25,7 @@ export class RegisterPage implements OnInit {
   address: string;
   password: string;
   password2: string;
+
 
   constructor(private storage: AngularFireStorage,
     private firestore: AngularFirestore,
