@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 
+
 @Component({
   selector: 'app-crear-reportes',
   templateUrl: './crear-reportes.page.html',
@@ -7,9 +8,13 @@ import { Component, OnInit } from '@angular/core';
 })
 export class CrearReportesPage implements OnInit {
 
+  categoria: string;
+  
+
   constructor() { }
 
   ngOnInit() {
+    
   }
 
 }

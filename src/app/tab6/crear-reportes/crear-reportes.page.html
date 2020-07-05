@@ -8,5 +8,48 @@
 </ion-header>
 
 <ion-content>
+  <form > 
+    <ion-item>
+      <ion-label> Nombre <ion-text color="danger"> * </ion-text></ion-label>
+      <ion-input type="text" name="name" required [(ngModel)]="name"> </ion-input>
+    </ion-item>
 
+    <ion-item>
+      <ion-label> Correo <ion-text color="danger"> * </ion-text></ion-label>
+      <ion-input type="email" name="email" required [(ngModel)]="email"> </ion-input>
+    </ion-item>
+
+    <ion-item>
+      <ion-label> Telefono <ion-text color="danger"> * </ion-text></ion-label>
+      <ion-input type="tel" name="phone" required [(ngModel)]="phone" > </ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-label > Edad <ion-text color="danger"> * </ion-text> </ion-label>
+      <ion-input type="number" name="age" required [(ngModel)]="age"> </ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-label > Ciudad <ion-text color="danger"> * </ion-text> </ion-label>
+      <ion-input type="text" name="city" required [(ngModel)]="city"> </ion-input>
+    </ion-item>
+    
+    <ion-item required>
+      <ion-label > Categoría <ion-text color="danger"> * </ion-text> </ion-label>
+      <ion-select>
+        
+        <ion-select-option value= "tecnologia" > Tecnología </ion-select-option>
+        <ion-select-option value= "alimentos"> Alimentos</ion-select-option>
+        <ion-select-option value= "vestimenta"> Vestimenta </ion-select-option>
+        <ion-select-option value= "dinero"> Dinero </ion-select-option>
+        <ion-select-option value= "enseres"> Enseres </ion-select-option>
+      </ion-select>
+    </ion-item>
+
+    <ion-item>
+      
+    </ion-item>
+
+    <ion-button type="submit" (click)="signUp()" href="" routerDirection="forward"> Crear reporte </ion-button> 
+
+    </form>
+  
 </ion-content>
