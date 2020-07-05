@@ -8,11 +8,16 @@
 </ion-header>
 
 <ion-content>
+  <p class="message"> En esta sección puedes encontrar los reportes hechos por los usuarios, si quieres ayudarlos recuerda que puedes contáctarlos. Estamos construyendo una red de ayuda ¡sé parte de ella!  </p>
   <ion-list>
-    <ion-item *ngFor="let report of reports"> 
+    <ion-item class="reports" *ngFor="let report of reports"> 
       <ion-label>
+        <h2>{{report.nombre}} </h2>
+        <h2>{{report.telefono}} </h2>
+        <h2>{{report.correo}} </h2>
+        <h2>{{report.ciudad}} </h2>
         <h2>{{report.categoria}} </h2>
-        <h2>{{report.descripcion}} </h2>
+        <p>{{report.descripcion}} </p>
       </ion-label>
     </ion-item>
   </ion-list>
