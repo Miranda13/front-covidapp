@@ -4,6 +4,7 @@ import { FormsModule } from '@angular/forms';
 import { IonicModule } from '@ionic/angular';
 import { RegisterPageRoutingModule } from './register-routing.module';
 import { RegisterPage } from './register.page';
+import { AngularFireModule } from '@angular/fire';
 import { AngularFireStorageModule, BUCKET} from '@angular/fire/storage'
 
 
