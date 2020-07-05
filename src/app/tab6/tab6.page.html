@@ -6,7 +6,6 @@
     <div *ngIf="auth.user | async as user; else showLogin"> 
       <h1>Hello {{ user.displayName }}!</h1>
       <ion-button (click)="logout()">Cerrar sesión</ion-button>
-      <ion-button color="primary" routerLink="/tabs/tab6/principal" routerDirection="forward">Principal</ion-button>
     </div>
     
     <ng-template #showLogin>
@@ -31,7 +30,7 @@
       <ion-button class="botonlogin" color="danger" (click)="login()"> <ion-icon name="logo-google"></ion-icon> &nbsp; Iniciar sesión con Google</ion-button>
       <!-- <ion-button color="primary" (click)="loginEmailPassword(email,password)" >Iniciar sesión</ion-button> -->
       <ion-button class="botonlogin" color="primary" routerLink="/tabs/tab6/register" routerDirection="forward">Registrarse</ion-button>
-      <ion-button class="botonlogin" color="primary" routerLink="/tabs/tab6/menu" routerDirection="forward">Menu</ion-button>
+      
     </ng-template>
   </div>
   

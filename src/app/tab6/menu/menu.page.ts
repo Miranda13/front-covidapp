@@ -1,5 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { Router, RouterEvent } from '@angular/router';
+import { AngularFirestore } from '@angular/fire/firestore';
+import { AngularFireAuth } from '@angular/fire/auth';
+import { auth } from 'firebase/app';
 
 @Component({
   selector: 'app-menu',
@@ -9,6 +12,10 @@ import { Router, RouterEvent } from '@angular/router';
 export class MenuPage implements OnInit {
   
   pages =[
+    {
+      title: 'Principal',
+      url: '/tabs/tab6/menu/principal'
+    },
     {
       title: 'Mi perfil',
       url: '/tabs/tab6/menu/perfil'
@@ -25,7 +32,9 @@ export class MenuPage implements OnInit {
 
   selectedPath = '';
 
-  constructor(private router: Router) {
+  constructor(private router: Router,
+    private firestore: AngularFirestore,
+    public auth: AngularFireAuth,) {
     this.router.events.subscribe((event: RouterEvent)=>{
       if (event && event.url){
         this.selectedPath = event.url;
@@ -36,4 +45,13 @@ export class MenuPage implements OnInit {
   ngOnInit() {
   }
 
+  goToPrincipal(){
+    this.router.navigateByUrl('/tabs/tab6');
+  }  
+
+
+  logout() {
+    this.auth.signOut();
+    this.goToPrincipal();
+  }
 }
