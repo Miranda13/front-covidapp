@@ -8,7 +8,27 @@
 </ion-header>
 
 <ion-content>
-  <h1> Hola </h1>
-
+  <div class="contenedor">
+    <div *ngIf="auth.user | async as user; else showLogin">
+      <h1> Hola {{ user.displayName }}!</h1>
+    </div>
+    <ion-grid>
+      <ion-row>
+        <ion-col sizeXs="12" sizeSm="6" sizeMd="4" sizeLg="3">
+          <div class="consejo-box">
+            <div class="consejo-titulo">
+              Lavate las manos frecuentemente
+            </div>
+            <div class="consejo-imagen">
+              <img src="../../assets/img/1.png" alt="">
+            </div>
+            <div class="consejo-descripcion">
+              Lorem ipsum dolor sit amet consectetur adipisicing elit. Quas nemo quasi quibusdam porro maxime minus impedit amet voluptatem assumenda tenetur.
+            </div>
+          </div>
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+  </div>
 </ion-content>
   

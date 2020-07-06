@@ -48,7 +48,7 @@ export class Tab6Page {
   
   login() {
     this.auth.signInWithPopup(new auth.GoogleAuthProvider()).then((user)=>{
-      this.firestore.collection('users').doc(user.user.uid).set({email: user.user.email, displayname:user.user.displayName, method: user.user.providerId, })
+      this.firestore.collection('users').doc(user.user.uid).set({email: user.user.email, displayname:user.user.displayName })
       this.ngOnInit();
       this.goToPrincipal();
     });

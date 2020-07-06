@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { AngularFirestore } from '@angular/fire/firestore';
+import { AngularFireAuth } from '@angular/fire/auth';
+import { auth } from 'firebase/app';
 
 @Component({
   selector: 'app-principal',
@@ -9,14 +11,17 @@ import { AngularFirestore } from '@angular/fire/firestore';
 export class PrincipalPage implements OnInit {
 
   reports: any []= [];
-  
-  constructor(private firestore: AngularFirestore) { }
+  userCurrent: any []= [];
+
+  constructor(private firestore: AngularFirestore,
+    public auth: AngularFireAuth,) { }
 
   ngOnInit() {
-    this.firestore.collection('reports').valueChanges()
-    .subscribe((reports)=>{
-      this.reports = <any[]>reports;
-    });
+    this.auth.currentUser.then((user)=>{
+      console.log(user);
+    }).catch((error)=>{
+      console.log(error);
+    })
   }
 
 }
