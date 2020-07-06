@@ -8,3 +8,32 @@ ion-select {
   /* Set full opacity on the placeholder */
   --placeholder-opacity: 1;
 }
+
+ion-segment{
+  width: 100%;
+}
+
+.bloque-grafica{
+  position: relative;
+}
+
+#spinner{
+  position: absolute;
+  height: 100%;
+  z-index: 99;
+}
+
+ion-spinner{
+  margin: auto;
+  width: 100px;
+  height: 100px;
+}
+
+#top-tabs{
+  position:sticky;
+}
+
+.bloque-grafica{
+  margin: 0px 30px;
+  margin-bottom: 50px;
+}
