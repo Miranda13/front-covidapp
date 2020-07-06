@@ -78,6 +78,10 @@ export class RegisterPage implements OnInit {
           });
           this.ngOnInit();
           this.goToPrincipal();
+          let err = 'Nuevo registro';
+          let mensa = 'Registro del usuario '+this.email + ' exitoso';
+          this.presentAlert(err,mensa);
+          this.goToLogin();
           }
         ).catch((error)=>{
           this.presentAlert(error.code,error.message);
@@ -103,5 +107,9 @@ export class RegisterPage implements OnInit {
 
   goToPrincipal(){
     this.router.navigateByUrl('/tabs/tab6/principal');
-  }  
+  }
+  
+  goToLogin(){
+    this.router.navigateByUrl('/tabs/tab6');
+  } 
 }

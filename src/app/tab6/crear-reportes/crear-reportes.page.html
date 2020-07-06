@@ -55,7 +55,7 @@
 
     <ion-item>
       <ion-label class="descripcion"> Descripción <ion-text color="danger"> * </ion-text> </ion-label>
-      <ion-textarea name="descripcion" required [(ngModel)]="descripcion"> </ion-textarea>
+      <ion-textarea placeholder="Deseo donar ropa usada ó Busco un computador para clases virtuales" name="descripcion" required [(ngModel)]="descripcion"> </ion-textarea>
     </ion-item>
 
     <ion-button expand="block" class="botonCrear" type="submit" (click)="createReport()" routerDirection="forward"> Crear reporte </ion-button> 
