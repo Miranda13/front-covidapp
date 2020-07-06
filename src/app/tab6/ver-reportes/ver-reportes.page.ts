@@ -9,6 +9,8 @@ import { AngularFirestore } from '@angular/fire/firestore';
 export class VerReportesPage implements OnInit {
 
   reports: any []= [];
+  filtro: string;
+  filtroCat: string;
 
   constructor(private firestore: AngularFirestore) { }
 

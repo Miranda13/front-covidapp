@@ -62,8 +62,11 @@ export class CrearReportesPage implements OnInit {
           ciudad: this.ciudad,
           descripcion: this.descripcion
         });     
+        let err = 'Crear reporte';
+        let mensa = 'Has creado un reporte de: '+this.tipo+' nuevo exitosamente';
+        this.presentAlert(err,mensa);
       }).catch((error)=>{
-        console.log(error);
+        this.presentAlert(error.code,error.message);
       })
     }else{
       let err = 'Campos vacíos';

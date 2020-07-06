@@ -8,10 +8,59 @@
 </ion-header>
 
 <ion-content>
-  <p class="message"> En esta sección puedes encontrar los reportes hechos por los usuarios, si quieres ayudarlos recuerda que puedes contáctarlos. Estamos construyendo una red de ayuda ¡sé parte de ella!  </p>
-  <ion-list>
-    <ion-item class="reports" *ngFor="let report of reports"> 
-      <ion-label>
+  <p class="message"> En esta sección puedes encontrar los reportes hechos por los usuarios, si quieres ayudarlos 
+    recuerda que puedes contáctarlos. Elige en tipo "Solicitud" para que elijas a quien ayudar. </p>
+
+    <p class="message"> En esta sección puedes encontrar los reportes hechos por los usuarios, si necesitas ayuda 
+      puedes ver las donaciones que desean hacer y contáctarlos. Elige en tipo "Donación". </p>
+  
+  <p class="message">  Estamos construyendo una red de ayuda ¡sé parte de ella!  </p>
+  
+     <!-- <div *ngIf="auth.user | async as user; else showLogin">
+    <h1>Hello {{ user.displayName }}!</h1>
+    <ion-button (click)="logout()">Cerrar sesión</ion-button>
+  </div>
+*ngIf="report.tipo==filtro"  -->
+
+
+  <ion-item>
+    <ion-label > Tipo de reporte </ion-label>
+      <ion-select placeholder="Elige un tipo" name="filtro" [(ngModel)]="filtro">
+        <ion-select-option value= "donacion" > Donación </ion-select-option>
+        <ion-select-option value= "solicitud"> Solicitud </ion-select-option>
+      </ion-select>
+  </ion-item>
+
+
+  <ion-item>
+    <ion-label > Categoría </ion-label>
+      <ion-select placeholder="Elige una categoría" name="filtroCat" [(ngModel)]="filtroCat">
+        <ion-select-option value= "Tecnologia" > Tecnología </ion-select-option>
+        <ion-select-option value= "Alimentos"> Alimentos</ion-select-option>
+        <ion-select-option value= "Vestimenta"> Vestimenta </ion-select-option>
+        <ion-select-option value= "Dinero"> Dinero </ion-select-option>
+        <ion-select-option value= "Enseres"> Enseres </ion-select-option>
+      </ion-select>
+  </ion-item>
+
+  <!-- <ng-template #showReports>  -->
+    <!-- <ion-list >
+      <ion-item class="reports" *ngFor='let report of reports'> 
+        <ion-label *ngIf="report.tipo == filtro">
+          <h2>{{report.nombre}} </h2>
+          <h2>{{report.telefono}} </h2>
+          <h2>{{report.correo}} </h2>
+          <h2>{{report.ciudad}} </h2>
+          <h2>{{report.categoria}} </h2>
+          <p>{{report.descripcion}} </p>
+        </ion-label>
+      </ion-item>
+    </ion-list> -->
+ <!--  </ng-template> -->
+ <ion-list >
+   <div class="reports" *ngFor='let report of reports'>
+    <ion-item *ngIf="report.tipo == filtro && report.categoria == filtroCat" > 
+      <ion-label >
         <h2>{{report.nombre}} </h2>
         <h2>{{report.telefono}} </h2>
         <h2>{{report.correo}} </h2>
@@ -20,5 +69,7 @@
         <p>{{report.descripcion}} </p>
       </ion-label>
     </ion-item>
-  </ion-list>
+   </div>
+  
+</ion-list>
 </ion-content>
