@@ -1,33 +1,60 @@
-<ion-header [translucent]="true">
-  <ion-toolbar>
-    <ion-title>
-      Graficas
-    </ion-title>
-  </ion-toolbar>
-</ion-header>
-
 <ion-content [fullscreen]="true">
-  <ion-header collapse="condense">
-    <ion-toolbar>
-      <ion-title size="large">Graficas</ion-title>
-    </ion-toolbar>
-  </ion-header>
 
-  <ion-item>
-    <ion-label>Departamento</ion-label>
-    <ion-select ok-text="Ok" cancel-text="Cancelar" [(ngModel)]="depto"  #C (ionChange)="onChangeDepto(C.value)">
-      <ion-select-option *ngFor="let _depto of deptosList" [value]="_depto">{{_depto}}</ion-select-option>
-    </ion-select>
-  </ion-item>
+  <ion-segment id="top-tabs" (ionChange)="tipoGraficas($event)" value="Totales">
+    <ion-segment-button value="Totales">
+      <ion-label>Totales</ion-label>
+    </ion-segment-button>
+    <ion-segment-button value="Departamental">
+      <ion-label>Departamental</ion-label>
+    </ion-segment-button>
+  </ion-segment>
 
-  <canvas baseChart 
-  [datasets]="deptoChartData" 
-  [labels]="deptoChartLabels" 
-  [chartType]="chartType"
-  [colors]="deptoPieChartColors"
-  [legend]="leyendaDepto"
-  [options]="deptoChartOptions"
-  [plugins]="deptoChartPlugins"
-  >
-  </canvas>
+  <div class="bloque-grafica" *ngIf="tabGraficas == 'Totales'">
+    <canvas class="grafico" baseChart 
+    [datasets]="totalSexData" 
+    [labels]="totalSexLabels"
+    [chartType]="'pie'"
+    [colors]="totalSexChartColors"
+    [legend]="true"
+    [options]="totalSexChartOptions"
+    [plugins]="totalChartPlugins"
+    >
+    </canvas>
+    <h3>Total: {{totalSex}}</h3>
+    <ion-segment (ionChange)="sexTotalTipoGrafica($event)" [(ngModel)]="sexTotalGraficaEstado">
+      <ion-segment-button value="Confirmados">
+        <ion-label>Confirmados</ion-label>
+      </ion-segment-button>
+      <ion-segment-button value="Recuperado">
+        <ion-label>Recuperados</ion-label>
+      </ion-segment-button>
+      <ion-segment-button value="Fallecido">
+        <ion-label>Fallecidos</ion-label>
+      </ion-segment-button>
+    </ion-segment>
+  </div>
+
+  <div class="bloque-grafica" *ngIf="tabGraficas == 'Totales'">
+    <canvas class="grafico" baseChart 
+    [datasets]="totalStateData"
+    [labels]="totalStateLabels"
+    [chartType]="'doughnut'"
+    [colors]="totalStateChartColors"
+    [legend]="true"
+    [options]="totalStateChartOptions"
+    [plugins]="totalChartPlugins"
+    >
+    </canvas>
+  </div>
+
+
+  <div *ngIf="tabGraficas == 'Departamental'">
+    <ion-item>
+      <ion-label>Departamento</ion-label>
+      <ion-select ok-text="Ok" cancel-text="Cancelar" [(ngModel)]="depto"  #C (ionChange)="onChangeDepto(C.value)">
+        <ion-select-option *ngFor="let _depto of deptosList" [value]="_depto">{{_depto}}</ion-select-option>
+      </ion-select>
+    </ion-item>
+  </div>
+
 </ion-content>
