@@ -68,18 +68,20 @@ export class RegisterPage implements OnInit {
             console.log(user.user.uid);
           } */
           (user)=>{
-          this.firestore.collection('users').doc(user.user.uid)
-          .set({email: user.user.email, 
-            displayname: this.name, 
-            method: user.user.providerId,
+          this.firestore.collection('users').add({
+            phone: this.phone,
+            age: this.age,
+            displayName: this.name,
+            city: this.city,
+            state: this.state,
             address: this.address
-             })
+          });
           this.ngOnInit();
           this.goToPrincipal();
           }
         ).catch((error)=>{
           this.presentAlert(error.code,error.message);
-          console.error(error);
+          //console.error(error);
         });
       }else{
         let err = 'Contraseña no coincide';
