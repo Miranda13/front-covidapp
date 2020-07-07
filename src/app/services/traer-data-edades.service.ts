@@ -71,7 +71,7 @@ export class TraerDataEdadesService {
         })
       };
   
-      this.http.get(`https://www.datos.gov.co/resource/gt2j-8ykr.json?$where=edad%20between%20%27${edad[0]}%27%20and%20%27${edad[1]}%27&$limit=999999999`, httpOptions).subscribe((res: any[]) => {
+      this.http.get(`https://www.datos.gov.co/resource/gt2j-8ykr.json?$where=edad%20between%20%27${edad[0]}%27%20and%20%27${edad[1]}%27&$limit=999999999&$$app_token=aqPLGyt6aQBu9LNwyPf3PjGM8`, httpOptions).subscribe((res: any[]) => {
         for (let persona of res){
           if (persona["atenci_n"] === "Recuperado"){
 
@@ -85,12 +85,13 @@ export class TraerDataEdadesService {
 
         }
 
-        this.totalAgeData[0].data[indx] = this.totalAgeArr[0][indx];
+        this.totalAgeData[0].data[indx] = this.totalAgeArr[1][indx];
       });
 
     })
     // }
   }
+
 
   public actualizeTotalAgeData(tipo:string){
     if (tipo === "Confirmados"){
@@ -105,4 +106,7 @@ export class TraerDataEdadesService {
       this.totalAgeData[0].data = this.totalAgeArr[2];
     }
   }
+
+
+
 }

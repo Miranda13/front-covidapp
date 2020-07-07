@@ -95,11 +95,11 @@ export class TraerDataGraficosService {
 
 
   async totalData(){
-    this.URL_Confirmados = `https://www.datos.gov.co/resource/gt2j-8ykr.json?$limit=99999999999&`;
-    this.URL_Recuperados = `https://www.datos.gov.co/resource/gt2j-8ykr.json?$limit=99999999999&atenci_n=Recuperado`;
-    this.URL_Fallecidos = `https://www.datos.gov.co/resource/gt2j-8ykr.json?$limit=99999999999&atenci_n=Fallecido`;
-    this.URL_Grave = `https://www.datos.gov.co/resource/gt2j-8ykr.json?$limit=99999999999&estado=Grave`;
-    this.URL_Moderado = `https://www.datos.gov.co/resource/gt2j-8ykr.json?$limit=99999999999&estado=Moderado`;
+    this.URL_Confirmados = `https://www.datos.gov.co/resource/gt2j-8ykr.json?$limit=99999999999&$$app_token=HfpRjVYxQZ7DAKrrpe5hIjnoj`;
+    this.URL_Recuperados = `https://www.datos.gov.co/resource/gt2j-8ykr.json?$limit=99999999999&atenci_n=Recuperado&$$app_token=HfpRjVYxQZ7DAKrrpe5hIjnoj`;
+    this.URL_Fallecidos = `https://www.datos.gov.co/resource/gt2j-8ykr.json?$limit=99999999999&atenci_n=Fallecido&$$app_token=HfpRjVYxQZ7DAKrrpe5hIjnoj`;
+    this.URL_Grave = `https://www.datos.gov.co/resource/gt2j-8ykr.json?$limit=99999999999&estado=Grave&$$app_token=HfpRjVYxQZ7DAKrrpe5hIjnoj`;
+    this.URL_Moderado = `https://www.datos.gov.co/resource/gt2j-8ykr.json?$limit=99999999999&estado=Moderado&$$app_token=HfpRjVYxQZ7DAKrrpe5hIjnoj`;
     
     const httpOptions = {
       headers: new HttpHeaders({ 
@@ -109,7 +109,7 @@ export class TraerDataGraficosService {
     };
 
     // Confirmados
-    await this.http.get(this.URL_Confirmados, httpOptions).subscribe((res: any[]) => {
+    this.http.get(this.URL_Confirmados, httpOptions).subscribe((res: any[]) => {
       for (let persona of res){
         if (persona["sexo"] === "M"){
           this.totalSexArr[0] += 1;
@@ -123,7 +123,7 @@ export class TraerDataGraficosService {
     })
 
 
-    await this.http.get(this.URL_Recuperados, httpOptions).subscribe((res: any[]) => {
+    this.http.get(this.URL_Recuperados, httpOptions).subscribe((res: any[]) => {
       for (let persona of res){
         if (persona["sexo"] === "M"){
           this.totalSexArr[2] += 1;
@@ -141,7 +141,7 @@ export class TraerDataGraficosService {
     })
 
 
-    await this.http.get(this.URL_Fallecidos, httpOptions).subscribe((res: any[]) => {
+    this.http.get(this.URL_Fallecidos, httpOptions).subscribe((res: any[]) => {
       for (let persona of res){
         if (persona["sexo"] === "M"){
           this.totalSexArr[4] += 1;
@@ -161,7 +161,7 @@ export class TraerDataGraficosService {
     });
 
 
-    await this.http.get(this.URL_Moderado, httpOptions).subscribe((res: any[]) => {
+    this.http.get(this.URL_Moderado, httpOptions).subscribe((res: any[]) => {
       this.totalModerado = res.length;
       this.totalStateArr[2] = this.totalModerado;
       // this.totalStateData[0].data[2] = this.totalModerado;
@@ -170,7 +170,7 @@ export class TraerDataGraficosService {
     });
 
 
-    await this.http.get(this.URL_Grave, httpOptions).subscribe((res: any[]) => {
+    this.http.get(this.URL_Grave, httpOptions).subscribe((res: any[]) => {
       this.totalGrave = res.length;
       this.totalStateArr[3] = this.totalGrave;
       // this.totalStateData[0].data[3] = this.totalGrave;

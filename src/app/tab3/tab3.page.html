@@ -60,6 +60,7 @@
       [plugins]="servicioEdades.totalChartPlugins"
       >
       </canvas>
+
       <ion-segment (ionChange)="ageTotalTipoGrafica($event)" [(ngModel)]="servicioEdades.ageTotalGraficaEstado">
         <ion-segment-button value="Confirmados">
           <ion-label>Confirmados</ion-label>
@@ -71,17 +72,64 @@
           <ion-label>Fallecidos</ion-label>
         </ion-segment-button>
       </ion-segment>
+
     </div>
   </div>
 
 
-  <div *ngIf="tabGraficas == 'Departamental'">
-    <ion-item>
-      <ion-label>Departamento</ion-label>
-      <ion-select ok-text="Ok" cancel-text="Cancelar" [(ngModel)]="depto"  #C (ionChange)="onChangeDepto(C.value)">
-        <ion-select-option *ngFor="let _depto of deptosList" [value]="_depto">{{_depto}}</ion-select-option>
-      </ion-select>
-    </ion-item>
-  </div>
 
+
+
+
+  <div *ngIf="tabGraficas == 'Departamental'">
+    <ion-item-divider sticky="true">
+      <ion-item>
+        <ion-label>Departamento</ion-label>
+        <ion-select ok-text="Ok" cancel-text="Cancelar" [(ngModel)]="servicioGraficosDeptos.depto"  #C (ionChange)="onChangeDepto(C.value)">
+          <ion-select-option *ngFor="let _depto of deptosList" [value]="_depto">{{_depto}}</ion-select-option>
+        </ion-select>
+      </ion-item>
+    </ion-item-divider>
+
+
+
+    <div class="bloque-grafica">
+      <canvas class="grafico" baseChart 
+      [datasets]="servicioGraficosDeptos.deptoSexData"
+      [labels]="servicioGraficosDeptos.deptoSexLabels"
+      [chartType]="'pie'"
+      [colors]="servicioGraficosDeptos.deptoSexChartColors"
+      [legend]="true"
+      [options]="servicioGraficosDeptos.deptoSexChartOptions"
+      [plugins]="servicioGraficosDeptos.deptoChartPlugins"
+      >
+      </canvas>
+      <h3>Total: {{servicioGraficosTotales.totalSex}}</h3>
+    
+      <ion-segment (ionChange)="sexDeptoTipoGrafica($event)" [(ngModel)]="servicioGraficosDeptos.sexdeptoGraficaEstado">
+        <ion-segment-button value="Confirmados">
+          <ion-label>Confirmados</ion-label>
+        </ion-segment-button>
+        <ion-segment-button value="Recuperado">
+          <ion-label>Recuperados</ion-label>
+        </ion-segment-button>
+        <ion-segment-button value="Fallecido">
+          <ion-label>Fallecidos</ion-label>
+        </ion-segment-button>
+      </ion-segment>
+    </div>
+
+    <div class="bloque-grafica">
+      <canvas class="grafico" baseChart 
+      [datasets]="servicioGraficosDeptos.deptoStateData"
+      [labels]="servicioGraficosDeptos.deptoStateLabels"
+      [chartType]="'doughnut'"
+      [colors]="servicioGraficosDeptos.deptoStateChartColors"
+      [legend]="true"
+      [options]="servicioGraficosDeptos.deptoStateChartOptions"
+      [plugins]="servicioGraficosDeptos.deptoChartPlugins"
+      >
+      </canvas>
+    </div>
+  </div>
 </ion-content>

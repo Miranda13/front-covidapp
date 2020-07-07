@@ -4,6 +4,8 @@ import { SplashScreen } from '@ionic-native/splash-screen/ngx';
 import { StatusBar } from '@ionic-native/status-bar/ngx';
 import { TraerDataGraficosService } from './services/traer-data-graficos.service';
 import { TraerDataEdadesService } from './services/traer-data-edades.service';
+import { TraerDeptoSexStateDataService } from './services/traer-depto-sex-state-data.service';
+import { timeout } from 'rxjs/operators';
 
 @Component({
   selector: 'app-root',
@@ -17,14 +19,17 @@ export class AppComponent {
     private splashScreen: SplashScreen,
     private statusBar: StatusBar,
     private servicioGraficosTotales: TraerDataGraficosService,
+    private servicioGraficosDeptos: TraerDeptoSexStateDataService,
     private servicioEdades: TraerDataEdadesService,
 
   ) {
     this.initializeApp();
     servicioEdades.getAgeData();
-    servicioGraficosTotales.totalData().then((res) => {
-      // servicioEdades.getAgeData();
-    });
+    servicioGraficosTotales.totalData();
+
+    setTimeout(() => {
+      servicioGraficosDeptos.deptoData('Bogotá D.C.');
+    }, 10000);
   }
 
   initializeApp() {
