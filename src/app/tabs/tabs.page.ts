@@ -1,5 +1,4 @@
 import { Component } from '@angular/core';
-import { TraerDataGraficosService } from '../services/traer-data-graficos.service';
 
 @Component({
   selector: 'app-tabs',
@@ -9,11 +8,5 @@ import { TraerDataGraficosService } from '../services/traer-data-graficos.servic
 export class TabsPage {
 
   constructor(
-    private datosTotales: TraerDataGraficosService,
   ) {}
-
-
-  public actualizarEstados(){
-    this.datosTotales.actualizeStates();
-  }
 }

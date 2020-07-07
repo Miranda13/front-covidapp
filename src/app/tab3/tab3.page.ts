@@ -2,6 +2,7 @@ import { Component, ViewChildren, QueryList } from '@angular/core';
 import { TraerDataGraficosService } from '../services/traer-data-graficos.service';
 import { TraerDataEdadesService } from '../services/traer-data-edades.service';
 import { TraerDeptoSexStateDataService } from '../services/traer-depto-sex-state-data.service';
+import { TraerDataEdadesDeptosService } from '../services/traer-data-edades-deptos.service';
 import { BaseChartDirective } from 'ng2-charts';
 
 @Component({
@@ -17,6 +18,7 @@ export class Tab3Page {
     private servicioGraficosTotales: TraerDataGraficosService,
     private servicioGraficosDeptos: TraerDeptoSexStateDataService,
     private servicioEdades: TraerDataEdadesService,
+    private servicioEdadesDeptos: TraerDataEdadesDeptosService,
   ) {
     this.servicioGraficosTotales.actualizeTotalSexData('Confirmados');
 
@@ -68,7 +70,7 @@ export class Tab3Page {
   ]
 
   public tabGraficas: string = "Totales";
-  
+
 
   tipoGraficas(event){
     this.tabGraficas = event.detail.value;
@@ -96,5 +98,11 @@ export class Tab3Page {
 
   onChangeDepto(_depto){
     this.servicioGraficosDeptos.deptoData(_depto);
+    this.servicioEdadesDeptos.getAgeData(_depto);
+  }
+
+  ageDeptoTipoGrafica(event){
+    this.servicioEdadesDeptos.agedeptoGraficaEstado = event.detail.value;
+    this.servicioEdadesDeptos.actualizeDeptoAgeData(event.detail.value);
   }
 }

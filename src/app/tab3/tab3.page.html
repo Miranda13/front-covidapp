@@ -72,12 +72,9 @@
           <ion-label>Fallecidos</ion-label>
         </ion-segment-button>
       </ion-segment>
-
     </div>
+
   </div>
-
-
-
 
 
 
@@ -104,7 +101,7 @@
       [plugins]="servicioGraficosDeptos.deptoChartPlugins"
       >
       </canvas>
-      <h3>Total: {{servicioGraficosTotales.totalSex}}</h3>
+      <h3>Total: {{servicioGraficosDeptos.deptoSex}}</h3>
     
       <ion-segment (ionChange)="sexDeptoTipoGrafica($event)" [(ngModel)]="servicioGraficosDeptos.sexdeptoGraficaEstado">
         <ion-segment-button value="Confirmados">
@@ -130,6 +127,31 @@
       [plugins]="servicioGraficosDeptos.deptoChartPlugins"
       >
       </canvas>
+    </div>
+
+    <div class="bloque-grafica">
+      <canvas class="grafico" baseChart 
+      [datasets]="servicioEdadesDeptos.deptoAgeData"
+      [labels]="servicioEdadesDeptos.deptoAgeLabels"
+      [chartType]="'bar'"
+      [colors]="servicioEdadesDeptos.deptoAgeChartColors"
+      [legend]="true"
+      [options]="servicioEdadesDeptos.deptoAgeChartOptions"
+      [plugins]="servicioEdadesDeptos.deptoChartPlugins"
+      >
+      </canvas>
+
+      <ion-segment (ionChange)="ageDeptoTipoGrafica($event)" [(ngModel)]="servicioEdadesDeptos.agedeptoGraficaEstado">
+        <ion-segment-button value="Confirmados">
+          <ion-label>Confirmados</ion-label>
+        </ion-segment-button>
+        <ion-segment-button value="Recuperado">
+          <ion-label>Recuperados</ion-label>
+        </ion-segment-button>
+        <ion-segment-button value="Fallecido">
+          <ion-label>Fallecidos</ion-label>
+        </ion-segment-button>
+      </ion-segment>
     </div>
   </div>
 </ion-content>
