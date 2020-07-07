@@ -63,18 +63,16 @@ export class RegisterPage implements OnInit {
     && this.address !== undefined && this.address!== ''){
       if(this.password==this.password2){
         this.auth.createUserWithEmailAndPassword(this.email,this.password).then(
-          /* (user)=>{
-            console.log(user);
-            console.log(user.user.uid);
-          } */
           (user)=>{
-          this.firestore.collection('users').add({
-            phone: this.phone,
-            age: this.age,
-            displayName: this.name,
-            city: this.city,
-            state: this.state,
-            address: this.address
+            user.user.updateProfile({displayName: this.name});
+            this.firestore.collection('users').doc(user.user.uid).set({
+              phone: this.phone,
+              age: this.age,
+              displayName: this.name,
+              city: this.city,
+              state: this.state,
+              address: this.address,
+              email: this.email
           });
           this.ngOnInit();
           this.goToPrincipal();

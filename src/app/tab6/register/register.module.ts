@@ -6,6 +6,7 @@ import { RegisterPageRoutingModule } from './register-routing.module';
 import { RegisterPage } from './register.page';
 import { AngularFireModule } from '@angular/fire';
 import { AngularFireStorageModule, BUCKET} from '@angular/fire/storage'
+import { AngularFirestoreModule } from '@angular/fire/firestore';
 
 
 @NgModule({
@@ -15,6 +16,8 @@ import { AngularFireStorageModule, BUCKET} from '@angular/fire/storage'
     IonicModule,
     RegisterPageRoutingModule,
     AngularFireStorageModule,
+    AngularFirestoreModule,
+    AngularFireModule
 
   ],
   declarations: [RegisterPage],

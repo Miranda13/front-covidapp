@@ -17,7 +17,8 @@
   <form class="formulario" > 
     <ion-item>
       <ion-label> Nombre <ion-text color="danger"> * </ion-text></ion-label>
-      <ion-input type="text" name="nombre" required [(ngModel)]="nombre"> </ion-input>
+      <ion-input *ngIf="currentUser" [disabled]="true" type="text" name="nombre" required [(ngModel)]="currentUser.displayName"> </ion-input>
+      <ion-input *ngIf="!currentUser" [disabled]="false" type="text" name="nombre" required [(ngModel)]="nombre"> </ion-input>
     </ion-item>
 
     <ion-item>
