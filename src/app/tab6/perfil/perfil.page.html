@@ -8,5 +8,66 @@
 </ion-header>
 
 <ion-content>
+  <div *ngIf="change==true else showUpdate">
+    <form class="contenedor">
+      <ion-item>
+        <ion-label > Contraseña actual<ion-text color="danger"> * </ion-text> </ion-label>
+        <ion-input type="password" name="currentPassword" required [(ngModel)]="currentPassword"> </ion-input>
+      </ion-item>
+      <ion-item>
+        <ion-label > Nueva contraseña <ion-text color="danger"> * </ion-text> </ion-label>
+        <ion-input type="password" name="newPassword" required [(ngModel)]="newPassword"> </ion-input>
+      </ion-item>
+      <ion-item>
+        <ion-label > Repetir contraseña <ion-text color="danger"> * </ion-text> </ion-label>
+        <ion-input type="password" name="newPassword2" required [(ngModel)]="newPassword2"> </ion-input>
+      </ion-item>
+      <ion-button class="botonPass" (click)="updatePass()" > Cambiar </ion-button> 
+      <ion-button class="botonPass" (click)="changeFalse()" color= "danger"> Cancelar </ion-button>
+    </form>
+  </div>
+  
+  <ng-template #showUpdate>
+  <form class="contenedor"> 
+    <ion-item>
+      <ion-label> Nombre <ion-text color="danger"> * </ion-text></ion-label>
+      <ion-input type="text" name="name" required [(ngModel)]="name"> </ion-input>
+    </ion-item>
 
+    <ion-item>
+      <ion-label> Correo <ion-text color="danger"> * </ion-text></ion-label>
+      <ion-input type="email" name="email" required [(ngModel)]="email"> </ion-input>
+    </ion-item>
+
+    <ion-item>
+      <ion-label> Telefono <ion-text color="danger"> * </ion-text></ion-label>
+      <ion-input type="tel" name="phone" required [(ngModel)]="phone" > </ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-label > Edad <ion-text color="danger"> * </ion-text> </ion-label>
+      <ion-input type="number" name="age" required [(ngModel)]="age"> </ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-label > Ciudad <ion-text color="danger"> * </ion-text> </ion-label>
+      <ion-input type="text" name="city" required [(ngModel)]="city"> </ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-label > Barrio <ion-text color="danger"> * </ion-text> </ion-label>
+      <ion-input type="text" name="state" required [(ngModel)]="state"> </ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-label > Dirección <ion-text color="danger"> * </ion-text> </ion-label>
+      <ion-input type="text" name="address" required [(ngModel)]="address"> </ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-label > Ingresa tu contraseña <ion-text color="danger"> * </ion-text> </ion-label>
+      <ion-input type="password" name="password" required [(ngModel)]="password"> </ion-input>
+    </ion-item>
+    
+    <ion-button class="botonActua" type="submit" (click)="updateProfile()" expand="block" href="" routerDirection="forward"> Actualizar </ion-button>
+    <ion-button class="botonActua" (click)="changeTrue()" expand="block"> Cambiar contraseña </ion-button> 
+    
+    </form>
+    </ng-template>
+    
 </ion-content>

@@ -8,7 +8,7 @@ import { AngularFireModule } from '@angular/fire';
 import { AngularFireAnalyticsModule } from '@angular/fire/analytics';
 import { AngularFirestoreModule } from '@angular/fire/firestore';
 import { environment } from '../../../environments/environment';
-
+import { AngularFireDatabaseModule } from '@angular/fire/database';
 
 @NgModule({
   imports: [
@@ -18,7 +18,8 @@ import { environment } from '../../../environments/environment';
     CrearReportesPageRoutingModule,
     AngularFireModule.initializeApp(environment.firebase),
     AngularFireAnalyticsModule,
-    AngularFirestoreModule
+    AngularFirestoreModule,
+    AngularFireDatabaseModule
   ],
   declarations: [CrearReportesPage]
 })

@@ -1,8 +1,9 @@
 import { Component, OnInit } from '@angular/core';
-import { AngularFirestore } from '@angular/fire/firestore';
+import { AngularFirestore, AngularFirestoreCollection  } from '@angular/fire/firestore';
 import { AngularFireAuth } from '@angular/fire/auth';
 import { auth } from 'firebase/app';
 import { AlertController } from '@ionic/angular';
+import { map } from 'rxjs/operators';
 
 @Component({
   selector: 'app-crear-reportes',
@@ -18,8 +19,9 @@ export class CrearReportesPage implements OnInit {
   tipo: string;
   descripcion: string;
   categoria: string;
-
+  currentUser: any ;
   data: [];
+  idUser: string;
 
   constructor(private firestore: AngularFirestore,
     public auth: AngularFireAuth,
@@ -27,7 +29,22 @@ export class CrearReportesPage implements OnInit {
     ) { }
 
   ngOnInit() {
-    
+    this.auth.currentUser.then((user)=>{
+      console.log(user.uid);
+      //this.idUser = user.uid;
+      /* this.firestore.collection('users').doc(user.uid).snapshotChanges().pipe( 
+        map( 
+          actions.map( a =>{ 
+          const data = a.payload.doc.data(); 
+          return this.currentUser=data;
+        })
+        ));    */
+        this.currentUser =  this.firestore.collection('users').doc(user.uid).snapshotChanges(); 
+               
+      console.log(this.currentUser);
+    }).catch((error)=>{
+
+    })
   }
 
   async presentAlert(error,mensaje) {
@@ -51,6 +68,7 @@ export class CrearReportesPage implements OnInit {
     && this.descripcion !== undefined && this.descripcion!== ''
     && this.telefono !== undefined && this.telefono!== ''){
       this.auth.currentUser.then((user)=>{
+
         this.firestore.collection('reports').add({
           displayname: this.nombre, 
           id_user: user.uid,
