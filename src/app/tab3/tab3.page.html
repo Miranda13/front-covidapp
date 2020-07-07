@@ -9,42 +9,69 @@
     </ion-segment-button>
   </ion-segment>
 
-  <div class="bloque-grafica" *ngIf="tabGraficas == 'Totales'">
-    <canvas class="grafico" baseChart 
-    [datasets]="totalSexData" 
-    [labels]="totalSexLabels"
-    [chartType]="'pie'"
-    [colors]="totalSexChartColors"
-    [legend]="true"
-    [options]="totalSexChartOptions"
-    [plugins]="totalChartPlugins"
-    >
-    </canvas>
-    <h3>Total: {{totalSex}}</h3>
-    <ion-segment (ionChange)="sexTotalTipoGrafica($event)" [(ngModel)]="sexTotalGraficaEstado">
-      <ion-segment-button value="Confirmados">
-        <ion-label>Confirmados</ion-label>
-      </ion-segment-button>
-      <ion-segment-button value="Recuperado">
-        <ion-label>Recuperados</ion-label>
-      </ion-segment-button>
-      <ion-segment-button value="Fallecido">
-        <ion-label>Fallecidos</ion-label>
-      </ion-segment-button>
-    </ion-segment>
-  </div>
+  <div id="total-view" *ngIf="tabGraficas == 'Totales'">
+    <div class="bloque-grafica">
+      <canvas class="grafico" baseChart 
+      [datasets]="servicioGraficosTotales.totalSexData" 
+      [labels]="servicioGraficosTotales.totalSexLabels"
+      [chartType]="'pie'"
+      [colors]="servicioGraficosTotales.totalSexChartColors"
+      [legend]="true"
+      [options]="servicioGraficosTotales.totalSexChartOptions"
+      [plugins]="servicioGraficosTotales.totalChartPlugins"
+      >
+      </canvas>
+      <h3>Total: {{servicioGraficosTotales.totalSex}}</h3>
+    
+      <ion-segment (ionChange)="sexTotalTipoGrafica($event)" [(ngModel)]="servicioGraficosTotales.sexTotalGraficaEstado">
+        <ion-segment-button value="Confirmados">
+          <ion-label>Confirmados</ion-label>
+        </ion-segment-button>
+        <ion-segment-button value="Recuperado">
+          <ion-label>Recuperados</ion-label>
+        </ion-segment-button>
+        <ion-segment-button value="Fallecido">
+          <ion-label>Fallecidos</ion-label>
+        </ion-segment-button>
+      </ion-segment>
+    </div>
+  
+    <div class="bloque-grafica">
+      <canvas class="grafico" baseChart 
+      [datasets]="servicioGraficosTotales.totalStateData"
+      [labels]="servicioGraficosTotales.totalStateLabels"
+      [chartType]="'doughnut'"
+      [colors]="servicioGraficosTotales.totalStateChartColors"
+      [legend]="true"
+      [options]="servicioGraficosTotales.totalStateChartOptions"
+      [plugins]="servicioGraficosTotales.totalChartPlugins"
+      >
+      </canvas>
+    </div>
 
-  <div class="bloque-grafica" *ngIf="tabGraficas == 'Totales'">
-    <canvas class="grafico" baseChart 
-    [datasets]="totalStateData"
-    [labels]="totalStateLabels"
-    [chartType]="'doughnut'"
-    [colors]="totalStateChartColors"
-    [legend]="true"
-    [options]="totalStateChartOptions"
-    [plugins]="totalChartPlugins"
-    >
-    </canvas>
+    <div class="bloque-grafica">
+      <canvas class="grafico" baseChart 
+      [datasets]="servicioEdades.totalAgeData"
+      [labels]="servicioEdades.totalAgeLabels"
+      [chartType]="'bar'"
+      [colors]="servicioEdades.totalAgeChartColors"
+      [legend]="true"
+      [options]="servicioEdades.totalAgeChartOptions"
+      [plugins]="servicioEdades.totalChartPlugins"
+      >
+      </canvas>
+      <ion-segment (ionChange)="ageTotalTipoGrafica($event)" [(ngModel)]="servicioEdades.ageTotalGraficaEstado">
+        <ion-segment-button value="Confirmados">
+          <ion-label>Confirmados</ion-label>
+        </ion-segment-button>
+        <ion-segment-button value="Recuperado">
+          <ion-label>Recuperados</ion-label>
+        </ion-segment-button>
+        <ion-segment-button value="Fallecido">
+          <ion-label>Fallecidos</ion-label>
+        </ion-segment-button>
+      </ion-segment>
+    </div>
   </div>
 
 
