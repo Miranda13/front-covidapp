@@ -5,6 +5,7 @@ import { StatusBar } from '@ionic-native/status-bar/ngx';
 import { TraerDataGraficosService } from './services/traer-data-graficos.service';
 import { TraerDataEdadesService } from './services/traer-data-edades.service';
 import { TraerDeptoSexStateDataService } from './services/traer-depto-sex-state-data.service';
+import { TraerDataEdadesDeptosService } from './services/traer-data-edades-deptos.service';
 import { timeout } from 'rxjs/operators';
 
 @Component({
@@ -21,15 +22,10 @@ export class AppComponent {
     private servicioGraficosTotales: TraerDataGraficosService,
     private servicioGraficosDeptos: TraerDeptoSexStateDataService,
     private servicioEdades: TraerDataEdadesService,
+    private servicioEdadesDeptos: TraerDataEdadesDeptosService,
 
   ) {
     this.initializeApp();
-    servicioEdades.getAgeData();
-    servicioGraficosTotales.totalData();
-
-    setTimeout(() => {
-      servicioGraficosDeptos.deptoData('Bogotá D.C.');
-    }, 10000);
   }
 
   initializeApp() {
@@ -37,5 +33,23 @@ export class AppComponent {
       this.statusBar.styleDefault();
       this.splashScreen.hide();
     });
+
+    this.servicioGraficosTotales.totalData();
+
+    setTimeout(() => {
+      this.servicioEdades.getAgeData();
+    }, 8000);
+
+
+    setTimeout(() => {
+      console.log("servicioGraficosDeptos 12000");
+      this.servicioGraficosDeptos.deptoData('Bogotá D.C.');
+    }, 10000);
+
+
+    setTimeout(() => {
+      console.log("servicioEdadesDeptos 12000");
+      this.servicioEdadesDeptos.getAgeData('Bogotá D.C.');
+    }, 15000);
   }
 }

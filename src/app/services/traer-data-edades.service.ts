@@ -21,7 +21,7 @@ export class TraerDataEdadesService {
 
   public totalAgeData: ChartDataSets[] = [
     { 
-      data:[0, 0, 0, 0, 0],
+      data:[0, 0, 0, 0, 0 ],
       label: "Edades"
     }
   ]
@@ -74,20 +74,16 @@ export class TraerDataEdadesService {
       this.http.get(`https://www.datos.gov.co/resource/gt2j-8ykr.json?$where=edad%20between%20%27${edad[0]}%27%20and%20%27${edad[1]}%27&$limit=999999999&$$app_token=aqPLGyt6aQBu9LNwyPf3PjGM8`, httpOptions).subscribe((res: any[]) => {
         for (let persona of res){
           if (persona["atenci_n"] === "Recuperado"){
-
             this.totalAgeArr[1][indx] += 1;
-          } else{
 
+          } else if(persona["atenci_n"] === "Fallecido"){
             this.totalAgeArr[2][indx] += 1;
+
           }
-
-          this.totalAgeArr[0][indx] += 1
-
         }
-
+        this.totalAgeArr[0][indx] = this.totalAgeArr[1][indx] + this.totalAgeArr[2][indx];
         this.totalAgeData[0].data[indx] = this.totalAgeArr[1][indx];
       });
-
     })
     // }
   }
@@ -102,11 +98,9 @@ export class TraerDataEdadesService {
       this.totalAgeData[0].data = this.totalAgeArr[1];
 
 
-    } else{
+    } else if (tipo === "Fallecido"){
       this.totalAgeData[0].data = this.totalAgeArr[2];
     }
   }
-
-
 
 }

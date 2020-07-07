@@ -140,7 +140,7 @@ export class TraerDeptoSexStateDataService {
       this.deptoStateArr[0] = this.deptoRecuperado;
       // this.deptoStateData[0].data[0] = this.deptoRecuperado;
       this.deptoStateData[0].data = this.deptoStateArr;
-      console.log("Recuperados: ", this.deptoStateArr[0]);
+      // console.log("Recuperados: ", this.deptoStateArr[0]);
       this.actualizedeptoSexData(this.sexdeptoGraficaEstado);
     })
 
@@ -161,7 +161,7 @@ export class TraerDeptoSexStateDataService {
       this.deptoFallecido = this.deptoSexArr[4] + this.deptoSexArr[5];
       this.deptoStateArr[1] = this.deptoFallecido;
       this.deptoStateData[0].data[1] = this.deptoFallecido;
-      console.log("Fallecidos: ", this.deptoStateArr[1]);
+      // console.log("Fallecidos: ", this.deptoStateArr[1]);
       this.actualizedeptoSexData(this.sexdeptoGraficaEstado);
     });
 
@@ -171,7 +171,7 @@ export class TraerDeptoSexStateDataService {
       this.deptoStateArr[2] = this.deptoModerado;
       // this.deptoStateData[0].data[2] = this.deptoModerado;
       this.deptoStateData[0].data = this.deptoStateArr;
-      console.log("Moderado: ", this.deptoStateArr[2]);
+      // console.log("Moderado: ", this.deptoStateArr[2]);
     });
 
 
@@ -180,7 +180,7 @@ export class TraerDeptoSexStateDataService {
       this.deptoStateArr[3] = this.deptoGrave;
       // this.deptoStateData[0].data[3] = this.deptoGrave;
       this.deptoStateData[0].data = this.deptoStateArr;
-      console.log("Grave: ", this.deptoStateArr[3]);
+      // console.log("Grave: ", this.deptoStateArr[3]);
     });
   }
 
@@ -214,5 +214,7 @@ export class TraerDeptoSexStateDataService {
     this.deptoStateData[0].data = this.deptoStateArr;
   }
 
+
+  
 
 }
