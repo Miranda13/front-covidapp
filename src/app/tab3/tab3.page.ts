@@ -1,6 +1,7 @@
 import { Component, ViewChildren, QueryList } from '@angular/core';
 import { TraerDataGraficosService } from '../services/traer-data-graficos.service';
 import { TraerDataEdadesService } from '../services/traer-data-edades.service';
+import { TraerDeptoSexStateDataService } from '../services/traer-depto-sex-state-data.service';
 import { BaseChartDirective } from 'ng2-charts';
 
 @Component({
@@ -14,6 +15,7 @@ export class Tab3Page {
   @ViewChildren(BaseChartDirective) charts: QueryList<BaseChartDirective>;
   constructor(
     private servicioGraficosTotales: TraerDataGraficosService,
+    private servicioGraficosDeptos: TraerDeptoSexStateDataService,
     private servicioEdades: TraerDataEdadesService,
   ) {
     this.servicioGraficosTotales.actualizeTotalSexData('Confirmados');
@@ -66,20 +68,33 @@ export class Tab3Page {
   ]
 
   public tabGraficas: string = "Totales";
+  
 
   tipoGraficas(event){
     this.tabGraficas = event.detail.value;
     this.servicioGraficosTotales.sexTotalGraficaEstado = event.detail.value;
   }
 
+
   sexTotalTipoGrafica(event){
     this.servicioGraficosTotales.sexTotalGraficaEstado = event.detail.value;
     this.servicioGraficosTotales.actualizeTotalSexData(event.detail.value);
   }
+
 
   ageTotalTipoGrafica(event){
     this.servicioEdades.ageTotalGraficaEstado = event.detail.value;
     this.servicioEdades.actualizeTotalAgeData(event.detail.value);
   }
 
+
+  sexDeptoTipoGrafica(event){
+    this.servicioGraficosDeptos.sexdeptoGraficaEstado  = event.detail.value;
+    this.servicioGraficosDeptos.actualizedeptoSexData(event.detail.value);
+  }
+
+
+  onChangeDepto(_depto){
+    this.servicioGraficosDeptos.deptoData(_depto);
+  }
 }
