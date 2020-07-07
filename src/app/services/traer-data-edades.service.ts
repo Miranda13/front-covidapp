@@ -13,6 +13,7 @@ export class TraerDataEdadesService {
     private http: HttpClient,
   ) { }
 
+  public ageTotalGraficaEstado = "Recuperado";
   public totalAgeArr: number[][] = [[0, 0, 0, 0, 0],
                                     [0, 0, 0, 0, 0],
                                     [0, 0, 0, 0, 0]];
@@ -73,19 +74,17 @@ export class TraerDataEdadesService {
       this.http.get(`https://www.datos.gov.co/resource/gt2j-8ykr.json?$where=edad%20between%20%27${edad[0]}%27%20and%20%27${edad[1]}%27&$limit=999999999`, httpOptions).subscribe((res: any[]) => {
         for (let persona of res){
           if (persona["atenci_n"] === "Recuperado"){
-            // this.fillAgeArr(parseInt(persona["edad"]), 1);
+
             this.totalAgeArr[1][indx] += 1;
           } else{
-            // this.fillAgeArr(parseInt(persona["edad"]), 2);
+
             this.totalAgeArr[2][indx] += 1;
           }
 
           this.totalAgeArr[0][indx] += 1
-          // console.log(indx, edad);
 
         }
 
-        // console.log(this.totalAgeArr);
         this.totalAgeData[0].data[indx] = this.totalAgeArr[0][indx];
       });
 
@@ -93,6 +92,17 @@ export class TraerDataEdadesService {
     // }
   }
 
-  public fillAgeDataChart(){
+  public actualizeTotalAgeData(tipo:string){
+    if (tipo === "Confirmados"){
+      this.totalAgeData[0].data = this.totalAgeArr[0];
+
+      
+    } else if (tipo === "Recuperado"){
+      this.totalAgeData[0].data = this.totalAgeArr[1];
+
+
+    } else{
+      this.totalAgeData[0].data = this.totalAgeArr[2];
+    }
   }
 }
