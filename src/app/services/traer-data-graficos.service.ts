@@ -26,7 +26,7 @@ export class TraerDataGraficosService {
   public totalFallecido: number = 0;
   public totalModerado: number = 0;
   public totalGrave: number = 0;
-  public sexTotalGraficaEstado = "Confirmados";
+  public sexTotalGraficaEstado = "Recuperado";
 
   public totalSexChartOptions: ChartOptions = {
     responsive: true,

@@ -77,4 +77,9 @@ export class Tab3Page {
     this.servicioGraficosTotales.actualizeTotalSexData(event.detail.value);
   }
 
+  ageTotalTipoGrafica(event){
+    this.servicioEdades.ageTotalGraficaEstado = event.detail.value;
+    this.servicioEdades.actualizeTotalAgeData(event.detail.value);
+  }
+
 }

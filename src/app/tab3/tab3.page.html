@@ -60,6 +60,17 @@
       [plugins]="servicioEdades.totalChartPlugins"
       >
       </canvas>
+      <ion-segment (ionChange)="ageTotalTipoGrafica($event)" [(ngModel)]="servicioEdades.ageTotalGraficaEstado">
+        <ion-segment-button value="Confirmados">
+          <ion-label>Confirmados</ion-label>
+        </ion-segment-button>
+        <ion-segment-button value="Recuperado">
+          <ion-label>Recuperados</ion-label>
+        </ion-segment-button>
+        <ion-segment-button value="Fallecido">
+          <ion-label>Fallecidos</ion-label>
+        </ion-segment-button>
+      </ion-segment>
     </div>
   </div>
 
