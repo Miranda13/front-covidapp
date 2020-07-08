@@ -28,7 +28,7 @@ export class Tab3Page {
       });
     }, 1000);
   }
-
+  
   private deptosList = [
     "Bogotá D.C.",
     "Barranquilla D.E.",

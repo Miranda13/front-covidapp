@@ -1,0 +1,298 @@
+[
+ {
+   "Departamento": "Bogotá D.C.",
+   "Confirmados": 0,
+   "Recuperados": 0,
+   "Est.Moderado": 0,
+   "Est.Grave": 0,
+   "Fallecidos": 0
+ },
+ {
+   "Departamento": "Barranquilla D.E.",
+   "Confirmados": 0,
+   "Recuperados": 0,
+   "Est.Moderado": 0,
+   "Est.Grave": 0,
+   "Fallecidos": 0
+ },
+ {
+   "Departamento": "Atlántico",
+   "Confirmados": 0,
+   "Recuperados": 0,
+   "Est.Moderado": 0,
+   "Est.Grave": 0,
+   "Fallecidos": 0
+ },
+ {
+   "Departamento": "Valle del Cauca",
+   "Confirmados": 0,
+   "Recuperados": 0,
+   "Est.Moderado": 0,
+   "Est.Grave": 0,
+   "Fallecidos": 0
+ },
+ {
+   "Departamento": "Cartagena D.T. y C.",
+   "Confirmados": 0,
+   "Recuperados": 0,
+   "Est.Moderado": 0,
+   "Est.Grave": 0,
+   "Fallecidos": 0
+ },
+ {
+   "Departamento": "Antioquia",
+   "Confirmados": 0,
+   "Recuperados": 0,
+   "Est.Moderado": 0,
+   "Est.Grave": 0,
+   "Fallecidos": 0
+ },
+ {
+   "Departamento": "Nariño",
+   "Confirmados": 0,
+   "Recuperados": 0,
+   "Est.Moderado": 0,
+   "Est.Grave": 0,
+   "Fallecidos": 0
+ },
+ {
+   "Departamento": "Cundinamarca",
+   "Confirmados": 0,
+   "Recuperados": 0,
+   "Est.Moderado": 0,
+   "Est.Grave": 0,
+   "Fallecidos": 0
+ },
+ {
+   "Departamento": "Amazonas",
+   "Confirmados": 0,
+   "Recuperados": 0,
+   "Est.Moderado": 0,
+   "Est.Grave": 0,
+   "Fallecidos": 0
+ },
+ {
+   "Departamento": "Chocó",
+   "Confirmados": 0,
+   "Recuperados": 0,
+   "Est.Moderado": 0,
+   "Est.Grave": 0,
+   "Fallecidos": 0
+ },
+ {
+   "Departamento": "Sucre",
+   "Confirmados": 0,
+   "Recuperados": 0,
+   "Est.Moderado": 0,
+   "Est.Grave": 0,
+   "Fallecidos": 0
+ },
+ {
+   "Departamento": "Buenaventura D.E.",
+   "Confirmados": 0,
+   "Recuperados": 0,
+   "Est.Moderado": 0,
+   "Est.Grave": 0,
+   "Fallecidos": 0
+ },
+ {
+   "Departamento": "Meta",
+   "Confirmados": 0,
+   "Recuperados": 0,
+   "Est.Moderado": 0,
+   "Est.Grave": 0,
+   "Fallecidos": 0
+ },
+ {
+   "Departamento": "Cesar",
+   "Confirmados": 0,
+   "Recuperados": 0,
+   "Est.Moderado": 0,
+   "Est.Grave": 0,
+   "Fallecidos": 0
+ },
+ {
+   "Departamento": "Santa Marta D.T. y C.",
+   "Confirmados": 0,
+   "Recuperados": 0,
+   "Est.Moderado": 0,
+   "Est.Grave": 0,
+   "Fallecidos": 0
+ },
+ {
+   "Departamento": "Tolima",
+   "Confirmados": 0,
+   "Recuperados": 0,
+   "Est.Moderado": 0,
+   "Est.Grave": 0,
+   "Fallecidos": 0
+ },
+ {
+   "Departamento": "Bolívar",
+   "Confirmados": 0,
+   "Recuperados": 0,
+   "Est.Moderado": 0,
+   "Est.Grave": 0,
+   "Fallecidos": 0
+ },
+ {
+   "Departamento": "Córdoba",
+   "Confirmados": 0,
+   "Recuperados": 0,
+   "Est.Moderado": 0,
+   "Est.Grave": 0,
+   "Fallecidos": 0
+ },
+ {
+   "Departamento": "Magdalena",
+   "Confirmados": 0,
+   "Recuperados": 0,
+   "Est.Moderado": 0,
+   "Est.Grave": 0,
+   "Fallecidos": 0
+ },
+ {
+   "Departamento": "Santander",
+   "Confirmados": 0,
+   "Recuperados": 0,
+   "Est.Moderado": 0,
+   "Est.Grave": 0,
+   "Fallecidos": 0
+ },
+ {
+   "Departamento": "Risaralda",
+   "Confirmados": 0,
+   "Recuperados": 0,
+   "Est.Moderado": 0,
+   "Est.Grave": 0,
+   "Fallecidos": 0
+ },
+ {
+   "Departamento": "La Guajira",
+   "Confirmados": 0,
+   "Recuperados": 0,
+   "Est.Moderado": 0,
+   "Est.Grave": 0,
+   "Fallecidos": 0
+ },
+ {
+   "Departamento": "Cauca",
+   "Confirmados": 0,
+   "Recuperados": 0,
+   "Est.Moderado": 0,
+   "Est.Grave": 0,
+   "Fallecidos": 0
+ },
+ {
+   "Departamento": "Boyacá",
+   "Confirmados": 0,
+   "Recuperados": 0,
+   "Est.Moderado": 0,
+   "Est.Grave": 0,
+   "Fallecidos": 0
+ },
+ {
+   "Departamento": "Huila",
+   "Confirmados": 0,
+   "Recuperados": 0,
+   "Est.Moderado": 0,
+   "Est.Grave": 0,
+   "Fallecidos": 0
+ },
+ {
+   "Departamento": "Norte de Santander",
+   "Confirmados": 0,
+   "Recuperados": 0,
+   "Est.Moderado": 0,
+   "Est.Grave": 0,
+   "Fallecidos": 0
+ },
+ {
+   "Departamento": "Caldas",
+   "Confirmados": 0,
+   "Recuperados": 0,
+   "Est.Moderado": 0,
+   "Est.Grave": 0,
+   "Fallecidos": 0
+ },
+ {
+   "Departamento": "Quindío",
+   "Confirmados": 0,
+   "Recuperados": 0,
+   "Est.Moderado": 0,
+   "Est.Grave": 0,
+   "Fallecidos": 0
+ },
+ {
+   "Departamento": "Casanare",
+   "Confirmados": 0,
+   "Recuperados": 0,
+   "Est.Moderado": 0,
+   "Est.Grave": 0,
+   "Fallecidos": 0
+ },
+ {
+   "Departamento": "Arauca",
+   "Confirmados": 0,
+   "Recuperados": 0,
+   "Est.Moderado": 0,
+   "Est.Grave": 0,
+   "Fallecidos": 0
+ },
+ {
+   "Departamento": "Caquetá",
+   "Confirmados": 0,
+   "Recuperados": 0,
+   "Est.Moderado": 0,
+   "Est.Grave": 0,
+   "Fallecidos": 0
+ },
+ {
+   "Departamento": "Guaviare",
+   "Confirmados": 0,
+   "Recuperados": 0,
+   "Est.Moderado": 0,
+   "Est.Grave": 0,
+   "Fallecidos": 0
+ },
+ {
+   "Departamento": "Putumayo",
+   "Confirmados": 0,
+   "Recuperados": 0,
+   "Est.Moderado": 0,
+   "Est.Grave": 0,
+   "Fallecidos": 0
+ },
+ {
+   "Departamento": "Archipiélago de San Andrés Providencia y Santa Catalina",
+   "Confirmados": 0,
+   "Recuperados": 0,
+   "Est.Moderado": 0,
+   "Est.Grave": 0,
+   "Fallecidos": 0
+ },
+ {
+   "Departamento": "Vaupés",
+   "Confirmados": 0,
+   "Recuperados": 0,
+   "Est.Moderado": 0,
+   "Est.Grave": 0,
+   "Fallecidos": 0
+ },
+ {
+   "Departamento": "Guainía",
+   "Confirmados": 0,
+   "Recuperados": 0,
+   "Est.Moderado": 0,
+   "Est.Grave": 0,
+   "Fallecidos": 0
+ },
+ {
+   "Departamento": "Vichada",
+   "Confirmados": 0,
+   "Recuperados": 0,
+   "Est.Moderado": 0,
+   "Est.Grave": 0,
+   "Fallecidos": 0
+ }
+]
