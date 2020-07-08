@@ -5,3 +5,29 @@
     </ion-title>
   </ion-toolbar>
 </ion-header>
+
+<ion-content>
+  <div class="ion-padding">
+    <!-- Theme classes dark, material, bootstrap -->
+    <ngx-datatable 
+      class="bootstrap"
+      [limit]="100" 
+      [rows]="rows" 
+      [rowHeight]="50" 
+      [columns]="columns"
+      [columnMode]="'force'" 
+      [sortType]="'multi'" 
+      [headerHeight]="50" 
+      [footerHeight]="50">
+
+      <ngx-datatable-column prop = "Departamento" name="Departamento"></ngx-datatable-column>
+      <ngx-datatable-column prop = "Confirmados" name="Confirmados"></ngx-datatable-column>
+      <ngx-datatable-column prop = "Recuperados" name="Recuperados"></ngx-datatable-column>
+      <ngx-datatable-column prop = "Est.Moderado" name="Est.Moderado"></ngx-datatable-column>
+      <ngx-datatable-column prop = "Est.Grave" name="Est.Grave"></ngx-datatable-column>
+      <ngx-datatable-column prop = "Fallecidos" name="Fallecidos"></ngx-datatable-column>
+
+    </ngx-datatable>
+
+  </div>
+</ion-content>
