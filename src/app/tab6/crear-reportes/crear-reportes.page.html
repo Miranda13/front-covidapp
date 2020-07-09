@@ -15,15 +15,28 @@
     puedan contactarte, solamente elige en tipo "solicitud" y la categoría de los elementos que requieres. </p>
   
   <form class="formulario" > 
+    <!-- <ion-item>
+      <ion-label> Nombre <ion-text color="danger"> * </ion-text></ion-label>
+      <ion-input *ngIf="currentUser !== undefined && currentUser.displayName !== undefined" [disabled]="true" type="text" name="nombre" required [(ngModel)]="currentUser.displayName"> </ion-input>
+      <ion-input *ngIf="currentUser == undefined " [disabled]="false" type="text" name="nombre" required [(ngModel)]="nombre"> </ion-input>
+    </ion-item> 
+
+    <ion-item>
+      <ion-label> Correo <ion-text color="danger"> * </ion-text></ion-label>
+      <ion-input *ngIf="currentUser !== undefined && currentUser.email !== undefined" type="email" [disabled]="true" name="correo" required [(ngModel)]="currentUser.email"> </ion-input>
+      <ion-input *ngIf="currentUser == undefined" type="email" [disabled]="false" name="correo" required [(ngModel)]="correo"> </ion-input>
+    </ion-item> -->
+
     <ion-item>
       <ion-label> Nombre <ion-text color="danger"> * </ion-text></ion-label>
-      <ion-input *ngIf="currentUser" [disabled]="true" type="text" name="nombre" required [(ngModel)]="currentUser.displayName"> </ion-input>
-      <ion-input *ngIf="!currentUser" [disabled]="false" type="text" name="nombre" required [(ngModel)]="nombre"> </ion-input>
+      <ion-input *ngIf="logUser.currentUser.displayName !== undefined" [disabled]="true" type="text" name="nombre" required [(ngModel)]="logUser.currentUser.displayName"> </ion-input>
+      <ion-input *ngIf="logUser.currentUser.displayName == undefined " [disabled]="false" type="text" name="nombre" required [(ngModel)]="nombre"> </ion-input>
     </ion-item>
 
     <ion-item>
       <ion-label> Correo <ion-text color="danger"> * </ion-text></ion-label>
-      <ion-input type="email" name="correo" required [(ngModel)]="correo"> </ion-input>
+      <ion-input *ngIf="logUser.currentUser.displayName !== undefined" type="email" [disabled]="true" name="correo" required [(ngModel)]="currentUser.email"> </ion-input>
+      <ion-input *ngIf="logUser.currentUser.displayName == undefined" type="email" [disabled]="false" name="correo" required [(ngModel)]="correo"> </ion-input>
     </ion-item>
 
     <ion-item>

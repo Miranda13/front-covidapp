@@ -1,6 +1,10 @@
 
 <ion-content [fullscreen]="true">
 
+  <!-- <ion-nav *ngIf= "auth.user | async as user; else login" [router]="/tabs/tab6/register">  
+  </ion-nav>
+  
+  <ng-template #login> -->
   <div class="contenedor"> 
   
       <img src="../../assets/img/world.jpg">
@@ -23,8 +27,7 @@
       
       <ion-button class="botonlogin" color="danger" (click)="login()"> <ion-icon name="logo-google"></ion-icon> &nbsp; Iniciar sesión con Google</ion-button>
       <!-- <ion-button color="primary" (click)="loginEmailPassword(email,password)" >Iniciar sesión</ion-button> -->
-      <ion-button class="botonlogin" color="primary" routerLink="/tabs/tab6/register" routerDirection="forward">Registrarse</ion-button>
-            
+      <ion-button class="botonlogin" color="primary" routerLink="/tabs/tab6/register" routerDirection="forward">Registrarse</ion-button>     
   </div>
-  
+  <!-- </ng-template> -->
 </ion-content>
