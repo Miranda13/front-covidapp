@@ -1,0 +1,69 @@
+
+@import url('https://fonts.googleapis.com/css2?family=Merienda+One&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Acme&display=swap');
+
+
+img{
+    display: block;
+    margin: auto;
+    //opacity: .85;
+    //border-radius: 50%;
+    //border: 5px solid black;
+
+}
+ 
+.contenedor{
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    text-align: center;
+    background-image: url('../../../assets/img/world.jpg');
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+.titulo1{
+    padding-top: 80px;
+    font-size: 50px;
+    color: white;
+    font-family: 'Acme', sans-serif;
+}
+
+.botonlogin, .entrar-botonlogin{
+    font-size: 18px;
+    margin-left: 30px;
+    margin-right: 30px;
+    font-family: 'Acme', sans-serif;
+    bottom: 8px;
+}
+
+.entrar-botonlogin{
+    margin-top: 10px;
+}
+
+.message{
+    color: white;
+    font-size: 30px;
+    margin: 20px 0px 0px 0px;
+    font-family: 'Acme', sans-serif;
+}
+
+.icono{
+    color: white;
+    font-size: 22px;
+}
+
+.input-form{
+    padding: 5px;
+}
+
+.label-form{
+    font-size: 24px;
+    color: white;
+    margin: 20px 0px 0px 0px;
+    font-family: 'Acme', sans-serif;
+}
+
+.form{
+    margin-top: 15px;
+}

@@ -1,6 +1,9 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { TabsPage } from './tabs.page';
+import { AngularFireAuthGuard, redirectUnauthorizedTo } from "@angular/fire/auth-guard";
+
+const redirectUnauthorizedToLogin = () => redirectUnauthorizedTo(['tabs/login']);
 
 const routes: Routes = [
   {
@@ -29,11 +32,17 @@ const routes: Routes = [
       },
       {
         path: 'tab6',
-        children:[{
-          path: '',
-          loadChildren: () => import('../tab6/tab6.module').then(m => m.Tab6PageModule)
-        }
-        ] 
+        canActivate: [AngularFireAuthGuard], data: {authGuardPipe: redirectUnauthorizedToLogin},
+        loadChildren: () => import('../tab6/tab6.module').then(m => m.Tab6PageModule)
+         
+      },
+      {
+        path: 'login',
+        loadChildren: () => import('../tab6/login/login.module').then(m => m.LoginPageModule)
+      },
+      {
+        path: 'register',
+        loadChildren: () => import('../tab6/register/register.module').then( m => m.RegisterPageModule)
       },
       {
         path: '',

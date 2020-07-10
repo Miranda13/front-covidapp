@@ -1,0 +1,29 @@
+
+<ion-content [fullscreen]="true">
+
+  <div class="contenedor"> 
+
+    <div  class="fondo"></div>
+      <!-- <img src="../../assets/img/world.jpg"> --> 
+      <h1 class="titulo1"> Bienvenido a CovidApp </h1>
+      <p class="message">Iniciar sesión</p>
+  
+      <form class="form"> 
+        <p class="label-form">Correo electrónico</p>
+        <label > <ion-icon class="icono" name="mail-outline"></ion-icon> <ion-text color="danger"> * </ion-text></label>
+        <input class="input-form" placeholder="usuario@ejemplo.com" type="email" name="email" required type="text" [(ngModel)]="loginEmail">
+        
+        <p class="label-form">Contraseña</p>
+        <label > <ion-icon class="icono" name="key-outline"></ion-icon> <ion-text color="danger"> * </ion-text> </label>
+        <input class="input-form" placeholder="******" type="password" name="password" required="required" [(ngModel)]="loginPassword">
+        <br>
+        <br>
+        <ion-button class="entrar-botonlogin" expand="block" type="submit" (click)="loginEmailPassword()"> Entrar </ion-button> 
+      </form>
+      
+      
+      <ion-button class="botonlogin" color="danger" (click)="login()"> <ion-icon name="logo-google"></ion-icon> &nbsp; Iniciar sesión con Google</ion-button>
+      <ion-button class="botonlogin" color="primary" routerLink="/tabs/register" routerDirection="forward">Registrarse</ion-button>     
+  </div>
+
+</ion-content>
