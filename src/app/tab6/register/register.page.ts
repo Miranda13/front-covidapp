@@ -74,7 +74,6 @@ export class RegisterPage implements OnInit {
               address: this.address,
               email: this.email
           });
-          this.ngOnInit();
           this.goToPrincipal();
           let err = 'Nuevo registro';
           let mensa = 'Registro del usuario '+this.email + ' exitoso';
@@ -83,7 +82,6 @@ export class RegisterPage implements OnInit {
           }
         ).catch((error)=>{
           this.presentAlert(error.code,error.message);
-          //console.error(error);
         });
       }else{
         let err = 'Contraseña no coincide';
