@@ -28,16 +28,7 @@ export class LoginPage implements OnInit {
 
   
   ngOnInit(){
-    /* this.auth.currentUser.then((user)=>{
-      if(user !== null){
-        this.firestore.collection('users').doc(user.uid).get().subscribe((value)=>{
-          this.logUser.currentUser = value.data();
-          console.log(this.logUser.currentUser);
-        })
-      }
-    }).catch((error)=>{
-      console.log(error);
-    }) */
+    
   }
   
   async presentAlert(error,mensaje) {
@@ -55,7 +46,9 @@ export class LoginPage implements OnInit {
    
   login() {
     this.auth.signInWithPopup(new auth.GoogleAuthProvider()).then((user)=>{
-      this.firestore.collection('users').doc(user.user.uid).set({email: user.user.email, displayName:user.user.displayName })     
+      this.firestore.collection('users').doc(user.user.uid)
+      .set({email: user.user.email, 
+        displayName:user.user.displayName })     
       this.ngOnInit();
       this.goToPrincipal();
     });
@@ -70,10 +63,6 @@ export class LoginPage implements OnInit {
           this.ngOnInit();
           this.goToPrincipal();
         }
-        /* (user)=>{
-        this.firestore.collection('users').doc(user.user.uid).set({email: user.user.email, displayname:user.user.displayName, method: user.user.providerId })
-        this.ngOnInit();
-        } */
       ).catch((error)=>{
         this.presentAlert(error.code,error.message);
         console.error(error);

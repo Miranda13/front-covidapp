@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component} from '@angular/core';
 import { Router, RouterEvent } from '@angular/router';
 import { AngularFirestore } from '@angular/fire/firestore';
 import { AngularFireAuth } from '@angular/fire/auth';
@@ -10,7 +10,7 @@ import { SaveUserService } from '../services/save-user.service';
   templateUrl: 'tab6.page.html',
   styleUrls: ['tab6.page.scss']
 })
-export class Tab6Page {
+export class Tab6Page{
 
   pages =[
     {
@@ -47,10 +47,6 @@ export class Tab6Page {
       }
     })
    }
-
-  ngOnInit() {
-   
-  }
 
   goToPrincipal(){
     this.router.navigateByUrl('/tabs/login');

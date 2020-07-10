@@ -3,6 +3,7 @@ import { AngularFirestore, AngularFirestoreCollection  } from '@angular/fire/fir
 import { AngularFireAuth } from '@angular/fire/auth';
 import { auth } from 'firebase/app';
 import { AlertController } from '@ionic/angular';
+import { SaveUserService } from '../../services/save-user.service';
 import { map } from 'rxjs/operators';
 
 @Component({
@@ -20,23 +21,26 @@ export class CrearReportesPage implements OnInit {
   descripcion: string;
   categoria: string;
   currentUser: any = {} ;
-  data: [];
-  idUser: string;
 
   constructor(private firestore: AngularFirestore,
     public auth: AngularFireAuth,
     public alertController: AlertController,
+    public logUser : SaveUserService
     ) { }
 
   ngOnInit() {
-    /* this.auth.currentUser.then((user)=>{
-      this.currentUser =  this.firestore.collection('users').doc(user.uid).get().subscribe((value)=>{
-      this.currentUser = value.data();
-      });
+    this.auth.currentUser.then((user)=>{
+      if(user !== null){
+        this.firestore.collection('users').doc(user.uid)
+        .get()
+        .subscribe((value)=>{
+          this.currentUser = value.data();
+          console.log(this.currentUser);
+        })
+      }
     }).catch((error)=>{
       console.log(error);
-    }) */
-    //console.log(this.logUser.currentUser);
+    });
   }
 
   async presentAlert(error,mensaje) {
