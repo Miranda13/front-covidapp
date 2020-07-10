@@ -16,6 +16,7 @@ import { SaveUserService } from '../../services/save-user.service';
 export class PerfilPage implements OnInit {
 
   change: boolean;
+  actu: boolean;
   phone: any;
   age: string;
   name: string;
@@ -27,6 +28,9 @@ export class PerfilPage implements OnInit {
   newPassword: string;
   newPassword2: string;
   currentPassword: string;
+  reports: any []= [];
+  currentUser: any = {};
+  reportesUser: any = {};
 
   constructor(private storage: AngularFireStorage,
     private firestore: AngularFirestore,
@@ -36,6 +40,23 @@ export class PerfilPage implements OnInit {
     public logUser : SaveUserService) { }
 
   ngOnInit() {
+    this.firestore.collection('reports').valueChanges()
+    .subscribe((reports)=>{
+      this.reports = <any[]>reports;
+    });
+
+    this.auth.currentUser.then((user)=>{
+      this.currentUser = user;
+    }).catch((error)=>{
+      console.log(error);
+    });
+  }
+
+  consultar(){
+    this.firestore.collection('reports', ref => ref.where('id_user','==',this.currentUser.uid))
+    .valueChanges().subscribe((reports)=>{
+      this.reportesUser = reports;
+    });
   }
 
   changeTrue(){
@@ -57,6 +78,8 @@ export class PerfilPage implements OnInit {
   }
 
   updateProfile(){
+    console.log(this.change);
+    console.log(this.actu);
     if(this.age !== undefined && this.age!== ''
     && this.phone !== undefined && this.phone!== ''
     && this.email !== undefined && this.email!== ''

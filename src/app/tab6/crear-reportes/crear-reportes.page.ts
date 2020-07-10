@@ -56,6 +56,11 @@ export class CrearReportesPage implements OnInit {
 
   createReport(){
     
+    this.nombre = this.nombre === undefined ? this.currentUser.displayName : this.nombre;
+    this.correo = this.correo === undefined ? this.currentUser.email : this.correo;
+    this.ciudad = this.ciudad === undefined ? this.currentUser.city : this.ciudad;
+    this.telefono = this.telefono === undefined ? this.currentUser.phone : this.telefono;
+
     if(this.nombre !== undefined && this.nombre!== ''
     && this.categoria !== undefined && this.categoria!== ''
     && this.tipo !== undefined && this.tipo!== ''
@@ -83,6 +88,7 @@ export class CrearReportesPage implements OnInit {
         this.presentAlert(error.code,error.message);
       })
     }else{
+      console.log(this.nombre);
       let err = 'Campos vacíos';
       let mensa = 'Por favor diligencie todos los campos';
       this.presentAlert(err,mensa);
