@@ -6,6 +6,7 @@ import { AlertController } from '@ionic/angular';
 import { auth } from 'firebase/app';
 import { userInfo } from 'os';
 import { Router } from '@angular/router';
+import { SaveUserService } from '../../services/save-user.service';
 
 @Component({
   selector: 'app-perfil',
@@ -31,7 +32,8 @@ export class PerfilPage implements OnInit {
     private firestore: AngularFirestore,
     public auth: AngularFireAuth,
     public alertController: AlertController,
-    private router: Router) { }
+    private router: Router,
+    public logUser : SaveUserService) { }
 
   ngOnInit() {
   }

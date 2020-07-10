@@ -19,32 +19,24 @@ export class CrearReportesPage implements OnInit {
   tipo: string;
   descripcion: string;
   categoria: string;
-  currentUser: any ;
+  currentUser: any = {} ;
   data: [];
   idUser: string;
 
   constructor(private firestore: AngularFirestore,
     public auth: AngularFireAuth,
-    public alertController: AlertController
+    public alertController: AlertController,
     ) { }
 
   ngOnInit() {
-    this.auth.currentUser.then((user)=>{
-      console.log(user.uid);
-      //this.idUser = user.uid;
-      /* this.firestore.collection('users').doc(user.uid).snapshotChanges().pipe( 
-        map( 
-          actions.map( a =>{ 
-          const data = a.payload.doc.data(); 
-          return this.currentUser=data;
-        })
-        ));    */
-        this.currentUser =  this.firestore.collection('users').doc(user.uid).snapshotChanges(); 
-               
-      console.log(this.currentUser);
+    /* this.auth.currentUser.then((user)=>{
+      this.currentUser =  this.firestore.collection('users').doc(user.uid).get().subscribe((value)=>{
+      this.currentUser = value.data();
+      });
     }).catch((error)=>{
-
-    })
+      console.log(error);
+    }) */
+    //console.log(this.logUser.currentUser);
   }
 
   async presentAlert(error,mensaje) {

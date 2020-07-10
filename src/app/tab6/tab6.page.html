@@ -1,33 +1,33 @@
+<ion-split-pane contentId="main">
+  <ion-menu contentId = "main">
 
-<ion-content [fullscreen]="true">
+    <ion-header>
+      <ion-toolbar color="primary">
+        <ion-title>Menu</ion-title>
+      </ion-toolbar>
+    </ion-header>
+    
+    <ion-content>
 
-  <!-- <ion-nav *ngIf= "auth.user | async as user; else login" [router]="/tabs/tab6/register">  
-  </ion-nav>
-  
-  <ng-template #login> -->
-  <div class="contenedor"> 
-  
-      <img src="../../assets/img/world.jpg">
-      <h1 class="titulo1"> Bienvenido a CovidApp </h1>
-      <p>Iniciar sesión</p>
-  
-      <form> 
-        <p>Correo electrónico</p>
-        <label> <ion-icon name="mail-outline"></ion-icon> <ion-text color="danger"> * </ion-text></label>
-        <input placeholder="usuario@ejemplo.com" type="email" name="email" required type="text" [(ngModel)]="loginEmail">
+      <ion-list>
+        <ion-menu-toggle auto-hide="false" *ngFor="let p of pages">   
+          <ion-item [routerLink]="p.url" routerDirection="root" [class.active-item]="selectedPath.startsWith(p.url)">
+            <ion-icon [name]="p.name"> </ion-icon>
+            <ion-label>
+              &nbsp; {{ p.title }}
+            </ion-label>      
+          </ion-item>
+        </ion-menu-toggle>
         
-        <p>Contraseña</p>
-        <label > <ion-icon name="key-outline"></ion-icon> <ion-text color="danger"> * </ion-text> </label>
-        <input placeholder="******" type="password" name="password" required="required" [(ngModel)]="loginPassword">
-        <br>
-        <br>
-        <ion-button class="botonlogin" expand="block" type="submit" (click)="loginEmailPassword()"> Entrar </ion-button> 
-      </form>
-      
-      
-      <ion-button class="botonlogin" color="danger" (click)="login()"> <ion-icon name="logo-google"></ion-icon> &nbsp; Iniciar sesión con Google</ion-button>
-      <!-- <ion-button color="primary" (click)="loginEmailPassword(email,password)" >Iniciar sesión</ion-button> -->
-      <ion-button class="botonlogin" color="primary" routerLink="/tabs/tab6/register" routerDirection="forward">Registrarse</ion-button>     
-  </div>
-  <!-- </ng-template> -->
-</ion-content>
+        <ion-item toggle (click)="logout()" class="close">
+          <ion-icon name="log-out-outline" ></ion-icon>
+          &nbsp;  Cerrar sesión
+        </ion-item> 
+      </ion-list>
+    </ion-content>
+
+  </ion-menu>
+  <ion-router-outlet id = "main"></ion-router-outlet>
+</ion-split-pane>
+
+

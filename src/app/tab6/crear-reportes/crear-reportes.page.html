@@ -35,7 +35,7 @@
 
     <ion-item>
       <ion-label> Correo <ion-text color="danger"> * </ion-text></ion-label>
-      <ion-input *ngIf="logUser.currentUser.displayName !== undefined" type="email" [disabled]="true" name="correo" required [(ngModel)]="currentUser.email"> </ion-input>
+      <ion-input *ngIf="logUser.currentUser.displayName !== undefined" type="email" [disabled]="true" name="correo" required [(ngModel)]="logUser.currentUser.email"> </ion-input>
       <ion-input *ngIf="logUser.currentUser.displayName == undefined" type="email" [disabled]="false" name="correo" required [(ngModel)]="correo"> </ion-input>
     </ion-item>
 
