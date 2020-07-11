@@ -65,7 +65,7 @@ export class Tab5Page {
                       fecha: `${this._date.getDate()} de ${this.meses[this._date.getMonth()]} de ${this._date.getFullYear()}`,
                       imagen: "https://www.minsalud.gov.co" + this._descripcion.find('img').attr('src'),
                       link: "https://www.minsalud.gov.co/Paginas/" + noticia.title + ".aspx",
-                      parrafo: this._descripcion.find('em').text() || this._descripcion.find('span').text(),
+                      parrafo: (this._descripcion.find('em').text() || this._descripcion.find('span').text()).trim().replace(/(-|– )/, "") ,
                     }
                   )
                 }
