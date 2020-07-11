@@ -30,7 +30,7 @@ export class PerfilPage implements OnInit {
   currentPassword: string;
   reports: any []= [];
   currentUser: any = {};
-  reportesUser: any = {};
+  reportesUser: any []= [];
 
   constructor(private storage: AngularFireStorage,
     private firestore: AngularFirestore,
@@ -38,25 +38,29 @@ export class PerfilPage implements OnInit {
     public alertController: AlertController,
     private router: Router,
     public logUser : SaveUserService) { }
-
+  
+    
   ngOnInit() {
-    this.firestore.collection('reports').valueChanges()
-    .subscribe((reports)=>{
-      this.reports = <any[]>reports;
-    });
-
     this.auth.currentUser.then((user)=>{
       this.currentUser = user;
     }).catch((error)=>{
       console.log(error);
     });
+    
   }
 
   consultar(){
+    this.change = false;
+    this.actu = false;
     this.firestore.collection('reports', ref => ref.where('id_user','==',this.currentUser.uid))
     .valueChanges().subscribe((reports)=>{
       this.reportesUser = reports;
     });
+  }
+
+  updatePerfil(){
+    this.change = false;
+    this.actu = true;
   }
 
   changeTrue(){
@@ -64,6 +68,13 @@ export class PerfilPage implements OnInit {
   }
   changeFalse(){
     this.change = false;
+  }
+
+  actuTrue(){
+    this.actu = true;
+  }
+  actuFalse(){
+    this.actu = false;
   }
 
   async presentAlert(error,mensaje) {
