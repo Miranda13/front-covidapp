@@ -8,10 +8,35 @@
 </ion-header>
 
 <ion-content>
-  <div *ngIf="actu==false && change==false"> 
-    <p> </p>
+  <div class="contenedor">
+    <ion-button class="botonActua" (click)="updatePerfil()" expand="block"> Actualizar datos de perfil </ion-button>
+    <ion-button class="botonActua" (click)="consultar()" expand="block"> Ver mis reportes </ion-button>
   </div>
-  <div *ngIf="change==true && actu==false else showUpdate">
+   
+  <div *ngIf="actu==false && change==false"> 
+    <div class="contenedor">
+      <!-- <h1> Estos son tus reportes: </h1> -->
+      <div *ngIf="reportesUser.length == 0 else showReports">
+        <p> No tienes reportes activos.</p>
+      </div>
+      <ng-template #showReports>
+        <ion-item class="reports" *ngFor='let report of reportesUser'>
+          <ion-label >
+            <h2>{{report.nombre}} </h2>
+            <h2>{{report.telefono}} </h2>
+            <h2>{{report.correo}} </h2>
+            <h2>{{report.ciudad}} </h2>
+            <h2>{{report.categoria}} </h2>
+            <p>{{report.descripcion}} </p>
+            <ion-button class="botonReports" (click)="changeTrue()" > Actualizar </ion-button> 
+            <ion-button class="botonReports" (click)="deleteReport()" color= "danger"> Archivar </ion-button>
+          </ion-label>
+        </ion-item>
+      </ng-template>
+    </div>
+  </div>
+
+  <div *ngIf="change==true && actu==true">
     <form class="contenedor">
       <ion-item>
         <ion-label > Contraseña actual<ion-text color="danger"> * </ion-text> </ion-label>
@@ -30,47 +55,60 @@
     </form>
   </div>
   
-  <ng-template #showUpdate>
-  <form class="contenedor"> 
-    <ion-item>
-      <ion-label> Nombre <ion-text color="danger"> * </ion-text></ion-label>
-      <ion-input type="text" name="name" required [(ngModel)]="name"> </ion-input>
-    </ion-item>
+  <div *ngIf="change==false && actu==true">
+    <form class="contenedor"> 
+      <ion-item>
+        <ion-label> Nombre <ion-text color="danger"> * </ion-text></ion-label>
+        <ion-input type="text" name="name" required [(ngModel)]="name"> </ion-input>
+      </ion-item>
 
-    <ion-item>
-      <ion-label> Correo <ion-text color="danger"> * </ion-text></ion-label>
-      <ion-input type="email" name="email" required [(ngModel)]="email"> </ion-input>
-    </ion-item>
+      <ion-item>
+        <ion-label> Correo <ion-text color="danger"> * </ion-text></ion-label>
+        <ion-input type="email" name="email" required [(ngModel)]="email"> </ion-input>
+      </ion-item>
 
-    <ion-item>
-      <ion-label> Telefono <ion-text color="danger"> * </ion-text></ion-label>
-      <ion-input type="tel" name="phone" required [(ngModel)]="phone" > </ion-input>
-    </ion-item>
-    <ion-item>
-      <ion-label > Edad <ion-text color="danger"> * </ion-text> </ion-label>
-      <ion-input type="number" name="age" required [(ngModel)]="age"> </ion-input>
-    </ion-item>
-    <ion-item>
-      <ion-label > Ciudad <ion-text color="danger"> * </ion-text> </ion-label>
-      <ion-input type="text" name="city" required [(ngModel)]="city"> </ion-input>
-    </ion-item>
-    <ion-item>
-      <ion-label > Barrio <ion-text color="danger"> * </ion-text> </ion-label>
-      <ion-input type="text" name="state" required [(ngModel)]="state"> </ion-input>
-    </ion-item>
-    <ion-item>
-      <ion-label > Dirección <ion-text color="danger"> * </ion-text> </ion-label>
-      <ion-input type="text" name="address" required [(ngModel)]="address"> </ion-input>
-    </ion-item>
-    <ion-item>
-      <ion-label > Ingresa tu contraseña <ion-text color="danger"> * </ion-text> </ion-label>
-      <ion-input type="password" name="password" required [(ngModel)]="password"> </ion-input>
-    </ion-item>
-    
-    <ion-button class="botonActua" type="submit" (click)="updateProfile()" expand="block" href="" routerDirection="forward"> Actualizar </ion-button>
-    <ion-button class="botonActua" (click)="changeTrue()" expand="block"> Cambiar contraseña </ion-button> 
-    
+      <ion-item>
+        <ion-label> Telefono <ion-text color="danger"> * </ion-text></ion-label>
+        <ion-input type="tel" name="phone" required [(ngModel)]="phone" > </ion-input>
+      </ion-item>
+      <ion-item>
+        <ion-label > Edad <ion-text color="danger"> * </ion-text> </ion-label>
+        <ion-input type="number" name="age" required [(ngModel)]="age"> </ion-input>
+      </ion-item>
+      <ion-item>
+        <ion-label > Ciudad <ion-text color="danger"> * </ion-text> </ion-label>
+        <ion-input type="text" name="city" required [(ngModel)]="city"> </ion-input>
+      </ion-item>
+      <ion-item>
+        <ion-label > Barrio <ion-text color="danger"> * </ion-text> </ion-label>
+        <ion-input type="text" name="state" required [(ngModel)]="state"> </ion-input>
+      </ion-item>
+      <ion-item>
+        <ion-label > Dirección <ion-text color="danger"> * </ion-text> </ion-label>
+        <ion-input type="text" name="address" required [(ngModel)]="address"> </ion-input>
+      </ion-item>
+      <ion-item>
+        <ion-label > Ingresa tu contraseña <ion-text color="danger"> * </ion-text> </ion-label>
+        <ion-input type="password" name="password" required [(ngModel)]="password"> </ion-input>
+      </ion-item>
+      
+      <ion-button class="botonActua" type="submit" (click)="updateProfile()" expand="block" href="" routerDirection="forward"> Actualizar </ion-button>
+      <ion-button class="botonActua" (click)="changeTrue()" expand="block"> Cambiar contraseña </ion-button> 
+      
     </form>
-    </ng-template>
+  </div>
+
+  <div *ngIf="actu == 0 && change == 1">
+    <div class="contenedor">
+      <p>Únicamente puedes actualizar la descripción de tu reporte, si quieres cambiar la categoría o tipo archiva 
+        tu reporte y crea uno nuevo. </p>
+      <ion-item>
+        <ion-label class="descripcion"> Descripción <ion-text color="danger"> * </ion-text> </ion-label>
+        <ion-textarea name="descripcion" required [(ngModel)]="descripcion"> </ion-textarea>
+      </ion-item>
+      <ion-button class="botonPass" (click)="updateReporte()" > Actualizar </ion-button> 
+      <ion-button class="botonPass" (click)="changeFalse()" color= "danger"> Cancelar </ion-button>
+    </div>
+  </div>
     
 </ion-content>
