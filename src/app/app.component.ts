@@ -34,22 +34,22 @@ export class AppComponent {
       this.splashScreen.hide();
     });
 
-    this.servicioGraficosTotales.totalData();
+    // this.servicioGraficosTotales.totalData();
 
-    setTimeout(() => {
-      this.servicioEdades.getAgeData();
-    }, 8000);
-
-
-    setTimeout(() => {
-      console.log("servicioGraficosDeptos 12000");
-      this.servicioGraficosDeptos.deptoData('Bogotá D.C.');
-    }, 12000);
+    // setTimeout(() => {
+    //   this.servicioEdades.getAgeData();
+    // }, 8000);
 
 
-    setTimeout(() => {
-      console.log("servicioEdadesDeptos 16000");
-      this.servicioEdadesDeptos.getAgeData('Bogotá D.C.');
-    }, 16000);
+    // setTimeout(() => {
+    //   console.log("servicioGraficosDeptos 12000");
+    //   this.servicioGraficosDeptos.deptoData('Bogotá D.C.');
+    // }, 12000);
+
+
+    // setTimeout(() => {
+    //   console.log("servicioEdadesDeptos 16000");
+    //   this.servicioEdadesDeptos.getAgeData('Bogotá D.C.');
+    // }, 16000);
   }
 }

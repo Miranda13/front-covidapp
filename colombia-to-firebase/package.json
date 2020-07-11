@@ -1,0 +1,15 @@
+{
+  "name": "ejemplo-bictia",
+  "version": "1.0.0",
+  "description": "Practica firebase bictia",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node index.js"
+  },
+  "author": "",
+  "license": "GPL-3.0-or-later",
+  "dependencies": {
+    "firebase-admin": "^8.13.0"
+  }
+}
