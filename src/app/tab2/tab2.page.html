@@ -1,8 +1,13 @@
 <ion-header [translucent]="true">
   <ion-toolbar>
     <ion-title>
-      Tab 2
+      Datos departamentales
     </ion-title>
+    <div id="seleccion" *ngIf="devWidth < 700">
+      <ion-select ok-text="Ok" cancel-text="Cancelar" [(ngModel)]="opcion"  #C (ionChange)="onChangeOpcion(C.value)">
+        <ion-select-option *ngFor="let _option of options" [value]="_option">{{_option}}</ion-select-option>
+      </ion-select>
+    </div>
   </ion-toolbar>
 </ion-header>
 
@@ -21,11 +26,17 @@
       [footerHeight]="50">
 
       <ngx-datatable-column prop = "Departamento" name="Departamento"></ngx-datatable-column>
-      <ngx-datatable-column prop = "Confirmados" name="Confirmados"></ngx-datatable-column>
-      <ngx-datatable-column prop = "Recuperados" name="Recuperados"></ngx-datatable-column>
-      <ngx-datatable-column prop = "Est.Moderado" name="Est.Moderado"></ngx-datatable-column>
-      <ngx-datatable-column prop = "Est.Grave" name="Est.Grave"></ngx-datatable-column>
-      <ngx-datatable-column prop = "Fallecidos" name="Fallecidos"></ngx-datatable-column>
+      <ngx-datatable-column *ngIf="devWidth > 700" prop = "Confirmados" name="Confirmados"></ngx-datatable-column>
+      <ngx-datatable-column *ngIf="devWidth > 700" prop = "Recuperados" name="Recuperados"></ngx-datatable-column>
+      <ngx-datatable-column *ngIf="devWidth > 700" prop = "Est.Moderado" name="Est.Moderado"></ngx-datatable-column>
+      <ngx-datatable-column *ngIf="devWidth > 700" prop = "Est.Grave" name="Est.Grave"></ngx-datatable-column>
+      <ngx-datatable-column *ngIf="devWidth > 700" prop = "Fallecidos" name="Fallecidos"></ngx-datatable-column>
+
+      <ngx-datatable-column *ngIf="(devWidth < 700) && (opcion === 'Confirmados')" prop = "Confirmados" name="Confirmados"></ngx-datatable-column>
+      <ngx-datatable-column *ngIf="(devWidth < 700) && (opcion === 'Recuperados')" prop = "Recuperados" name="Recuperados"></ngx-datatable-column>
+      <ngx-datatable-column *ngIf="(devWidth < 700) && (opcion === 'Est.Moderado')" prop = "Est.Moderado" name="Est.Moderado"></ngx-datatable-column>
+      <ngx-datatable-column *ngIf="(devWidth < 700) && (opcion === 'Est.Grave')" prop = "Est.Grave" name="Est.Grave"></ngx-datatable-column>
+      <ngx-datatable-column *ngIf="(devWidth < 700) && (opcion === 'Fallecidos')" prop = "Fallecidos" name="Fallecidos"></ngx-datatable-column>
 
     </ngx-datatable>
 
