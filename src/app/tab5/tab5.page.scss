@@ -8,14 +8,21 @@
     margin: 10px 20px;
 }
 
+h2{
+    font-weight: 600;
+    margin-bottom: 10px;
+}
+
 h3{
-    color: rgb(141, 141, 141);
+    white-space: normal !important;
+    color: rgb(99, 99, 99);
+
 }
 
 h4{
-    font-style: italic;
-    color: rgb(99, 99, 99);
-    font-weight: 900;
+    color: rgb(141, 141, 141);
+    font-weight: 700;
+    margin-top: 10px;
 }
 
 .boton-desactivado{
