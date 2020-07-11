@@ -42,9 +42,6 @@
   </ion-list>
 
   <ion-list *ngIf="noticiasColombiaActivadas">
-    <ion-item *ngIf="noticias_colombia == 0" id="spinner">
-      <ion-spinner *ngIf="noticias_colombia == 0" color="primary" name="crescent"></ion-spinner>
-    </ion-item>
     <ion-item *ngFor="let noticia of noticias_colombia | slice:0:10" (click)="irA(noticia.link)">
       <ion-avatar slot="start">
         <img src="{{noticia.imagen}}" alt="">
@@ -60,6 +57,9 @@
           Fecha: {{noticia.fecha}}
         </h4>
       </ion-label>
+    </ion-item>
+    <ion-item *ngIf="noticias_colombia == 0" id="spinner">
+      <ion-spinner *ngIf="noticias_colombia == 0" color="primary" name="crescent"></ion-spinner>
     </ion-item>
   </ion-list>
 

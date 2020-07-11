@@ -16,6 +16,7 @@ export class Tab5Page {
     ) {}
 
   private URL_oms = 'https://covid-noticias-oms.herokuapp.com/';
+  private URL_oms_2 = 'https://covid-noticias-oms-2.herokuapp.com/';
   private URL_colombia = 'https://www.minsalud.gov.co/_layouts/15/listfeed.aspx?List=%7BCC536310-0C15-4295-82EA-2FD45206219D%7D';
   private noticiasOmsActivadas = false;
   private noticiasColombiaActivadas = true;
@@ -40,11 +41,7 @@ export class Tab5Page {
     11: 'Diciembre'
   }
 
-  getNoticias(){
-
-    this.http.get<any>(this.URL_oms, 
-      { observe: "body"}).subscribe((data: any[]) => {this.noticias_oms = data;
-      });
+  async getNoticias(){
 
     const requestOptions: Object = {
       observe: "body",
@@ -75,6 +72,15 @@ export class Tab5Page {
               })
             });
           });   
+
+    await this.http.get(this.URL_oms, 
+      { observe: "body"}).toPromise().then((data: any[]) => {this.noticias_oms.push(...data);
+    });
+
+    
+    await this.http.get(this.URL_oms_2, 
+      { observe: "body"}).toPromise().then((data: any[]) => {this.noticias_oms.push(...data);
+    });
 
     console.log('noticias cargadas');
 
