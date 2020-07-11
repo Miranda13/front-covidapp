@@ -38,7 +38,6 @@ export class Tab2Page {
     await this.http.get('../../assets/deptos_data.json')
     .toPromise().then((res: any []) => {
       this.rows = res;
-      console.log(res)
     });
 
     const httpOptions = {
@@ -50,7 +49,6 @@ export class Tab2Page {
 
 
     for (let depto_info of this.rows){
-      // console.log(depto_info.Departamento);
       this.URL_confirmado = `https://www.datos.gov.co/resource/gt2j-8ykr.json?departamento=${depto_info.Departamento}&$limit=99999999999&$$app_token=2wez7eXZ52N8BLFYZExTeAbpI`
       this.URL_recuperado = `https://www.datos.gov.co/resource/gt2j-8ykr.json?departamento=${depto_info.Departamento}&$limit=99999999999&atenci_n=Recuperado&$$app_token=2wez7eXZ52N8BLFYZExTeAbpI`;
       this.URL_fallecido = `https://www.datos.gov.co/resource/gt2j-8ykr.json?departamento=${depto_info.Departamento}&$limit=99999999999&atenci_n=Fallecido&$$app_token=2wez7eXZ52N8BLFYZExTeAbpI`;
@@ -81,16 +79,15 @@ export class Tab2Page {
       await this.http.get(this.URL_fallecido, httpOptions).toPromise().then( (res: any[]) => {
         depto_info["Fallecidos"] = res.length;
       })
+
+      this.rows = [...this.rows];
     }
   }
 
 
 
   ngOnInit(){
-    setInterval((res) => {
-      this.rows = [...this.rows];
-    }, 1000);
-
     this.getDeptosTableData();
+    
   }
 }
