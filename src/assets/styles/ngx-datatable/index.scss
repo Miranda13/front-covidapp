@@ -312,4 +312,15 @@
       }
     }
   }
+
+  .hide{
+    display: block;
+}
+
+  @media (max-width: 700px){
+      .hide{
+          display: none; 
+      }
+  }
+
 }

@@ -1,6 +1,8 @@
 import { Component, ViewEncapsulation } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { resolve } from 'path';
+import { Platform } from '@ionic/angular';
+import { HostListener } from "@angular/core";
 
 @Component({
   selector: 'app-tab2',
@@ -9,12 +11,20 @@ import { resolve } from 'path';
   encapsulation: ViewEncapsulation.None
 })
 
+
 export class Tab2Page {
+  public devWidth = this.platform.width();
+
+  @HostListener('window:resize', ['$event'])
+  onResize(event) {
+    this.devWidth = event.target.innerWidth;
+  }
 
   private rows: any[];
 
   constructor(
     private http: HttpClient,
+    private platform: Platform,
   ) {
     this.columns = [
       { name: 'Departamento' },
@@ -32,13 +42,14 @@ export class Tab2Page {
   private URL_grave: string;
   private URL_fallecido: string;
   private columns;
-
+  private options = ["Confirmados", "Recuperados", "Est.Grave", "Est.Moderado", "Fallecidos"];
+  private opcion = "Confirmados";
 
   async getDeptosTableData(){
     await this.http.get('../../assets/deptos_data.json')
     .toPromise().then((res: any []) => {
       this.rows = res;
-    });
+    }); 
 
     const httpOptions = {
       headers: new HttpHeaders({ 
@@ -85,9 +96,14 @@ export class Tab2Page {
   }
 
 
+  onChangeOpcion(_opcion){
+    this.opcion = _opcion;
+  }
 
   ngOnInit(){
     this.getDeptosTableData();
     
   }
+
+
 }
