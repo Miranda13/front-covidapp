@@ -1,9 +1,21 @@
+.ngx-datatable{
+    .sortable .sort-btn:before {
+        font-family: data-table;
+        content: url(../../assets/icon/code-outline.svg);
+    }
+    .sortable .sort-btn.datatable-icon-down:before {
+        content: url(../../assets/icon/chevron-down-outline.svg);
+    }
+    .sortable .sort-btn.datatable-icon-up:before {
+        content: url(../../assets/icon/chevron-up-outline.svg);
+    }
+}
+
 span{
     font-size: 13px !important;
 }
 
-
-div#seleccion{
+.seleccion{
     float: right;
     margin-right: 20px;
     padding-right: 10px;
@@ -15,8 +27,10 @@ div#seleccion{
 }
 
 ion-title{
-    float:none;
+    float: left;
     margin-top: 0px;
+    margin-left: 5px;
+    text-align: left;
 }
 
 @media (max-width: 700px){
@@ -27,5 +41,7 @@ ion-title{
     ion-title{
         float:left;
         margin-top: 9px;
+        padding: 5px;
+        text-align: left;
     }
 }
