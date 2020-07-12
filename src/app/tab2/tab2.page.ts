@@ -26,7 +26,7 @@ export class Tab2Page {
   constructor(
     public http: HttpClient,
     public platform: Platform,
-    public firestore: AngularFirestore
+    public firestore: AngularFirestore,
   ) {
     this.columns = [
       { name: 'Departamento' },
@@ -52,6 +52,4 @@ export class Tab2Page {
       this.rows = [...<any[]>reports];
     });
   }
-
-
 }
