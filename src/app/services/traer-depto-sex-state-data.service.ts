@@ -3,6 +3,7 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { ChartDataSets, ChartOptions } from 'chart.js';
 import { Label } from 'ng2-charts';
 import * as pluginDataLabels from 'chartjs-plugin-datalabels';
+import { AngularFirestore } from '@angular/fire/firestore';
 
 @Injectable({
   providedIn: 'root'
@@ -11,8 +12,13 @@ export class TraerDeptoSexStateDataService {
 
   constructor( 
     private http: HttpClient,
-    ) { }
+    private firestore: AngularFirestore
+    ) { 
 
+    }
+  
+  public deptoFirebaseData;
+  public _depto;
   public URL_deptos: string;
   public deptoSexArr: number[] = [0, 0, 0, 0, 0, 0];
   public deptoStateArr: number[] = [0, 0, 0, 0];
@@ -93,95 +99,36 @@ export class TraerDeptoSexStateDataService {
   public deptoSexLabels: Label[] = ["Masculino", "Femenino"];
   public deptoStateLabels: Label[] = ["Recuperados", "Fallecidos", "Moderado", "Grave"];
 
-
   deptoData(_depto){
-    this.URL_deptos = `https://www.datos.gov.co/resource/gt2j-8ykr.json?departamento=${_depto}&$limit=99999999999&$$app_token=fwQbFGdMRazADrKP7dhnEZe4j`;
-    this.URL_Recuperados = `https://www.datos.gov.co/resource/gt2j-8ykr.json?departamento=${_depto}&$limit=99999999999&atenci_n=Recuperado&$$app_token=fwQbFGdMRazADrKP7dhnEZe4j`;
-    this.URL_Fallecidos = `https://www.datos.gov.co/resource/gt2j-8ykr.json?departamento=${_depto}&$limit=99999999999&atenci_n=Fallecido&$$app_token=fwQbFGdMRazADrKP7dhnEZe4j`;
-    this.URL_Grave = `https://www.datos.gov.co/resource/gt2j-8ykr.json?departamento=${_depto}&$limit=99999999999&estado=Grave&$$app_token=fwQbFGdMRazADrKP7dhnEZe4j`;
-    this.URL_Moderado = `https://www.datos.gov.co/resource/gt2j-8ykr.json?departamento=${_depto}&$limit=99999999999&estado=Moderado&$$app_token=fwQbFGdMRazADrKP7dhnEZe4j`;
+    this.firestore.collection('deptos', ref => ref.where('Departamento', '==', _depto))
+    .valueChanges()
+    .subscribe((doc) => {
+      this.deptoFirebaseData = doc["0"];
+      this.deptoStateArr = [];
+      this.deptoSexArr = [];
+
+      this.deptoSexArr = [
+        this.deptoFirebaseData["datos_extra"]["Confirmados"]["M"], 
+        this.deptoFirebaseData["datos_extra"]["Confirmados"]["F"],
+        this.deptoFirebaseData["datos_extra"]["Recuperado"]["M"],
+        this.deptoFirebaseData["datos_extra"]["Recuperado"]["F"],
+        this.deptoFirebaseData["datos_extra"]["Fallecido"]["M"],
+        this.deptoFirebaseData["datos_extra"]["Fallecido"]["F"],
+      ]
+  
+      this.actualizedeptoSexData(this.sexdeptoGraficaEstado);
+
+      this.deptoStateArr = [
+        this.deptoFirebaseData["Recuperados"],
+        this.deptoFirebaseData["Fallecidos"],
+        this.deptoFirebaseData["Est.Moderado"],
+        this.deptoFirebaseData["Est.Grave"],
+      ]
+
+      this.deptoStateData[0].data = this.deptoStateArr;
+
+    })
     
-    const httpOptions = {
-      headers: new HttpHeaders({ 
-        'Access-Control-Allow-Origin':'*',
-        'X-App-Token':'fwQbFGdMRazADrKP7dhnEZe4j',
-      })
-    };
-
-    // Confirmados
-    this.http.get(this.URL_deptos, httpOptions).subscribe((res: any[]) => {
-      this.deptoSexArr[0] = 0;
-      this.deptoSexArr[1] = 0;
-      for (let persona of res){
-        if (persona["sexo"] === "M"){
-          this.deptoSexArr[0] += 1;
-  
-        } else {
-          this.deptoSexArr[1] += 1;
-        }
-
-      }
-      this.actualizedeptoSexData(this.sexdeptoGraficaEstado);
-    })
-
-
-    this.http.get(this.URL_Recuperados, httpOptions).subscribe((res: any[]) => {
-      this.deptoSexArr[2] = 0;
-      this.deptoSexArr[3] = 0;
-      for (let persona of res){
-        if (persona["sexo"] === "M"){
-          this.deptoSexArr[2] += 1;
-  
-        } else {
-          this.deptoSexArr[3] += 1;
-        }
-      }
-      this.deptoRecuperado = this.deptoSexArr[2] + this.deptoSexArr[3];
-      this.deptoStateArr[0] = this.deptoRecuperado;
-      // this.deptoStateData[0].data[0] = this.deptoRecuperado;
-      this.deptoStateData[0].data = this.deptoStateArr;
-      // console.log("Recuperados: ", this.deptoStateArr[0]);
-      this.actualizedeptoSexData(this.sexdeptoGraficaEstado);
-    })
-
-
-    this.http.get(this.URL_Fallecidos, httpOptions).subscribe((res: any[]) => {
-      this.deptoSexArr[4] = 0;
-      this.deptoSexArr[5] = 0;
-      for (let persona of res){
-        if (persona["sexo"] === "M"){
-          this.deptoSexArr[4] += 1;
-
-  
-        } else {
-          this.deptoSexArr[5] += 1;
-        }
-      }
-
-      this.deptoFallecido = this.deptoSexArr[4] + this.deptoSexArr[5];
-      this.deptoStateArr[1] = this.deptoFallecido;
-      this.deptoStateData[0].data[1] = this.deptoFallecido;
-      // console.log("Fallecidos: ", this.deptoStateArr[1]);
-      this.actualizedeptoSexData(this.sexdeptoGraficaEstado);
-    });
-
-
-    this.http.get(this.URL_Moderado, httpOptions).subscribe((res: any[]) => {
-      this.deptoModerado = res.length;
-      this.deptoStateArr[2] = this.deptoModerado;
-      // this.deptoStateData[0].data[2] = this.deptoModerado;
-      this.deptoStateData[0].data = this.deptoStateArr;
-      // console.log("Moderado: ", this.deptoStateArr[2]);
-    });
-
-
-    this.http.get(this.URL_Grave, httpOptions).subscribe((res: any[]) => {
-      this.deptoGrave = res.length;
-      this.deptoStateArr[3] = this.deptoGrave;
-      // this.deptoStateData[0].data[3] = this.deptoGrave;
-      this.deptoStateData[0].data = this.deptoStateArr;
-      // console.log("Grave: ", this.deptoStateArr[3]);
-    });
   }
 
 
@@ -213,8 +160,6 @@ export class TraerDeptoSexStateDataService {
     this.deptoStateData[0].data = [0, 0, 0, 0];
     this.deptoStateData[0].data = this.deptoStateArr;
   }
-
-
   
 
 }

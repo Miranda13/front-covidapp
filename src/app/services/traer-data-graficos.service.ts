@@ -3,6 +3,7 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { ChartDataSets, ChartOptions } from 'chart.js';
 import { Label } from 'ng2-charts';
 import * as pluginDataLabels from 'chartjs-plugin-datalabels';
+import { AngularFirestore } from '@angular/fire/firestore';
 
 @Injectable({
   providedIn: 'root'
@@ -11,22 +12,13 @@ export class TraerDataGraficosService {
 
   constructor( 
     private http: HttpClient,
+    private firestore: AngularFirestore
     ) { }
 
-  public URL_Confirmados: string;
-  public URL_Recuperados: string;
-  public URL_Fallecidos: string;
-  public URL_Hospital: string;
-  public URL_Grave: string;
-  public URL_Moderado: string;  
   public totalSexArr: number[] = [0, 0, 0, 0, 0, 0];
   public totalStateArr: number[] = [0, 0, 0, 0];
 
   public totalSex: any = "Cargando...";
-  public totalRecuperado: number = 0;
-  public totalFallecido: number = 0;
-  public totalModerado: number = 0;
-  public totalGrave: number = 0;
   public sexTotalGraficaEstado = "Recuperado";
 
   public totalSexChartOptions: ChartOptions = {
@@ -63,7 +55,6 @@ export class TraerDataGraficosService {
   };
 
 
-  // URL = `https://www.datos.gov.co/resource/gt2j-8ykr.json?sexo=${this.sexo}&departamento=${this.depto}$limit=9999999999`;
   public totalChartPlugins = [pluginDataLabels];
   public totalSexChartColors = [
     {
@@ -90,92 +81,39 @@ export class TraerDataGraficosService {
       label: "Estado"
     }
   ]
-
+  
   public totalSexLabels: Label[] = ["Masculino", "Femenino"];
   public totalStateLabels: Label[] = ["Recuperados", "Fallecidos", "Moderado", "Grave"];
 
 
   totalData(){
-    this.URL_Confirmados = `https://www.datos.gov.co/resource/gt2j-8ykr.json?$limit=99999999999&$$app_token=HfpRjVYxQZ7DAKrrpe5hIjnoj`;
-    this.URL_Recuperados = `https://www.datos.gov.co/resource/gt2j-8ykr.json?$limit=99999999999&atenci_n=Recuperado&$$app_token=HfpRjVYxQZ7DAKrrpe5hIjnoj`;
-    this.URL_Fallecidos = `https://www.datos.gov.co/resource/gt2j-8ykr.json?$limit=99999999999&atenci_n=Fallecido&$$app_token=HfpRjVYxQZ7DAKrrpe5hIjnoj`;
-    this.URL_Grave = `https://www.datos.gov.co/resource/gt2j-8ykr.json?$limit=99999999999&estado=Grave&$$app_token=HfpRjVYxQZ7DAKrrpe5hIjnoj`;
-    this.URL_Moderado = `https://www.datos.gov.co/resource/gt2j-8ykr.json?$limit=99999999999&estado=Moderado&$$app_token=HfpRjVYxQZ7DAKrrpe5hIjnoj`;
-
-    const httpOptions = {
-      headers: new HttpHeaders({ 
-        'Access-Control-Allow-Origin':'*',
-        'X-App-Token':'HfpRjVYxQZ7DAKrrpe5hIjnoj',
-      })
-    };
-
-    // Confirmados
-    this.http.get(this.URL_Confirmados, httpOptions).subscribe((res: any[]) => {
-      for (let persona of res){
-        if (persona["sexo"] === "M"){
-          this.totalSexArr[0] += 1;
-  
-        } else {
-          this.totalSexArr[1] += 1;
-        }
-      }
-      this.actualizeTotalSexData(this.sexTotalGraficaEstado);
-    })
-
-
-    this.http.get(this.URL_Recuperados, httpOptions).subscribe((res: any[]) => {
-      for (let persona of res){
-        if (persona["sexo"] === "M"){
-          this.totalSexArr[2] += 1;
-  
-        } else {
-          this.totalSexArr[3] += 1;
-        }
-      }
-
-      this.totalRecuperado = this.totalSexArr[2] + this.totalSexArr[3];
-      this.totalStateArr[0] = this.totalRecuperado;
-      // this.totalStateData[0].data = this.totalStateArr;
-      this.actualizeTotalSexData(this.sexTotalGraficaEstado);
-    })
-
-
-    this.http.get(this.URL_Fallecidos, httpOptions).subscribe((res: any[]) => {
-      for (let persona of res){
-        if (persona["sexo"] === "M"){
-          this.totalSexArr[4] += 1;
-
-  
-        } else {
-          this.totalSexArr[5] += 1;
-        }
-      }
-
-
-      this.totalFallecido = this.totalSexArr[4] + this.totalSexArr[5];
-      this.totalStateArr[1] = this.totalFallecido;
-      // this.totalStateData[0].data[1] = this.totalFallecido;
+    this.firestore.collection('totales').doc('totales').valueChanges()
+    .subscribe((totales)=>{
+      this.totalSexArr = [
+        totales["Confirmados"]["M"], 
+        totales["Confirmados"]["F"],
+        totales["Recuperado"]["M"],
+        totales["Recuperado"]["F"],
+        totales["Fallecido"]["M"],
+        totales["Fallecido"]["F"],
+      ]
+      
       this.actualizeTotalSexData(this.sexTotalGraficaEstado);
 
-    });
+      this.totalStateArr = [
+        totales["Recuperado"]["M"] + totales["Recuperado"]["F"],
+        totales["Fallecido"]["M"] + totales["Fallecido"]["F"],
+        totales["Moderado"],
+        totales["Grave"],
+      ]
 
-
-    this.http.get(this.URL_Moderado, httpOptions).subscribe((res: any[]) => {
-      this.totalModerado = res.length;
-      this.totalStateArr[2] = this.totalModerado;
-      this.totalStateData[0].data = this.totalStateArr;
-    });
-
-
-    this.http.get(this.URL_Grave, httpOptions).subscribe((res: any[]) => {
-      this.totalGrave = res.length;
-      this.totalStateArr[3] = this.totalGrave;
       this.totalStateData[0].data = this.totalStateArr;
     });
   }
 
 
   public actualizeTotalSexData(tipo:string){
+    console.log(tipo);
     if (tipo === "Confirmados"){
       this.totalSexData[0].data = [this.totalSexArr[0], this.totalSexArr[1]];
       this.totalSex = this.totalSexArr[0] + this.totalSexArr[1];

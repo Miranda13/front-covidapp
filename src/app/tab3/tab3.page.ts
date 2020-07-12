@@ -11,7 +11,7 @@ import { BaseChartDirective } from 'ng2-charts';
   styleUrls: ['tab3.page.scss']
 })
 export class Tab3Page {
-
+  
   // @ViewChildren(BaseChartDirective) charts: QueryList<BaseChartDirective>;
   @ViewChildren(BaseChartDirective) charts: QueryList<BaseChartDirective>;
   constructor(
@@ -97,6 +97,7 @@ export class Tab3Page {
 
 
   onChangeDepto(_depto){
+    
     this.servicioGraficosDeptos.deptoData(_depto);
     this.servicioEdadesDeptos.getAgeData(_depto);
   }
