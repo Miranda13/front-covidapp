@@ -11,8 +11,8 @@ import { AngularFirestore } from '@angular/fire/firestore';
 export class TraerDataGraficosService {
 
   constructor( 
-    private http: HttpClient,
-    private firestore: AngularFirestore
+    public http: HttpClient,
+    public firestore: AngularFirestore
     ) { }
 
   public totalSexArr: number[] = [0, 0, 0, 0, 0, 0];

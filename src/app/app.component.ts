@@ -16,13 +16,13 @@ import { timeout } from 'rxjs/operators';
 export class AppComponent {
   
   constructor(
-    private platform: Platform,
-    private splashScreen: SplashScreen,
-    private statusBar: StatusBar,
-    private servicioGraficosTotales: TraerDataGraficosService,
-    private servicioGraficosDeptos: TraerDeptoSexStateDataService,
-    private servicioEdades: TraerDataEdadesService,
-    private servicioEdadesDeptos: TraerDataEdadesDeptosService,
+    public platform: Platform,
+    public splashScreen: SplashScreen,
+    public statusBar: StatusBar,
+    public servicioGraficosTotales: TraerDataGraficosService,
+    public servicioGraficosDeptos: TraerDeptoSexStateDataService,
+    public servicioEdades: TraerDataEdadesService,
+    public servicioEdadesDeptos: TraerDataEdadesDeptosService,
 
   ) {
     this.initializeApp();

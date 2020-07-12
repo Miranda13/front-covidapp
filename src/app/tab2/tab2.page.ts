@@ -21,12 +21,12 @@ export class Tab2Page {
     this.devWidth = event.target.innerWidth;
   }
 
-  private rows: any[];
+  public rows: any[];
 
   constructor(
-    private http: HttpClient,
-    private platform: Platform,
-    private firestore: AngularFirestore
+    public http: HttpClient,
+    public platform: Platform,
+    public firestore: AngularFirestore
   ) {
     this.columns = [
       { name: 'Departamento' },
@@ -38,9 +38,9 @@ export class Tab2Page {
     ];
   }
   
-  private columns;
-  private options = ["Confirmados", "Recuperados", "Est.Grave", "Est.Moderado", "Fallecidos"];
-  private opcion = "Confirmados";
+  public columns;
+  public options = ["Confirmados", "Recuperados", "Est.Grave", "Est.Moderado", "Fallecidos"];
+  public opcion = "Confirmados";
 
   onChangeOpcion(_opcion){
     this.opcion = _opcion;
