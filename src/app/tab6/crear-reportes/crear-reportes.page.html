@@ -14,40 +14,36 @@
   <p class="message"> En esta sección puedes crear reportes para informarle a los demás usuarios que estas buscando ayuda y 
     puedan contactarte, solamente elige en tipo "solicitud" y la categoría de los elementos que requieres. </p>
   
-  <form class="formulario" > 
-    <!-- <ion-item>
-      <ion-label> Nombre <ion-text color="danger"> * </ion-text></ion-label>
-      <ion-input *ngIf="currentUser !== undefined && currentUser.displayName !== undefined" [disabled]="true" type="text" name="nombre" required [(ngModel)]="currentUser.displayName"> </ion-input>
-      <ion-input *ngIf="currentUser == undefined " [disabled]="false" type="text" name="nombre" required [(ngModel)]="nombre"> </ion-input>
-    </ion-item> 
-
-    <ion-item>
-      <ion-label> Correo <ion-text color="danger"> * </ion-text></ion-label>
-      <ion-input *ngIf="currentUser !== undefined && currentUser.email !== undefined" type="email" [disabled]="true" name="correo" required [(ngModel)]="currentUser.email"> </ion-input>
-      <ion-input *ngIf="currentUser == undefined" type="email" [disabled]="false" name="correo" required [(ngModel)]="correo"> </ion-input>
-    </ion-item> -->
-
+  <form class="formulario" >
     <ion-item>
       <ion-label> Nombre <ion-text color="danger"> * </ion-text></ion-label>
-      <ion-input *ngIf="currentUser.displayName !== undefined" [disabled]="true" type="text" name="nombre" required [(ngModel)]="currentUser.displayName"> </ion-input>
-      <ion-input *ngIf="currentUser.displayName == undefined " [disabled]="false" type="text" name="nombre" required [(ngModel)]="nombre"> </ion-input>
+      <ion-input *ngIf="logUser.current.displayName !== undefined" [disabled]="true" type="text" name="nombre" required [(ngModel)]="logUser.current.displayName"> </ion-input>
+      <ion-input *ngIf="logUser.current.displayName == undefined " [disabled]="false" type="text" name="nombre" required [(ngModel)]="nombre"> </ion-input>
     </ion-item>
 
     <ion-item>
       <ion-label> Correo <ion-text color="danger"> * </ion-text></ion-label>
-      <ion-input *ngIf="currentUser.email !== undefined" type="email" [disabled]="true" name="correo" required [(ngModel)]="currentUser.email"> </ion-input>
-      <ion-input *ngIf="currentUser.email == undefined" type="email" [disabled]="false" name="correo" required [(ngModel)]="correo"> </ion-input>
+      <ion-input *ngIf="logUser.current.email !== undefined" type="email" [disabled]="true" name="correo" required [(ngModel)]="logUser.current.email"> </ion-input>
+      <ion-input *ngIf="logUser.current.email == undefined" type="email" [disabled]="false" name="correo" required [(ngModel)]="correo"> </ion-input>
     </ion-item>
 
     <ion-item>
       <ion-label> Telefono <ion-text color="danger"> * </ion-text></ion-label>
-      <ion-input *ngIf="currentUser.phone !== undefined" type="tel" [disabled]="true" maxlength="10" name="telefono" required [(ngModel)]="currentUser.phone" > </ion-input>
-      <ion-input *ngIf="currentUser.phone == undefined" type="tel"  [disabled]="false" maxlength="10" name="telefono" required [(ngModel)]="telefono" > </ion-input>
+      <ion-input *ngIf="logUser.current.phone !== undefined" type="tel" [disabled]="true" maxlength="10" name="telefono" required [(ngModel)]="logUser.current.phone" > </ion-input>
+      <ion-input *ngIf="logUser.current.phone == undefined" type="tel"  [disabled]="false" maxlength="10" name="telefono" required [(ngModel)]="telefono" > </ion-input>
     </ion-item>
     <ion-item>
       <ion-label > Ciudad <ion-text color="danger"> * </ion-text> </ion-label>
-      <ion-input *ngIf="currentUser.city !== undefined" type="text" [disabled]="true" name="ciudad" required [(ngModel)]="currentUser.city"> </ion-input>
-      <ion-input *ngIf="currentUser.city == undefined" type="text" [disabled]="false" name="ciudad" required [(ngModel)]="ciudad"> </ion-input>
+      <ion-input *ngIf="logUser.current.city !== undefined" type="text" [disabled]="true" name="ciudad" required [(ngModel)]="logUser.current.city"> </ion-input>
+      <ion-input *ngIf="logUser.current.city == undefined" type="text" [disabled]="false" name="ciudad" required [(ngModel)]="ciudad"> </ion-input>
+    </ion-item>
+    
+    <ion-item required>
+      <ion-label > Tipo de reporte <ion-text color="danger"> * </ion-text> </ion-label>
+      <ion-select name= "tipo" [(ngModel)]="tipo" >       
+        <ion-select-option value= "donacion" > Donación </ion-select-option>
+        <ion-select-option value= "solicitud"> Solicitud </ion-select-option>
+      </ion-select>
     </ion-item>
     
     <ion-item required>
@@ -58,14 +54,6 @@
         <ion-select-option value= "Vestimenta"> Vestimenta </ion-select-option>
         <ion-select-option value= "Dinero"> Dinero </ion-select-option>
         <ion-select-option value= "Enseres"> Enseres </ion-select-option>
-      </ion-select>
-    </ion-item>
-
-    <ion-item required>
-      <ion-label > Tipo de reporte <ion-text color="danger"> * </ion-text> </ion-label>
-      <ion-select name= "tipo" [(ngModel)]="tipo" >       
-        <ion-select-option value= "donacion" > Donación </ion-select-option>
-        <ion-select-option value= "solicitud"> Solicitud </ion-select-option>
       </ion-select>
     </ion-item>
 

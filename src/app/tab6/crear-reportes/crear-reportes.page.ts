@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 import { AngularFirestore, AngularFirestoreCollection  } from '@angular/fire/firestore';
 import { AngularFireAuth } from '@angular/fire/auth';
 import { auth } from 'firebase/app';
@@ -11,7 +11,7 @@ import { map } from 'rxjs/operators';
   templateUrl: './crear-reportes.page.html',
   styleUrls: ['./crear-reportes.page.scss'],
 })
-export class CrearReportesPage implements OnInit {
+export class CrearReportesPage {
 
   nombre: string;
   telefono: string;
@@ -20,7 +20,7 @@ export class CrearReportesPage implements OnInit {
   tipo: string;
   descripcion: string;
   categoria: string;
-  currentUser: any = {} ;
+  //currentUser: any = {} ;
 
   constructor(private firestore: AngularFirestore,
     public auth: AngularFireAuth,
@@ -34,8 +34,7 @@ export class CrearReportesPage implements OnInit {
         this.firestore.collection('users').doc(user.uid)
         .get()
         .subscribe((value)=>{
-          this.currentUser = value.data();
-          console.log(this.currentUser);
+          this.logUser.current = value.data();
         })
       }
     }).catch((error)=>{
@@ -56,10 +55,10 @@ export class CrearReportesPage implements OnInit {
 
   createReport(){
     
-    this.nombre = this.nombre === undefined ? this.currentUser.displayName : this.nombre;
-    this.correo = this.correo === undefined ? this.currentUser.email : this.correo;
-    this.ciudad = this.ciudad === undefined ? this.currentUser.city : this.ciudad;
-    this.telefono = this.telefono === undefined ? this.currentUser.phone : this.telefono;
+    this.nombre = this.nombre === undefined ? this.logUser.current.displayName : this.nombre;
+    this.correo = this.correo === undefined ? this.logUser.current.email : this.correo;
+    this.ciudad = this.ciudad === undefined ? this.logUser.current.city : this.ciudad;
+    this.telefono = this.telefono === undefined ? this.logUser.current.phone : this.telefono;
 
     if(this.nombre !== undefined && this.nombre!== ''
     && this.categoria !== undefined && this.categoria!== ''
@@ -79,7 +78,8 @@ export class CrearReportesPage implements OnInit {
           nombre: this.nombre,
           telefono: this.telefono,
           ciudad: this.ciudad,
-          descripcion: this.descripcion
+          descripcion: this.descripcion,
+          archivado: false,
         });     
         let err = 'Crear reporte';
         let mensa = 'Has creado un reporte de: '+this.tipo+' nuevo exitosamente';

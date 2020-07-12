@@ -12,31 +12,36 @@
     <ion-button class="botonActua" (click)="updatePerfil()" expand="block"> Actualizar datos de perfil </ion-button>
     <ion-button class="botonActua" (click)="consultar()" expand="block"> Ver mis reportes </ion-button>
   </div>
-   
-  <div *ngIf="actu==false && change==false"> 
+  <div *ngIf="report.change==undefined && report.actu==undefined">
+
+  </div>   
+  <div *ngIf="report.actu==false && report.change==false"> 
     <div class="contenedor">
       <!-- <h1> Estos son tus reportes: </h1> -->
-      <div *ngIf="reportesUser.length == 0 else showReports">
-        <p> No tienes reportes activos.</p>
+      <div *ngIf="report.reportsUser.length == 0 || allActive == true else showReports">
+        <p> No tienes reportes activos.</p> 
       </div>
       <ng-template #showReports>
-        <ion-item class="reports" *ngFor='let report of reportesUser'>
-          <ion-label >
-            <h2>{{report.nombre}} </h2>
-            <h2>{{report.telefono}} </h2>
-            <h2>{{report.correo}} </h2>
-            <h2>{{report.ciudad}} </h2>
-            <h2>{{report.categoria}} </h2>
-            <p>{{report.descripcion}} </p>
-            <ion-button class="botonReports" (click)="changeTrue()" > Actualizar </ion-button> 
-            <ion-button class="botonReports" (click)="deleteReport()" color= "danger"> Archivar </ion-button>
-          </ion-label>
-        </ion-item>
+        <div class="reports" *ngFor='let report of report.reportsUser'> 
+          <ion-item *ngIf="report.data.archivado == false">
+            <ion-label >
+              <h2>{{report.data.nombre}} </h2>
+              <h2>{{report.data.telefono}} </h2>
+              <h2>{{report.data.correo}} </h2>
+              <h2>{{report.data.ciudad}} </h2>
+              <h2>{{report.data.tipo}} </h2>
+              <h2>{{report.data.categoria}} </h2>
+              <p>{{report.data.descripcion}} </p>
+              <ion-button class="botonReports" (click)="changeTrue(); updateReporte(report.id)"> Actualizar </ion-button> 
+              <ion-button class="botonReports" (click)="deleteReport(); updateReporte(report.id)" color= "danger"> Eliminar </ion-button>
+            </ion-label>
+          </ion-item>
+        </div>
       </ng-template>
     </div>
   </div>
 
-  <div *ngIf="change==true && actu==true">
+  <div *ngIf="report.change==true && report.actu==true">
     <form class="contenedor">
       <ion-item>
         <ion-label > Contraseña actual<ion-text color="danger"> * </ion-text> </ion-label>
@@ -55,7 +60,7 @@
     </form>
   </div>
   
-  <div *ngIf="change==false && actu==true">
+  <div *ngIf="report.change==false && report.actu==true">
     <form class="contenedor"> 
       <ion-item>
         <ion-label> Nombre <ion-text color="danger"> * </ion-text></ion-label>
@@ -98,7 +103,7 @@
     </form>
   </div>
 
-  <div *ngIf="actu == 0 && change == 1">
+  <div *ngIf="report.actu == 0 && report.change == 1">
     <div class="contenedor">
       <p>Únicamente puedes actualizar la descripción de tu reporte, si quieres cambiar la categoría o tipo archiva 
         tu reporte y crea uno nuevo. </p>
@@ -106,7 +111,7 @@
         <ion-label class="descripcion"> Descripción <ion-text color="danger"> * </ion-text> </ion-label>
         <ion-textarea name="descripcion" required [(ngModel)]="descripcion"> </ion-textarea>
       </ion-item>
-      <ion-button class="botonPass" (click)="updateReporte()" > Actualizar </ion-button> 
+      <ion-button class="botonPass" (click)="updateReport()" > Actualizar </ion-button> 
       <ion-button class="botonPass" (click)="changeFalse()" color= "danger"> Cancelar </ion-button>
     </div>
   </div>

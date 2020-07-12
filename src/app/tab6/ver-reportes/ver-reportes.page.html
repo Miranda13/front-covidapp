@@ -59,7 +59,7 @@
  <!--  </ng-template> -->
  <ion-list >
    <div class="reports" *ngFor='let report of reports'>
-    <ion-item *ngIf="report.tipo == filtro && report.categoria == filtroCat" > 
+    <ion-item *ngIf="report.tipo == filtro && report.categoria == filtroCat && report.archivado == false " > 
       <ion-label >
         <h2>{{report.nombre}} </h2>
         <h2>{{report.telefono}} </h2>

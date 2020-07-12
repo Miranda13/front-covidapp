@@ -28,7 +28,17 @@ export class LoginPage implements OnInit {
 
   
   ngOnInit(){
-    
+    this.auth.currentUser.then((user)=>{
+      if(user !== null){
+        this.firestore.collection('users').doc(user.uid)
+        .get()
+        .subscribe((value)=>{
+          this.logUser.current = value.data();
+        })
+      }
+    }).catch((error)=>{
+      console.log(error);
+    });
   }
   
   async presentAlert(error,mensaje) {
@@ -46,11 +56,11 @@ export class LoginPage implements OnInit {
    
   login() {
     this.auth.signInWithPopup(new auth.GoogleAuthProvider()).then((user)=>{
+      this.ngOnInit();
       this.firestore.collection('users').doc(user.user.uid)
       .set({email: user.user.email, 
-        displayName:user.user.displayName })     
-      this.ngOnInit();
-      this.goToPrincipal();
+        displayName:user.user.displayName }) 
+        this.goToPrincipal();    
     });
   }
 
@@ -72,6 +82,7 @@ export class LoginPage implements OnInit {
       let mensa = 'Por favor digite correo y contraseña';
       this.presentAlert(err,mensa);
     }
+
   }
 
   goToPrincipal(){
@@ -81,6 +92,5 @@ export class LoginPage implements OnInit {
   logout() {
     this.auth.signOut();
   }
-
 
 }

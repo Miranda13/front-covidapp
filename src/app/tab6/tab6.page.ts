@@ -40,7 +40,7 @@ export class Tab6Page{
   constructor(private router: Router,
     private firestore: AngularFirestore,
     public auth: AngularFireAuth,
-    public logUser : SaveUserService) {
+    public report : SaveUserService) {
     this.router.events.subscribe((event: RouterEvent)=>{
       if (event && event.url){
         this.selectedPath = event.url;
@@ -54,7 +54,11 @@ export class Tab6Page{
 
 
   logout() {
-    this.logUser.currentUser = null;
+    this.report.reportsUser= [];
+    this.report.user = undefined;
+    this.report.actu = undefined;
+    this.report.change = undefined;
+    this.report.current = undefined;
     this.auth.signOut();
     this.goToPrincipal();
   }
