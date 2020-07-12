@@ -15,10 +15,10 @@ export class Tab3Page {
   // @ViewChildren(BaseChartDirective) charts: QueryList<BaseChartDirective>;
   @ViewChildren(BaseChartDirective) charts: QueryList<BaseChartDirective>;
   constructor(
-    private servicioGraficosTotales: TraerDataGraficosService,
-    private servicioGraficosDeptos: TraerDeptoSexStateDataService,
-    private servicioEdades: TraerDataEdadesService,
-    private servicioEdadesDeptos: TraerDataEdadesDeptosService,
+    public servicioGraficosTotales: TraerDataGraficosService,
+    public servicioGraficosDeptos: TraerDeptoSexStateDataService,
+    public servicioEdades: TraerDataEdadesService,
+    public servicioEdadesDeptos: TraerDataEdadesDeptosService,
   ) {
     this.servicioGraficosTotales.actualizeTotalSexData('Confirmados');
 
@@ -29,7 +29,7 @@ export class Tab3Page {
     }, 1000);
   }
   
-  private deptosList = [
+  public deptosList = [
     "Bogotá D.C.",
     "Barranquilla D.E.",
     "Atlántico",

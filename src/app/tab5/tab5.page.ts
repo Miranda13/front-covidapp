@@ -12,21 +12,21 @@ import * as $ from "jquery";
 export class Tab5Page {
 
   constructor(
-    private http: HttpClient
+    public http: HttpClient
     ) {}
 
-  private URL_oms = 'https://covid-noticias-oms.herokuapp.com/';
-  private URL_oms_2 = 'https://covid-noticias-oms-2.herokuapp.com/';
-  private URL_colombia = 'https://www.minsalud.gov.co/_layouts/15/listfeed.aspx?List=%7BCC536310-0C15-4295-82EA-2FD45206219D%7D';
-  private noticiasOmsActivadas = false;
-  private noticiasColombiaActivadas = true;
-  private _descripcion;
-  private _date;
+  public URL_oms = 'https://covid-noticias-oms.herokuapp.com/';
+  public URL_oms_2 = 'https://covid-noticias-oms-2.herokuapp.com/';
+  public URL_colombia = 'https://www.minsalud.gov.co/_layouts/15/listfeed.aspx?List=%7BCC536310-0C15-4295-82EA-2FD45206219D%7D';
+  public noticiasOmsActivadas = false;
+  public noticiasColombiaActivadas = true;
+  public _descripcion;
+  public _date;
   
-  private noticias_colombia = [];
-  private noticias_oms = [];
+  public noticias_colombia = [];
+  public noticias_oms = [];
 
-  private meses = {
+  public meses = {
     0: 'Enero',
     1: 'Febrero',
     2: 'Marzo',
