@@ -37,7 +37,7 @@ export class Tab2Page {
       { name: 'Fallecidos' }
     ];
   }
-
+  
   private columns;
   private options = ["Confirmados", "Recuperados", "Est.Grave", "Est.Moderado", "Fallecidos"];
   private opcion = "Confirmados";

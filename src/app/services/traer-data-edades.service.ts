@@ -3,6 +3,7 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { ChartDataSets, ChartOptions } from 'chart.js';
 import { Label } from 'ng2-charts';
 import * as pluginDataLabels from 'chartjs-plugin-datalabels';
+import { AngularFirestore } from '@angular/fire/firestore';
 
 @Injectable({
   providedIn: 'root'
@@ -11,6 +12,7 @@ export class TraerDataEdadesService {
 
   constructor(
     private http: HttpClient,
+    private firestore: AngularFirestore
   ) { }
 
   public ageTotalGraficaEstado = "Recuperado";
@@ -63,29 +65,36 @@ export class TraerDataEdadesService {
   public totalAgeLabels: Label[] = ["10-29", "30-49", "50-69", "70-89", "90-99"];
 
   public getAgeData(){
-    [[10, 29], [30, 49], [50, 69], [70, 89], [90, 99]].forEach((edad, indx) => {
-      const httpOptions = {
-        headers: new HttpHeaders({ 
-          'Access-Control-Allow-Origin':'*',
-          'X-App-Token':'aqPLGyt6aQBu9LNwyPf3PjGM8',
-        })
-      };
-  
-      this.http.get(`https://www.datos.gov.co/resource/gt2j-8ykr.json?$where=edad%20between%20%27${edad[0]}%27%20and%20%27${edad[1]}%27&$limit=999999999&$$app_token=aqPLGyt6aQBu9LNwyPf3PjGM8`, httpOptions).subscribe((res: any[]) => {
-        for (let persona of res){
-          if (persona["atenci_n"] === "Recuperado"){
-            this.totalAgeArr[1][indx] += 1;
 
-          } else if(persona["atenci_n"] === "Fallecido"){
-            this.totalAgeArr[2][indx] += 1;
-
-          }
-        }
-        this.totalAgeArr[0][indx] = this.totalAgeArr[1][indx] + this.totalAgeArr[2][indx];
-        this.totalAgeData[0].data[indx] = this.totalAgeArr[1][indx];
-      });
-    })
-    // }
+    this.firestore.collection('totales').doc('totales').valueChanges()
+    .subscribe((totales)=>{
+      this.totalAgeArr = [];
+      this.totalAgeArr = [
+        [
+          totales["Confirmados"]["10-29"], 
+          totales["Confirmados"]["30-49"], 
+          totales["Confirmados"]["50-69"], 
+          totales["Confirmados"]["70-89"], 
+          totales["Confirmados"]["90-99"], 
+        ],
+        [
+          totales["Recuperado"]["10-29"], 
+          totales["Recuperado"]["30-49"], 
+          totales["Recuperado"]["50-69"], 
+          totales["Recuperado"]["70-89"], 
+          totales["Recuperado"]["90-99"], 
+        ],
+        [
+          totales["Fallecido"]["10-29"], 
+          totales["Fallecido"]["30-49"], 
+          totales["Fallecido"]["50-69"], 
+          totales["Fallecido"]["70-89"], 
+          totales["Fallecido"]["90-99"], 
+        ],
+      ] 
+      
+      this.actualizeTotalAgeData(this.ageTotalGraficaEstado);
+    });
   }
 
 
