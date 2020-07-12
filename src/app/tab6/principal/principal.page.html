@@ -9,7 +9,7 @@
 
 <ion-content>
   <div class="contenedor">
-    <div *ngIf="auth.user | async as user; else showLogin">
+    <div *ngIf="auth.user | async as user">
       <h1> Hola {{ user.displayName }}!</h1>
     </div>
     <ion-grid>
