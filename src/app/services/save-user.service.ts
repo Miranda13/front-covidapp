@@ -8,5 +8,9 @@ export class SaveUserService {
   constructor() {
   }
 
-  public currentUser : any = {};
+  public reportsUser: any [] = [];
+  public user: any = {};
+  public change: boolean;
+  public actu: boolean;
+  public current: any = {};
 }

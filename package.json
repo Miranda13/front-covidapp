@@ -31,6 +31,7 @@
     "@types/xml2js": "^0.4.5",
     "chart.js": "^2.9.3",
     "chartjs-plugin-datalabels": "^0.7.0",
+    "cordova-sqlite-storage": "^5.0.0",
     "firebase": "^7.15.5",
     "ionic-angular": "3.9.10",
     "jquery": "^3.5.1",
@@ -71,5 +72,10 @@
     "inquirer-autocomplete-prompt": "^1.0.1",
     "open": "^7.0.3"
   },
-  "description": "An Ionic project"
+  "description": "An Ionic project",
+  "cordova": {
+    "plugins": {
+      "cordova-sqlite-storage": {}
+    }
+  }
 }
