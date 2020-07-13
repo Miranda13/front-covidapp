@@ -1,17 +1,131 @@
+
 <ion-header [translucent]="true">
-  <ion-toolbar>
+  <ion-toolbar color="primary">
     <ion-title>
-      Tab 1
+      CovidApp
     </ion-title>
   </ion-toolbar>
 </ion-header>
 
 <ion-content [fullscreen]="true">
-  <ion-header collapse="condense">
-    <ion-toolbar>
-      <ion-title size="large">Datos</ion-title>
-    </ion-toolbar>
-  </ion-header>
-  
-  <app-explore-container name="Tab 1 page"></app-explore-container>
+  <ion-grid>
+    <h1 class="mainAplication"> ¡Hola! te presento nuestro menú </h1>
+    <ion-row class="row">
+      <!-- <div class="sabiasQue"> --> 
+      <ion-col routerLink="/tabs/tab2" routerDirection="forward">
+        <div class="articuloAplication">
+          <ion-icon class="iconApli" name="book-outline"></ion-icon>
+          <h1 class="titleAplication"> <b> Datos </b> </h1>
+          <p class="infoAplication">
+            Ver la cantidad de personas infectadas, recuperadas y fallecidas por departamentos de Colombia.
+          </p>
+        </div>
+      </ion-col>
+      <ion-col routerLink="/tabs/tab5" routerDirection="forward">
+        <div class="articuloAplication">
+          <ion-icon class="iconApli" name="newspaper-outline"></ion-icon>
+          <h1 class="titleAplication"> <b> Noticias </b> </h1>
+          <p class="infoAplication">
+            Ver las últimas noticias oficiales de la OMS y el ministerio de salud de Colombia.
+          </p>
+        </div>
+      </ion-col>
+      <ion-col routerLink="/tabs/tab3" routerDirection="forward">
+        <div class="articuloAplication">
+          <ion-icon class="iconApli" name="bar-chart-outline"></ion-icon>
+          <h1 class="titleAplication"> <b> Gráficas</b> </h1>
+          <p class="infoAplication">
+            Encuentra las gráficas de distribución de infectados, recuperados y fallecidos según su edad
+            y género para Colombia y por departamentos.
+          </p>
+        </div>
+      </ion-col>
+      <ion-col routerLink="/tabs/tab4" routerDirection="forward">
+        <div class="articuloAplication">
+          <ion-icon class="iconApli" name="bandage-outline"></ion-icon>
+          <h1 class="titleAplication"> <b> Consejos </b> </h1> 
+          <p class="infoAplication">
+            Te compartimos algunos consejos oficiales de la Organización Mundial de la Salud OMS. Medidas
+            preventivas para que cuides de ti y los tuyos. 
+          </p>
+        </div>
+      </ion-col>
+      <ion-col routerLink="/tabs/tab6" routerDirection="forward">
+        <div class="articuloAplication">
+          <ion-icon class="iconApli" name="documents-outline"></ion-icon>
+          <h1 class="titleAplication"> <b> Red de ayuda </b> </h1>
+          <p class="infoAplication">
+            Registráte para participar de nuestra red de ayuda, mira los reportes para brindar o recibir
+            ayuda en Colombia durante la pandemia.
+          </p>
+        </div>
+      </ion-col>
+    </ion-row>
+      <!-- <div class="sabiasQue"> --> 
+      
+  </ion-grid>
+  <!-- Html de estilos --> 
+  <ion-grid>
+    <h1 class="mainSabias"> Datos generales del Covid </h1>
+    <ion-row class="row">
+      <ion-col sizeXs="12" sizeSm="6" sizeLg="4" sizeXl="3">
+        <div class="articulo">
+          <ion-icon class="iconSabias" name="warning-outline"></ion-icon>
+          <h1 class="titleSabias"> <b> ¿Qué es un coronavirus? </b> </h1>
+        <p class="info">
+          Según la Organización Mundial de la Salud OMS
+        los coronavirus son una extensa familia de virus que pueden causar enfermedades tanto en animales como en humanos. 
+        En los humanos, se sabe que varios coronavirus causan infecciones respiratorias que pueden ir desde el resfriado 
+        común hasta enfermedades más graves como el síndrome respiratorio de Oriente Medio (MERS) y el síndrome 
+        respiratorio agudo severo (SRAS). El coronavirus que se ha descubierto más recientemente causa la enfermedad por 
+        coronavirus COVID-19. 
+        <a href="https://www.who.int/es/emergencies/diseases/novel-coronavirus-2019/advice-for-public/q-a-coronaviruses" target="_blank"> ver más </a>
+        </p>     
+        </div>
+      </ion-col>
+      <ion-col sizeXs="12" sizeSm="6" sizeLg="4" sizeXl="3">
+        <div class="articulo">
+          <ion-icon class="iconSabias" name="flask-outline"></ion-icon>
+          <h1 class="titleSabias"> <b> ¿Qué es la COVID‑19? </b> </h1>
+          <p class="info"> 
+            Según la Organización Mundial de la Salud OMS
+            la COVID‑19 es la enfermedad infecciosa causada por el coronavirus que se ha descubierto más recientemente. 
+            Tanto este nuevo virus como la enfermedad que provoca eran desconocidos antes de que estallara el brote en
+             Wuhan (China) en diciembre de 2019. Actualmente la COVID‑19 es una pandemia que afecta a muchos países de todo el mundo.
+            <a href="https://www.who.int/es/emergencies/diseases/novel-coronavirus-2019/advice-for-public/q-a-coronaviruses" target="_blank"> ver más </a>
+            </p>
+        </div>
+      </ion-col>
+      <ion-col sizeXs="12" sizeSm="6" sizeLg="4" sizeXl="3">
+        <div class="articulo">
+          <ion-icon class="iconSabias" name="pulse-outline"></ion-icon>
+          <h1 class="titleSabias"> <b> ¿Cuáles son los síntomas del COVID-19? </b> </h1>
+        <p class="info">
+          Según la Organización Mundial de la Salud OMS
+          los síntomas más habituales de la COVID-19 son la fiebre, la tos seca y el cansancio. Otros síntomas menos 
+          frecuentes que afectan a algunos pacientes son los dolores y molestias, la congestión nasal, el dolor de 
+          cabeza, la conjuntivitis, el dolor de garganta, la diarrea, la pérdida del gusto o el olfato y las erupciones 
+          cutáneas o cambios de color en los dedos de las manos o los pies. Estos síntomas suelen ser leves y comienzan 
+          gradualmente. Algunas de las personas infectadas solo presentan síntomas levísimos.
+          <a href="https://www.who.int/es/emergencies/diseases/novel-coronavirus-2019/advice-for-public/q-a-coronaviruses" target="_blank"> ver más </a>
+        </p>
+        </div>
+      </ion-col>
+      <ion-col sizeXs="12" sizeSm="6" sizeLg="4" sizeXl="3">
+        <div class="articulo">
+          <ion-icon class="iconSabias" name="trail-sign-outline"></ion-icon>
+          <h1 class="titleSabias"> <b>¿Cómo se propaga la COVID-19? </b> </h1>
+          <p class="info">
+            Según la Organización Mundial de la Salud OMS
+            una persona puede contraer la COVID‑19 por contacto con otra que esté infectada por el virus. La enfermedad se propaga principalmente de persona 
+            a persona a través de las gotículas que salen despedidas de la nariz o la boca de una persona infectada al toser, estornudar o hablar. Estas 
+            gotículas son relativamente pesadas, no llegan muy lejos y caen rápidamente al suelo. Una persona puede contraer la COVID‑19 si inhala las gotículas 
+            procedentes de una persona infectada por el virus.
+            <a href="https://www.who.int/es/emergencies/diseases/novel-coronavirus-2019/advice-for-public/q-a-coronaviruses" target="_blank"> ver más </a>
+          </p>
+        </div>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+
 </ion-content>

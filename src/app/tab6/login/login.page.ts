@@ -59,8 +59,8 @@ export class LoginPage implements OnInit {
       this.ngOnInit();
       this.firestore.collection('users').doc(user.user.uid)
       .set({email: user.user.email, 
-        displayName:user.user.displayName }) 
-        this.goToPrincipal();    
+        displayName:user.user.displayName }); 
+      this.goToPrincipal();    
     });
   }
 
