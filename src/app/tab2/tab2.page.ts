@@ -12,7 +12,6 @@ import { AngularFirestore } from '@angular/fire/firestore';
   encapsulation: ViewEncapsulation.None
 })
 
-
 export class Tab2Page {
   public devWidth = this.platform.width();
 
@@ -27,21 +26,10 @@ export class Tab2Page {
     public http: HttpClient,
     public platform: Platform,
     public firestore: AngularFirestore,
-  ) {
-    /* 
-    this.columns = [
-      { name: 'Departamento' },
-      { name: 'Confirmados' },
-      { name: 'Recuperados' },
-      { name: 'Est.Moderado' },
-      { name: 'Est.Grave' },
-      { name: 'Fallecidos' }
-    ]; */
-  }
+  ) {  }
   
-  //public columns;
-  public options = ["Confirmados", "Recuperados", "Est.Grave", "Est.Moderado", "Fallecidos"];
-  public opcion = "Confirmados";
+  options = ["Confirmados", "Recuperados", "Est.Grave", "Est.Moderado", "Fallecidos"];
+  opcion = "Confirmados";
 
   reorderable = true; 
 

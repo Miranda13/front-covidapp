@@ -1,5 +1,5 @@
 <ion-header [translucent]="true">
-  <ion-toolbar>
+  <ion-toolbar color="primary">
     <div class="contenedor">
     <ion-title>
       Datos departamentales
@@ -16,22 +16,7 @@
 <ion-content>
   
   <div class="ion-padding">
-    <!-- Theme classes dark, material, bootstrap -->
-    <!-- <ngx-datatable 
-      class="bootstrap"
-      [limit]="100" 
-      [rows]="rows" 
-      [rowHeight]="50" 
-      [columns]="columns"
-      [columnMode]="'force'" 
-      [sortType]="'multi'" 
-      [headerHeight]="50" 
-<<<<<<< HEAD
-      [footerHeight]="50"
-      >
-
-=======
-      [footerHeight]="50"> -->
+  
     <ngx-datatable 
       class="bootstrap"
       [limit]="100" 
@@ -45,7 +30,6 @@
       [footerHeight]="50">
       
       
->>>>>>> table
       <ngx-datatable-column prop = "Departamento" name="Departamento"></ngx-datatable-column>
       <ngx-datatable-column *ngIf="devWidth > 700" prop = "Confirmados" name="Confirmados"></ngx-datatable-column>
       <ngx-datatable-column *ngIf="devWidth > 700" prop = "Recuperados" name="Recuperados"></ngx-datatable-column>
