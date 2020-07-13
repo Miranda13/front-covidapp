@@ -9,71 +9,78 @@
     </ion-segment-button>
   </ion-segment>
 
-  <div id="total-view" *ngIf="tabGraficas == 'Totales'">
-    <div class="bloque-grafica">
-      <canvas class="grafico" baseChart 
-      [datasets]="servicioGraficosTotales.totalSexData" 
-      [labels]="servicioGraficosTotales.totalSexLabels"
-      [chartType]="'pie'"
-      [colors]="servicioGraficosTotales.totalSexChartColors"
-      [legend]="true"
-      [options]="servicioGraficosTotales.totalSexChartOptions"
-      [plugins]="servicioGraficosTotales.totalChartPlugins"
-      >
-      </canvas>
-      <h3>Total: {{servicioGraficosTotales.totalSex}}</h3>
-    
-      <ion-segment (ionChange)="sexTotalTipoGrafica($event)" [(ngModel)]="servicioGraficosTotales.sexTotalGraficaEstado">
-        <ion-segment-button value="Confirmados">
-          <ion-label>Confirmados</ion-label>
-        </ion-segment-button>
-        <ion-segment-button value="Recuperado">
-          <ion-label>Recuperados</ion-label>
-        </ion-segment-button>
-        <ion-segment-button value="Fallecido">
-          <ion-label>Fallecidos</ion-label>
-        </ion-segment-button>
-      </ion-segment>
-    </div>
-  
-    <div class="bloque-grafica">
+  <div class="totales" id="total-view" *ngIf="tabGraficas == 'Totales'">
+    <ion-grid>
+      <ion-row>
+        <canvas class="grafico" baseChart 
+        [datasets]="servicioGraficosTotales.totalSexData" 
+        [labels]="servicioGraficosTotales.totalSexLabels"
+        [chartType]="'pie'"
+        width="100%"
+        height="100%"
+        [colors]="servicioGraficosTotales.totalSexChartColors"
+        [legend]="true"
+        [options]="servicioGraficosTotales.totalSexChartOptions"
+        [plugins]="servicioGraficosTotales.totalChartPlugins"
+        >
+        </canvas>
+        <h3>Total: {{servicioGraficosTotales.totalSex}}</h3>
+      </ion-row>
+
+      <ion-row>
+        <ion-segment (ionChange)="sexTotalTipoGrafica($event)" [(ngModel)]="servicioGraficosTotales.sexTotalGraficaEstado">
+          <ion-segment-button value="Confirmados">
+            <ion-label>Confirmados</ion-label>
+          </ion-segment-button>
+          <ion-segment-button value="Recuperado">
+            <ion-label>Recuperados</ion-label>
+          </ion-segment-button>
+          <ion-segment-button value="Fallecido">
+            <ion-label>Fallecidos</ion-label>
+          </ion-segment-button>
+        </ion-segment>
+      </ion-row>
       <canvas class="grafico" baseChart 
       [datasets]="servicioGraficosTotales.totalStateData"
       [labels]="servicioGraficosTotales.totalStateLabels"
       [chartType]="'doughnut'"
+      width="100%"
+      height="100%"
       [colors]="servicioGraficosTotales.totalStateChartColors"
       [legend]="true"
       [options]="servicioGraficosTotales.totalStateChartOptions"
       [plugins]="servicioGraficosTotales.totalChartPlugins"
       >
       </canvas>
-    </div>
-
-    <div class="bloque-grafica">
-      <canvas class="grafico" baseChart 
+      <ion-row>
+        <canvas class="grafico" baseChart 
       [datasets]="servicioEdades.totalAgeData"
       [labels]="servicioEdades.totalAgeLabels"
       [chartType]="'bar'"
+      width="100%"
+      height="100%"
       [colors]="servicioEdades.totalAgeChartColors"
       [legend]="true"
       [options]="servicioEdades.totalAgeChartOptions"
       [plugins]="servicioEdades.totalChartPlugins"
       >
-      </canvas>
+      </canvas>  
+      </ion-row>
 
-      <ion-segment (ionChange)="ageTotalTipoGrafica($event)" [(ngModel)]="servicioEdades.ageTotalGraficaEstado">
-        <ion-segment-button value="Confirmados">
-          <ion-label>Confirmados</ion-label>
-        </ion-segment-button>
-        <ion-segment-button value="Recuperado">
-          <ion-label>Recuperados</ion-label>
-        </ion-segment-button>
-        <ion-segment-button value="Fallecido">
-          <ion-label>Fallecidos</ion-label>
-        </ion-segment-button>
-      </ion-segment>
-    </div>
-
+      <ion-row>
+        <ion-segment (ionChange)="ageTotalTipoGrafica($event)" [(ngModel)]="servicioEdades.ageTotalGraficaEstado">
+          <ion-segment-button value="Confirmados">
+            <ion-label>Confirmados</ion-label>
+          </ion-segment-button>
+          <ion-segment-button value="Recuperado">
+            <ion-label>Recuperados</ion-label>
+          </ion-segment-button>
+          <ion-segment-button value="Fallecido">
+            <ion-label>Fallecidos</ion-label>
+          </ion-segment-button>
+        </ion-segment>
+      </ion-row>
+    </ion-grid>
   </div>
 
 
@@ -88,13 +95,14 @@
       </ion-item>
     </ion-item-divider>
 
-
-
-    <div class="bloque-grafica">
-      <canvas class="grafico" baseChart 
+    <ion-grid>
+      <ion-row>
+        <canvas class="grafico" baseChart 
       [datasets]="servicioGraficosDeptos.deptoSexData"
       [labels]="servicioGraficosDeptos.deptoSexLabels"
       [chartType]="'pie'"
+      width="100%"
+      height="100%"
       [colors]="servicioGraficosDeptos.deptoSexChartColors"
       [legend]="true"
       [options]="servicioGraficosDeptos.deptoSexChartOptions"
@@ -102,56 +110,61 @@
       >
       </canvas>
       <h3>Total: {{servicioGraficosDeptos.deptoSex}}</h3>
-    
-      <ion-segment (ionChange)="sexDeptoTipoGrafica($event)" [(ngModel)]="servicioGraficosDeptos.sexdeptoGraficaEstado">
-        <ion-segment-button value="Confirmados">
-          <ion-label>Confirmados</ion-label>
-        </ion-segment-button>
-        <ion-segment-button value="Recuperado">
-          <ion-label>Recuperados</ion-label>
-        </ion-segment-button>
-        <ion-segment-button value="Fallecido">
-          <ion-label>Fallecidos</ion-label>
-        </ion-segment-button>
-      </ion-segment>
-    </div>
+      </ion-row>
+      <ion-row>
+        <ion-segment (ionChange)="sexDeptoTipoGrafica($event)" [(ngModel)]="servicioGraficosDeptos.sexdeptoGraficaEstado">
+          <ion-segment-button value="Confirmados">
+            <ion-label>Confirmados</ion-label>
+          </ion-segment-button>
+          <ion-segment-button value="Recuperado">
+            <ion-label>Recuperados</ion-label>
+          </ion-segment-button>
+          <ion-segment-button value="Fallecido">
+            <ion-label>Fallecidos</ion-label>
+          </ion-segment-button>
+        </ion-segment>
+      </ion-row>
 
-    <div class="bloque-grafica">
-      <canvas class="grafico" baseChart 
+      <ion-row>
+        <canvas class="grafico" baseChart 
       [datasets]="servicioGraficosDeptos.deptoStateData"
       [labels]="servicioGraficosDeptos.deptoStateLabels"
       [chartType]="'doughnut'"
+      width="100%"
+      height="100%"
       [colors]="servicioGraficosDeptos.deptoStateChartColors"
       [legend]="true"
       [options]="servicioGraficosDeptos.deptoStateChartOptions"
       [plugins]="servicioGraficosDeptos.deptoChartPlugins"
       >
       </canvas>
-    </div>
-
-    <div class="bloque-grafica">
+      </ion-row>
       <canvas class="grafico" baseChart 
       [datasets]="servicioEdadesDeptos.deptoAgeData"
       [labels]="servicioEdadesDeptos.deptoAgeLabels"
       [chartType]="'bar'"
+      width="100%"
+      height="100%"
       [colors]="servicioEdadesDeptos.deptoAgeChartColors"
       [legend]="true"
       [options]="servicioEdadesDeptos.deptoAgeChartOptions"
       [plugins]="servicioEdadesDeptos.deptoChartPlugins"
       >
       </canvas>
-
-      <ion-segment (ionChange)="ageDeptoTipoGrafica($event)" [(ngModel)]="servicioEdadesDeptos.agedeptoGraficaEstado">
-        <ion-segment-button value="Confirmados">
-          <ion-label>Confirmados</ion-label>
-        </ion-segment-button>
-        <ion-segment-button value="Recuperado">
-          <ion-label>Recuperados</ion-label>
-        </ion-segment-button>
-        <ion-segment-button value="Fallecido">
-          <ion-label>Fallecidos</ion-label>
-        </ion-segment-button>
-      </ion-segment>
-    </div>
-  </div>
+      <ion-row>
+        <ion-segment (ionChange)="ageDeptoTipoGrafica($event)" [(ngModel)]="servicioEdadesDeptos.agedeptoGraficaEstado">
+          <ion-segment-button value="Confirmados">
+            <ion-label>Confirmados</ion-label>
+          </ion-segment-button>
+          <ion-segment-button value="Recuperado">
+            <ion-label>Recuperados</ion-label>
+          </ion-segment-button>
+          <ion-segment-button value="Fallecido">
+            <ion-label>Fallecidos</ion-label>
+          </ion-segment-button>
+        </ion-segment>
+      </ion-row>
+    </ion-grid>
+      
+  </div> 
 </ion-content>

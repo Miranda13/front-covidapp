@@ -8,13 +8,30 @@ ion-select {
   /* Set full opacity on the placeholder */
   --placeholder-opacity: 1;
 }
+/* .grafico{
+  min-width: 400px;
+} */
+
+ion-row{
+  width: 100%;
+}
+.totales{
+  margin:20px;
+}
+
+.grafico{
+  padding: 0px 0px 0px 0px;
+  margin: 0px 0px 0px 0px;
+}
 
 ion-segment{
   width: 100%;
 }
 
-.bloque-grafica{
-  position: relative;
+.bloque-grafica1{
+  padding: 0px 0px 0px 0px;
+  margin: 0px 0px 0px 0px;
+  margin-bottom: 0px 0px 0px 0px;
 }
 
 #spinner{
@@ -33,9 +50,9 @@ ion-spinner{
   position:sticky;
 }
 
-.bloque-grafica{
-  margin: 0px 30px;
-  margin-bottom: 70px;
+.bloque-grafica{  
+  margin: 0px 0px;
+  /* margin-bottom: 70px; */
 }
 
 ion-item-divider{
@@ -45,4 +62,19 @@ ion-item-divider{
 
 ion-item{
   width: 100%;
+}
+
+@media screen and (min-width:576px){
+  .consejo-box{
+      max-width: 250px;
+      height: 250px;
+  }
+}
+
+
+@media screen and (min-width:960px){
+  .consejo-box{
+      max-width: 300px;
+      height: 300px;
+  }
 }
