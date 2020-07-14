@@ -3,6 +3,7 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 import * as xml2js from "xml2js";
 import { NewsRss } from '../news-rss';
 import * as $ from "jquery";
+import { AngularFirestore } from '@angular/fire/firestore';
 
 @Component({
   selector: 'app-tab5',
@@ -12,7 +13,8 @@ import * as $ from "jquery";
 export class Tab5Page {
 
   constructor(
-    public http: HttpClient
+    public http: HttpClient,
+    public firestore: AngularFirestore
     ) {}
 
   public URL_oms = 'https://covid-noticias-oms.herokuapp.com/';
@@ -73,17 +75,10 @@ export class Tab5Page {
             });
           });   
 
-    await this.http.get(this.URL_oms, 
-      { observe: "body"}).toPromise().then((data: any[]) => {this.noticias_oms.push(...data);
+    this.firestore.collection('noticias_oms').valueChanges()
+    .subscribe((noticias)=>{
+      this.noticias_oms.push(...noticias);
     });
-
-    
-    await this.http.get(this.URL_oms_2, 
-      { observe: "body"}).toPromise().then((data: any[]) => {this.noticias_oms.push(...data);
-    });
-
-    console.log('noticias cargadas');
-
   }
 
 
