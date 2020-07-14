@@ -33,7 +33,8 @@ export class TraerDataEdadesService {
     responsive: true,
     title:{
       display: true,
-      text:"Casos por categoria de edad"
+      text:"Casos por categoría de edad",
+      fontSize: 20,
     },
     legend: {
       position: 'bottom',

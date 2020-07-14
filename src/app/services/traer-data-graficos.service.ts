@@ -25,7 +25,8 @@ export class TraerDataGraficosService {
     responsive: true,
     title:{
       display: true,
-      text:"Casos por sexo"
+      text:"Casos por sexo",
+      fontSize: 20,
     },
     legend: {
       position: 'top',
@@ -42,7 +43,8 @@ export class TraerDataGraficosService {
     responsive: true,
     title:{
       display: true,
-      text:"Casos por condición"
+      text:"Casos por condición",
+      fontSize: 20,
     },
     legend: {
       position: 'top',
