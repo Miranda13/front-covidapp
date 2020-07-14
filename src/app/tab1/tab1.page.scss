@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css2?family=Acme&display=swap');
+
 .articulo{
     max-width: 350px;
     max-height: auto;
@@ -20,6 +22,8 @@
 
 .mainAplication, .mainSabias{
     margin: 30px;
+    font-family: 'Acme', sans-serif;
+    font-size: 30px;
 }
 
 .articuloAplication{
@@ -38,12 +42,19 @@
     align-items: center;
 }
 
-ion-grid{
-    background: #eeeeee !important;
+.todo{
+    background: url(../../assets/img/fondo3.jpg);
+    background-repeat: no-repeat;
+    background-size: cover;
 }
-
+/* linear-gradient(rgba(255,255,255,.5), rgba(255,255,255,.5)),  */
 .row{
     margin: 20px;
+}
+
+.row1{
+    padding: 20px;
+    margin: 0px;
 }
 
 .iconSabias, .iconApli{
