@@ -12,6 +12,7 @@
     flex-direction: column;
     justify-content: space-between;
     align-items: center;
+    background-color: white;
 }
 
 .articuloAplication:hover {
@@ -23,6 +24,7 @@
     margin: 30px;
     font-family: 'Acme', sans-serif;
     font-size: 30px;
+    color: black;
 }
 
 .articuloAplication{
@@ -38,6 +40,7 @@
     flex-direction: column;
     justify-content: space-between;
     align-items: center;
+    background-color: white;
 }
 
 .todo{
@@ -58,6 +61,7 @@
 .iconSabias, .iconApli{
     font-size: 40px;
     padding: 10px 0px 0px 0px;
+    color: black;
 }
 
 .iconApli{
@@ -68,10 +72,12 @@
     font-size: 18px;
     padding: 0px 15px 0px 15px;
     margin: 0px 0px 0px 0px;
+    color: black;
 }
 
 .info, .infoAplication{
     padding: 0px 15px 0px 15px;
     text-align: justify;;
+    color: black;
 }
 
