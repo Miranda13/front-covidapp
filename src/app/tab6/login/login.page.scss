@@ -17,6 +17,7 @@ img{
     flex-direction: column;
     height: 100%;
     text-align: center;
+    /* background: linear-gradient(rgba(255,255,255,.5), rgba(255,255,255,.5)),url('../../../assets/img/world.jpg'); */
     background-image: url('../../../assets/img/world.jpg');
     background-repeat: no-repeat;
     background-size: cover;
@@ -67,3 +68,4 @@ img{
 .form{
     margin-top: 15px;
 }
+
