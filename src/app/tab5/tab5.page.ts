@@ -50,34 +50,16 @@ export class Tab5Page {
       responseType: "text"
     };
 
-    this.http.
-          get<any>(this.URL_colombia, requestOptions).
-          subscribe((data) => {
-            let parseString = xml2js.parseString;
-
-            parseString(data, (err, result: NewsRss) => {
-              result.rss.channel[0].item.forEach((noticia) => {
-                this._descripcion = $(noticia.description.toString());
-                this._date = new Date(noticia.pubDate.toString());
-
-                if (noticia.title.toString().indexOf('-') != -1) {
-                  this.noticias_colombia.push(
-                    {
-                      titulo: noticia.title.toString().replace(/-/g, ' ').replace(/(ano)/g, 'año'),
-                      fecha: `${this._date.getDate()} de ${this.meses[this._date.getMonth()]} de ${this._date.getFullYear()}`,
-                      imagen: "https://www.minsalud.gov.co" + this._descripcion.find('img').attr('src'),
-                      link: "https://www.minsalud.gov.co/Paginas/" + noticia.title + ".aspx",
-                      parrafo: (this._descripcion.find('em').text() || this._descripcion.find('span').text()).trim().replace(/(-|– )/, "") ,
-                    }
-                  )
-                }
-              })
-            });
-          });   
 
     this.firestore.collection('noticias_oms').valueChanges()
     .subscribe((noticias)=>{
       this.noticias_oms.push(...noticias);
+    });
+
+
+    this.firestore.collection('noticias_colombia').valueChanges()
+    .subscribe((noticias)=>{
+      this.noticias_colombia.push(...noticias);
     });
   }
 
