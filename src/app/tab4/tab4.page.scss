@@ -14,11 +14,13 @@ ion-col{
     flex-direction: column;
     justify-content: space-around;
     align-items: center;
+    background-color: white;
 }
 
 .consejo-titulo{
     font-weight: 700;
     margin: 4px 10px;
+    color: black;
 }
 
 .consejo-imagen{
@@ -34,6 +36,7 @@ img{
     font-size: 12px;
     margin: 0 10px;
     margin-bottom: 10px;
+    color: black;
 }
 
 
