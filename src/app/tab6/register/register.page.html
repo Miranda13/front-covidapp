@@ -1,8 +1,6 @@
 <ion-header>
-  <ion-toolbar>
-    <ion-buttons slot="start">
-      <ion-back-button text="Registrarse" icon="close"></ion-back-button>
-    </ion-buttons>
+  <ion-toolbar color="primary">
+    <ion-title> Registrarse </ion-title>
   </ion-toolbar>
 </ion-header> 
 
@@ -20,7 +18,7 @@
 
     <ion-item>
       <ion-label> Teléfono <ion-text color="danger"> * </ion-text></ion-label>
-      <ion-input type="tel" name="phone" required [(ngModel)]="phone" > </ion-input>
+      <ion-input maxlength="10" type="tel" name="phone" required [(ngModel)]="phone" > </ion-input>
     </ion-item>
     <ion-item>
       <ion-label > Edad <ion-text color="danger"> * </ion-text> </ion-label>
@@ -46,15 +44,15 @@
       <ion-label > Repetir contraseña <ion-text color="danger"> * </ion-text> </ion-label>
       <ion-input type="password" name="password2" required [(ngModel)]="password2"> </ion-input>
     </ion-item>
-    <ion-item>
+    <!-- <ion-item>
       <ion-input type="reset"> </ion-input>
-    </ion-item>
+    </ion-item> -->
     
-    <ion-button type="submit" (click)="signUp()" expand="block" href="" routerDirection="forward"> Registro </ion-button> 
-
+    <ion-button class="botonlogin" type="submit" (click)="signUp()" expand="block" href="" routerDirection="forward"> Registro </ion-button> 
+    <ion-button class="botonlogin" color="danger" expand="block" routerLink="/tabs/login" routerDirection="forward"> Cancelar </ion-button> 
     </form>
 
-  <ion-input type="file" (change)="uploadFile($event)">  </ion-input>
+  <!-- <ion-input type="file" (change)="uploadFile($event)">  </ion-input> --> 
 
   
 </ion-content>

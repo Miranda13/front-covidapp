@@ -20,6 +20,7 @@
 
   
   <ion-list *ngIf="noticiasOmsActivadas">
+  <div class="cuerpo"> 
     <ion-item *ngIf="noticias_oms.length === 0" id="spinner">
       <ion-spinner *ngIf="noticias_oms.length === 0" color="primary" name="crescent"></ion-spinner>
     </ion-item>
@@ -39,9 +40,11 @@
         </h4>
       </ion-label>
     </ion-item>
+  </div>
   </ion-list>
 
   <ion-list *ngIf="noticiasColombiaActivadas">
+    <div class="cuerpo"> 
     <ion-item *ngFor="let noticia of noticias_colombia | slice:0:10" (click)="irA(noticia.link)">
       <ion-avatar slot="start">
         <img src="{{noticia.imagen}}" alt="">
@@ -61,6 +64,7 @@
     <ion-item *ngIf="noticias_colombia.length === 0" id="spinner">
       <ion-spinner *ngIf="noticias_colombia.length === 0" color="primary" name="crescent"></ion-spinner>
     </ion-item>
+    </div>
   </ion-list>
 
 
