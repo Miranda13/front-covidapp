@@ -9,9 +9,9 @@
     </ion-segment-button>
   </ion-segment>
 
-  <div class="totales" id="total-view" *ngIf="tabGraficas == 'Totales'">
-    <ion-grid>
-      <ion-row>
+  <div id="total-view" *ngIf="tabGraficas == 'Totales'">
+    <ion-grid class="graficasBloque">
+      <ion-row class="graficas">
         <canvas class="grafico" baseChart 
         [datasets]="servicioGraficosTotales.totalSexData" 
         [labels]="servicioGraficosTotales.totalSexLabels"
@@ -40,7 +40,9 @@
           </ion-segment-button>
         </ion-segment>
       </ion-row>
-      <canvas class="grafico" baseChart 
+
+      <ion-row class="graficas">
+        <canvas class="grafico" baseChart 
       [datasets]="servicioGraficosTotales.totalStateData"
       [labels]="servicioGraficosTotales.totalStateLabels"
       [chartType]="'doughnut'"
@@ -52,7 +54,9 @@
       [plugins]="servicioGraficosTotales.totalChartPlugins"
       >
       </canvas>
-      <ion-row>
+      </ion-row>
+      
+      <ion-row class="graficas">
         <canvas class="grafico" baseChart 
       [datasets]="servicioEdades.totalAgeData"
       [labels]="servicioEdades.totalAgeLabels"
@@ -96,7 +100,7 @@
     </ion-item-divider>
 
     <ion-grid>
-      <ion-row>
+      <ion-row class="graficas">
         <canvas class="grafico" baseChart 
       [datasets]="servicioGraficosDeptos.deptoSexData"
       [labels]="servicioGraficosDeptos.deptoSexLabels"
@@ -111,6 +115,7 @@
       </canvas>
       <h3>Total: {{servicioGraficosDeptos.deptoSex}}</h3>
       </ion-row>
+
       <ion-row>
         <ion-segment (ionChange)="sexDeptoTipoGrafica($event)" [(ngModel)]="servicioGraficosDeptos.sexdeptoGraficaEstado">
           <ion-segment-button value="Confirmados">
@@ -125,7 +130,7 @@
         </ion-segment>
       </ion-row>
 
-      <ion-row>
+      <ion-row class="graficas">
         <canvas class="grafico" baseChart 
       [datasets]="servicioGraficosDeptos.deptoStateData"
       [labels]="servicioGraficosDeptos.deptoStateLabels"
@@ -139,6 +144,8 @@
       >
       </canvas>
       </ion-row>
+      
+    <ion-row class="graficas">
       <canvas class="grafico" baseChart 
       [datasets]="servicioEdadesDeptos.deptoAgeData"
       [labels]="servicioEdadesDeptos.deptoAgeLabels"
@@ -151,6 +158,8 @@
       [plugins]="servicioEdadesDeptos.deptoChartPlugins"
       >
       </canvas>
+    </ion-row>
+
       <ion-row>
         <ion-segment (ionChange)="ageDeptoTipoGrafica($event)" [(ngModel)]="servicioEdadesDeptos.agedeptoGraficaEstado">
           <ion-segment-button value="Confirmados">
@@ -164,6 +173,7 @@
           </ion-segment-button>
         </ion-segment>
       </ion-row>
+
     </ion-grid>
       
   </div> 
