@@ -12,7 +12,7 @@
     flex-direction: column;
     justify-content: space-between;
     align-items: center;
-    background-color: white;
+    /* background-color: white;  */
 }
 
 .articuloAplication:hover {
@@ -24,7 +24,7 @@
     margin: 30px;
     font-family: 'Acme', sans-serif;
     font-size: 30px;
-    color: black;
+    /* color: black; */
 }
 
 .articuloAplication{
@@ -40,14 +40,14 @@
     flex-direction: column;
     justify-content: space-between;
     align-items: center;
-    background-color: white;
+    /* background-color: white; */
 }
 
-.todo{
+/* .todo{
     background: url(../../assets/img/fondo3.jpg);
     background-repeat: no-repeat;
     background-size: cover;
-}
+} */
 /* linear-gradient(rgba(255,255,255,.5), rgba(255,255,255,.5)),  */
 .row{
     margin: 20px;
@@ -61,7 +61,7 @@
 .iconSabias, .iconApli{
     font-size: 40px;
     padding: 10px 0px 0px 0px;
-    color: black;
+    /* color: black; */
 }
 
 .iconApli{
@@ -72,12 +72,12 @@
     font-size: 18px;
     padding: 0px 15px 0px 15px;
     margin: 0px 0px 0px 0px;
-    color: black;
+    /* color: black; */
 }
 
 .info, .infoAplication{
     padding: 0px 15px 0px 15px;
     text-align: justify;;
-    color: black;
+    /* color: black; */
 }
 
